@@ -1,0 +1,21 @@
+<?php
+require_once './includes/config.php';
+
+$sql = "SELECT * FROM products";
+$result = $conn->query($sql);
+
+if ($result) {
+    if ($result->num_rows > 0) {
+        $products = array();
+        while ($row = $result->fetch_assoc()) {
+            $products[] = $row;
+        }
+        echo json_encode($products);
+    } else {
+        echo json_encode([]); // Return an empty array if no products found
+    }
+} else {
+    echo json_encode(["error" => "Query failed: " . $conn->error]);
+}
+
+$conn->close();
