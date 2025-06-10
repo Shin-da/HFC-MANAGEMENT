@@ -1,0 +1,13 @@
+.top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 260px;
+    height: 60px;
+    background: var(--sand);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 999;

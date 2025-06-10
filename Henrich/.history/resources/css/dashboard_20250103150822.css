@@ -1,0 +1,128 @@
+
+
+/* Alertbox */
+.alertbox {
+    /* max-height: 200px; */
+    width: 400px;
+    /* background-color: var(--panel-color);
+    border-radius: 5px; */
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    /* border: 3px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.content-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    /* border-bottom: 1px solid var(--border-color); */
+}
+
+.alertbox .content-header {
+    justify-content: space-between; 
+}
+
+.sales-report .content-header {
+    justify-content: space-around;
+}
+
+.sales-report {
+    width: auto;
+    max-height: 300px;
+    border-radius: 5px;
+}
+
+.alerts {
+    overflow-y: scroll;
+    height: 150px;
+    /* background-color: var(--panel-color);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px; */
+    padding: 10px;
+    /* border-top: 1px solid var(--border-color); */
+}
+
+.alertbox .alertbox-content {
+    background-color: var(--accent-color);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    gap: 10px;
+}
+
+.alertbox .warning {
+    background-color: var(--warning-color);
+}
+
+.alertbox .danger {
+    background-color: var(--danger-color);
+    color: var(--);
+}
+
+.boxes {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.box {
+    position: relative;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 250px;
+    margin-bottom: 10px;
+    height: max-content;
+    border-radius: 5px;
+    background: var(--sidebar-color);
+    color: var(--text-color);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    @media screen and (max-width: 530px) {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+}
+
+.box i {
+    font-size: 2.5rem;
+}
+
+.box .number {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.box .arrow {
+    margin-right: -10px;
+    background-color: var(--toggle-color);
+
+}
+
+.box:hover {
+    cursor: pointer;
+    background-color: var(--border-color);
+    transition: var(--tran-05);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    scale: 1.03;
+}
+
+.box1 {
+    color: var(--primary-color);
+}
+
+.box2 {
+    color: var(--success-color);
+}
+
+.box3 {
+    color: var(--danger-color);
+}
+

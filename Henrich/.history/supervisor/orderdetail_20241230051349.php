@@ -1,0 +1,1 @@
+whnen the print is clicked, the receipt and invoice show on the printable data

@@ -1,0 +1,245 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Core Layout */
+body {
+    min-height: 100vh;
+    display: flex;
+    background: var(--background);
+    width: 100%; /* Ensure body takes full width */
+}
+
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background);
+}
+
+.content-wrapper {
+    flex: 1;
+    min-width: 0;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+}
+
+.page-container {
+    flex: 1;
+    padding: 1.5rem;
+    max-width: 100%;
+}
+
+/* Layout States */
+.content-wrapper.collapsed { margin-left: 70px; }
+.content-wrapper.expanded { margin-left: 0; }
+.sidebar-collapsed .content-wrapper { margin-left: 70px; }
+
+/* Responsive Layout */
+@media (max-width: 1200px) {
+    .content-wrapper { margin-left: 70px; }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper { margin-left: 0; }
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.active { transform: translateX(0); }
+    .dashboard-wrapper { padding: 1rem; }
+}
+
+/* Component Layouts */
+.dashboard-wrapper {
+    width: 100%;
+    padding: 1.5rem;
+    min-height: 100%;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Card Styles */
+.card {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+}
+
+.sidebar.hidden ~ .content-wrapper {
+    width: 100%;
+    margin-left: 0;
+}
+
+/* Remove .home-section styles as they're no longer needed */
+
+/* Dashboard Components */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--card-bg);
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .content-wrapper {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper,
+    .supervisor-body .content-wrapper,
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .dashboard-wrapper {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .content-wrapper {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* Layout States */
+.sidebar-collapsed .content-wrapper {
+    margin-left: 70px;
+}
+
+/* Core Layout */
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background);
+}
+
+.content-wrapper {
+    flex: 1;
+    min-width: 0;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+}
+
+.page-container {
+    flex: 1;
+    padding: 1.5rem;
+    max-width: 100%;
+}
+
+/* States */
+.content-wrapper.collapsed {
+    margin-left: 70px;
+}
+
+.content-wrapper.expanded {
+    margin-left: 0;
+}
+
+/* Responsive Layout */
+@media (max-width: 1200px) {
+    .content-wrapper {
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        margin-left: 0;
+    }
+}
+
+/* Layout Components */
+.dashboard-wrapper {
+    width: 100%;
+    padding: 1.5rem;
+    min-height: 100%;
+}
+
+/* Component Grids */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Card Styles */
+.card {
+    background: var(--surface);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+}
+
+/* Utilities */
+.scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar);
+    border-radius: 3px;
+}

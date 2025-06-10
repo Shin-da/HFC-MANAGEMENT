@@ -1,0 +1,140 @@
+<!-- META TAGS -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <meta http-equiv="refresh" content="120"> -->
+
+<!-- FAVICON -->
+<link rel="icon" href="../resources/images/henrichlogo.png">
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/sidebar.css">
+<link rel="stylesheet" type="text/css" href="resources/css/login.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/calendar.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/navbar.css">
+<!-- <link rel="stylesheet" type="text/css" href="../resources/css/dashboard.css"> -->
+
+<!-- BOXICONS -->
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+<!-- JAVASCRIPTS -->
+<script src="../resources/js/datetime.js"></script> <!-- datetime -->
+<script src="../resources/js/weather.js"></script> <!-- For weather -->
+<script src="../resources/js/product_rank.js"></script> <!-- For Product rankin -->
+<script src="../resources/js/holidays.js"></script><!-- For holidays -->
+<script src="../resources/js/search.js"> </script> <!-- JS for search -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jquery -->
+
+<!-- DROPDOWN SCRIPT -->
+<!-- <script>
+       function toggleDropdown() {
+              document.getElementById("myDropdown").classList.toggle("show");
+       }
+
+       // Close the dropdown if the user clicks outside of it
+       window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+                     var dropdowns = document.getElementsByClassName("dropdown-content");
+                     var i;
+                     for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            if (openDropdown.classList.contains('show')) {
+                                   openDropdown.classList.remove('show');
+                            }
+                     }
+              }
+       }
+</script> -->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+
+<!-- Add Animate.css for smooth animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+<!-- SweetAlert2 Resources -->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+    /* SweetAlert2 Custom Styling */
+    .swal2-popup {
+        font-size: 0.9rem !important;
+        border-radius: 12px !important;
+    }
+    .swal2-toast {
+        padding: 0.5rem !important;
+        background: var(--background) !important;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
+    }
+    .swal2-toast .swal2-title {
+        margin: 0 0 0 0.75rem !important;
+        font-size: 0.9rem !important;
+        padding: 0.75rem 1.5rem !important;
+        font-weight: 500 !important;
+    }
+    .swal2-cancel {
+        background: var(--secondary) !important;
+        color: var(--sand) !important;
+        border-radius: 8px !important;
+        padding: 0.75rem 1.5rem !important;
+        font-weight: 500 !important;
+    }
+    .swal2-title {
+        color: var(--text-primary) !important;
+    }
+    .swal2-html-container {
+        color: var(--text-secondary) !important;
+    }
+
+    /* Toast Styling */
+    .colored-toast {
+        background: var(--primary) !important;
+        color: var(--sand) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+        border-radius: 8px !important;
+        padding: 12px 20px !important;
+        margin: 20px !important;
+    }
+    .colored-toast.swal2-icon-success {
+        background: var(--success) !important;
+    }
+    .colored-toast.swal2-icon-error {
+        background: var(--error) !important;
+    }
+    .colored-toast.swal2-icon-warning {
+        background: var(--warning) !important;
+    }
+    .colored-toast.swal2-icon-info {
+        background: var(--info) !important;
+    }
+    .toast-title {
+        color: var(--sand) !important;
+        font-size: 0.95rem !important;
+        font-weight: 500 !important;
+        margin-left: 10px !important;
+    }
+    .toast-progress {
+        background: rgba(255, 255, 255, 0.3) !important;
+    }
+    /* Hide the close button in toasts */
+    .colored-toast .swal2-close {
+        display: none !important;
+    }
+    /* Adjust icon size in toasts */
+    .colored-toast .swal2-icon {
+        width: 1.5em !important;
+        height: 1.5em !important;
+        margin: 0 !important;
+    }
+    .colored-toast .swal2-icon-content {
+        font-size: 1.25em !important;
+    }
+</style>
+<script src="../resources/js/alerts.js"></script>

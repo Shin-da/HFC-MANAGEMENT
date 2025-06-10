@@ -1,0 +1,83 @@
+/* Theme Variables */
+:root {
+    color-scheme: light;
+    --background: var(--bg-white);
+    --surface: var(--bg-light);
+    --primary: var(--forest-primary);
+    --primary-light: var(--forest-light);
+    --accent: var(--rust-light);
+    --text-primary: var(--charcoal);
+    --text-secondary: var(--sage-600);
+    --border: var(--sage-200);
+    --hover: var(--sage-100);
+    
+    /* Text Colors */
+    --text-color: var(--bg-white);
+    --text-color-dark: var(--charcoal);
+    --sidebar-text: var(--bg-white);
+    
+    /* Transitions */
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    color-scheme: dark;
+    --background: var(--charcoal);
+    --surface: var(--forest-deep);
+    --primary: var(--forest-medium);
+    --primary-light: var(--sage-medium);
+    --accent: var(--rust-medium);
+    --text-primary: var(--bg-white);
+    --text-secondary: var(--sage-300);
+    --border: var(--forest-deep);
+    --hover: var(--forest-medium);
+}
+
+/* Theme transitions */
+* {
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* Prevent FOUC (Flash of unstyled content) */
+html:not([data-theme]) {
+    visibility: hidden;
+}
+
+html[data-theme] {
+    visibility: visible;
+}
+
+/* Theme toggle button */
+#themeToggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#themeToggle:hover {
+    background: var(--hover);
+    color: var(--primary);
+}
+
+#themeToggle i {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+#themeToggle.clicked i {
+    transform: rotate(360deg);
+}

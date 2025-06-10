@@ -1,0 +1,149 @@
+/* resources\css\style.css */
+
+/* === Global Styles === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+/* === Colors === */
+:root {
+    --body-color: #E4E9F7;
+    --border-color: #d7d7d7;
+    --sidebar-color: #faf9f5;
+    --primary-color-light: #F6F5FF;
+    --text-color-white: #faf9f5;
+    --text-color: #3a3a3a;
+    --panel-color: #E7E6E1;
+    --panel-color-dark: #E7E6E1;
+    --toggle-color: #e9ecef;
+    --grey-active: #717171;
+    --grey-inactive: #3a3b3c;
+    --grey-hover-color: #a1a1a1;
+    --primary-color: #FF686B;
+    --accent-color: #A02334;
+    --accent-color-dark: #6d1c27;
+    --accent-color-dark-inactive: #4b2025;
+    --orange-color: #FFAD60;
+    --yellow-color: #FFEEAD;
+    --blue-color: #96CEB4;
+    --blue-color-dark: #2D5B6B;
+    --vandyke-color: #362C28;
+    --white: #fff;
+    --black: #313638;
+    --warning-color: #f0ad4e;
+    --dark-teal: #00a1ba;
+    --success-color: #55b86c;
+    --danger-color: #d9534f;
+    --danger-color-dark: #a02334;
+}
+
+/* === Transition === */
+:root {
+    --tran-03: all 0.2s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+/* === Device Friendly === */
+/* Adjust font size for mobile devices */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* Adjust font size for tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Adjust font size for desktop computers */
+@media (min-width: 769px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+/* === Panel === */
+.panel {
+    position: relative;
+    left: 220px;
+    min-height: 100vh;
+    margin-top: 45px;
+    width: calc(100% - 220px);
+    padding: 10px 14px;
+    transition: var(--tran-05);
+    background-color: var(--panel-color);
+}
+
+/* === Dashboard === */
+.dashboard {
+    padding: 10px 14px;
+    transition: var(--tran-05);
+    background-color: var(--panel-color);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* === Container === */
+.container {
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: var(--sidebar-color);
+    border: 1px solid var(--border-color);
+}
+
+.container-fluid {
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: var(--sidebar-color);
+    border: 1px solid var(--border-color);
+}
+
+/* === Overview === */
+.overview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2%;
+    padding: 20px 0;
+    margin: 10px 0;
+    background-color: var(--sidebar-color);
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--accent-color);
+}
+
+/* === Placeholder Box === */
+.placeholder-box {
+    width: 100%;
+    height: 100%;
+    background-color: var(--sidebar-color);
+}
+
+/* === Image === */
+img {
+    width: 100%;
+    background-size: contain;
+}
+

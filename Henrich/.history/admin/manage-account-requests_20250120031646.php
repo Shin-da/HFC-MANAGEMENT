@@ -1,0 +1,14 @@
+<?php
+require_once 'access_control.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $request_id = $_POST['request_id'];
+    $action = $_POST['action'];
+    $temp_password = bin2hex(random_bytes(8)); // Generate temporary password
+    
+    if ($action === 'approve') {
+        // Begin transaction
+        $conn->begin_transaction();
+        try {
+            // Get request details
+            $stmt = $conn->prepare("SELECT * FROM account_requests WHERE id = ?");

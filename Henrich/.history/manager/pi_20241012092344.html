@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PI</title>
+</head>
+<body>
+    <p id="pi"></p>
+
+    <script>
+        document.getElementById("pi").innerHTML = Math.PI;
+    </script>
+</body>
+</html>
+

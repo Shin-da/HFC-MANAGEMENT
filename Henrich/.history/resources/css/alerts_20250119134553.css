@@ -1,0 +1,158 @@
+:root {
+    /* Alert Colors */
+    --alert-success: #598777;    /* Sage green */
+    --alert-error: #933d24;      /* Rust red */
+    --alert-warning: #de9a45;    /* Warm orange */
+    --alert-info: #385a41;       /* Forest green */
+    --alert-question: #6a362b;   /* Deep brown */
+    
+    /* Toast Colors */
+    --toast-success-bg: #598777;
+    --toast-error-bg: #933d24;
+    --toast-warning-bg: #e5ba90;
+    --toast-info-bg: #385a41;
+}
+
+/* css for alert  */
+
+.alert {
+    position: fixed;
+    right: 0;
+    top: 15%;
+    z-index: 1;
+    transform: translateX(100%);
+    width: 300px;
+    background: var(--alert-bg-color);
+    color: var(--text-color-light);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s ease;
+}
+
+.alert.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.alert-message {
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.alert-message.success {
+    background-color: var(--success-color);
+}
+
+.alert-message.error {
+    background-color: var(--danger-color);
+}
+
+.alert .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+/* SweetAlert2 Custom Styling */
+.swal2-popup {
+    font-size: 0.9rem !important;
+    border-radius: 8px !important;
+    background: var(--toast-bg) !important;
+}
+
+/* Toast Styling */
+.swal2-toast {
+    background: var(--toast-bg) !important;
+    color: var(--toast-text) !important;
+    padding: 1rem !important;
+    margin: 0.5rem !important;
+}
+
+/* Toast Icons */
+.swal2-toast.swal2-icon-success {
+    border-left: 4px solid var(--toast-success) !important;
+}
+.swal2-toast.swal2-icon-error {
+    border-left: 4px solid var(--toast-error) !important;
+}
+.swal2-toast.swal2-icon-warning {
+    border-left: 4px solid var(--toast-warning) !important;
+}
+.swal2-toast.swal2-icon-info {
+    border-left: 4px solid var(--toast-info) !important;
+}
+
+/* Toast Base Styling */
+.colored-toast {
+    background: var(--primary) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    border-radius: 8px !important;
+    padding: 12px 20px !important;
+    margin: 20px !important;
+}
+
+/* Toast Color Variants */
+.colored-toast.swal2-icon-success {
+    background: var(--toast-success-bg) !important;
+}
+.colored-toast.swal2-icon-error {
+    background: var(--toast-error-bg) !important;
+}
+.colored-toast.swal2-icon-warning {
+    background: var(--toast-warning-bg) !important;
+    color: #36302d !important;
+}
+.colored-toast.swal2-icon-info {
+    background: var(--toast-info-bg) !important;
+}
+
+/* Modal Backdrop */
+.swal2-container.swal2-backdrop-show {
+    background: rgba(54, 48, 45, 0.6) !important; /* Using #36302d with opacity */
+}
+
+/* Alert Buttons */
+.swal2-confirm {
+    background: var(--alert-success) !important;
+    color: #fff !important;
+}
+.swal2-cancel {
+    background: var(--alert-error) !important;
+    color: #fff !important;
+}
+.swal2-deny {
+    background: var(--alert-warning) !important;
+    color: var(--toast-text) !important;
+}
+
+/* Icon Colors */
+.swal2-success-ring {
+    border-color: var(--alert-success) !important;
+}
+.swal2-icon.swal2-success {
+    border-color: var(--alert-success) !important;
+    color: var(--alert-success) !important;
+}
+.swal2-icon.swal2-error {
+    border-color: var(--alert-error) !important;
+    color: var(--alert-error) !important;
+}
+.swal2-icon.swal2-warning {
+    border-color: var(--alert-warning) !important;
+    color: var(--alert-warning) !important;
+}
+.swal2-icon.swal2-info {
+    border-color: var(--alert-info) !important;
+    color: var(--alert-info) !important;
+}
+.swal2-icon.swal2-question {
+    border-color: var(--alert-question) !important;
+    color: var(--alert-question) !important;
+}
+

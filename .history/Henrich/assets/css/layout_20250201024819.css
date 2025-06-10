@@ -1,0 +1,76 @@
+:root {
+    --sidebar-width: 250px;
+    --sidebar-mini-width: 64px;
+    --navbar-height: 64px;
+    --transition-speed: 0.3s;
+    --transition-curve: ease;
+}
+
+/* Base Layout */
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.content-wrapper {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding-top: var(--navbar-height);
+    min-height: 100vh;
+    transition: margin-left var(--transition-speed) var(--transition-curve);
+}
+
+/* Sidebar States */
+.sidebar.close ~ .content-wrapper {
+    margin-left: var(--sidebar-mini-width);
+}
+
+.sidebar.hidden ~ .content-wrapper {
+    margin-left: 0;
+}
+
+/* Navbar States */
+.navbar {
+    left: var(--sidebar-width);
+    transition: left var(--transition-speed) var(--transition-curve);
+}
+
+.sidebar.close ~ .navbar {
+    left: var(--sidebar-mini-width);
+}
+
+.sidebar.hidden ~ .navbar {
+    left: 0;
+}
+
+/* Mobile States */
+@media (max-width: 768px) {
+    .content-wrapper {
+        margin-left: 0;
+    }
+    
+    .navbar {
+        left: 0;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    /* Overlay when sidebar is shown on mobile */
+    .sidebar.active ~ .content-wrapper::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 99;
+    }
+}

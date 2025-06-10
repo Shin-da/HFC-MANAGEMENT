@@ -1,0 +1,48 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const appWrapper = document.querySelector('.app-wrapper');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    
+    function updateLayout(sidebarState) {
+        // Update app wrapper data attribute
+        appWrapper.setAttribute('data-sidebar-state', sidebarState);
+        
+        // Update sidebar classes
+        sidebar.classList.remove('collapsed', 'hidden', 'active');
+        if (sidebarState === 'collapsed') {
+            sidebar.classList.add('collapsed');
+        } else if (sidebarState === 'hidden') {
+            sidebar.classList.add('hidden');
+        }
+        
+        // Save state to localStorage
+        localStorage.setItem('sidebarState', sidebarState);
+    }
+    
+    function updateSidebarState() {
+        if (window.innerWidth <= 767) {
+            updateLayout('hidden');
+        } else if (window.innerWidth <= 991) {
+            updateLayout('collapsed');
+        } else {
+            updateLayout('expanded');
+        }
+    }
+
+    // Toggle sidebar on button click
+    sidebarToggle.addEventListener('click', () => {
+        const currentState = appWrapper.getAttribute('data-sidebar-state');
+        
+        if (window.innerWidth <= 767) {
+            // Mobile: toggle between hidden and active
+            if (currentState === 'hidden') {
+                sidebar.classList.add('active');
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateSidebarState, 250);
+    });
+
+    // Initial state
+    updateSidebarState();
+});

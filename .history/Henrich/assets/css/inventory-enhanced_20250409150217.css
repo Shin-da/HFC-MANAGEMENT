@@ -1,0 +1,279 @@
+/* Enhanced Inventory Theme */
+:root {
+    /* Sage Colors */
+    --sage-50: #f8fafc;
+    --sage-100: #f1f5f9;
+    --sage-200: #e2e8f0;
+    --sage-300: #cbd5e1;
+    --sage-400: #94a3b8;
+    --sage-500: #64748b;
+    --sage-600: #475569;
+    --sage-700: #334155;
+    --sage-800: #1e293b;
+    --sage-900: #0f172a;
+
+    /* Forest Colors */
+    --forest-50: #f0fdf4;
+    --forest-100: #dcfce7;
+    --forest-200: #bbf7d0;
+    --forest-300: #86efac;
+    --forest-400: #4ade80;
+    --forest-500: #22c55e;
+    --forest-600: #16a34a;
+    --forest-700: #15803d;
+    --forest-800: #166534;
+    --forest-900: #14532d;
+}
+
+/* Enhanced Inventory Section */
+.inventory-section {
+    background: linear-gradient(to bottom right, var(--sage-50), var(--forest-50));
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Panel Styling */
+.inventory-panel {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--sage-200);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.inventory-panel-header {
+    border-bottom: 2px solid var(--forest-200);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.inventory-panel-title {
+    color: var(--forest-800);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Card Styling */
+.inventory-card {
+    background: white;
+    border: 1px solid var(--sage-200);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.inventory-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-color: var(--forest-300);
+}
+
+/* Table Styling */
+.inventory-table {
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--sage-200);
+}
+
+.inventory-table thead {
+    background: linear-gradient(to right, var(--forest-500), var(--forest-600));
+    color: white;
+}
+
+.inventory-table th {
+    padding: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+}
+
+.inventory-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--sage-200);
+    color: var(--sage-700);
+}
+
+.inventory-table tr:hover {
+    background-color: var(--sage-50);
+}
+
+/* Form Elements */
+.inventory-input {
+    border: 1px solid var(--sage-300);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    transition: all 0.2s ease;
+    background-color: var(--sage-50);
+}
+
+.inventory-input:focus {
+    border-color: var(--forest-400);
+    box-shadow: 0 0 0 3px var(--forest-100);
+    outline: none;
+}
+
+.inventory-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+/* Buttons */
+.inventory-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.inventory-btn-primary {
+    background: var(--forest-500);
+    color: white;
+    border: none;
+}
+
+.inventory-btn-primary:hover {
+    background: var(--forest-600);
+}
+
+.inventory-btn-secondary {
+    background: var(--sage-100);
+    color: var(--sage-700);
+    border: 1px solid var(--sage-300);
+}
+
+.inventory-btn-secondary:hover {
+    background: var(--sage-200);
+}
+
+/* Status Badges */
+.inventory-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.inventory-badge-low {
+    background-color: var(--forest-100);
+    color: var(--forest-700);
+}
+
+.inventory-badge-medium {
+    background-color: var(--forest-200);
+    color: var(--forest-800);
+}
+
+.inventory-badge-high {
+    background-color: var(--forest-300);
+    color: var(--forest-900);
+}
+
+/* Stats Cards */
+.inventory-stats-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--sage-200);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inventory-stats-title {
+    color: var(--sage-600);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.inventory-stats-value {
+    color: var(--forest-700);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.inventory-stats-change {
+    color: var(--forest-500);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Search Bar */
+.inventory-search {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.inventory-search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid var(--sage-300);
+    border-radius: 6px;
+    background-color: var(--sage-50);
+}
+
+.inventory-search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--sage-500);
+}
+
+/* Filters Section */
+.inventory-filters {
+    background: var(--sage-50);
+    border: 1px solid var(--sage-200);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Pagination */
+.inventory-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.inventory-pagination-item {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--sage-300);
+    border-radius: 6px;
+    color: var(--sage-700);
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.inventory-pagination-item:hover {
+    background: var(--sage-100);
+    border-color: var(--sage-400);
+}
+
+.inventory-pagination-item.active {
+    background: var(--forest-500);
+    color: white;
+    border-color: var(--forest-500);
+} 

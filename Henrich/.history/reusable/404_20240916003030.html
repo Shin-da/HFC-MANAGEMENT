@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>404 Page</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+    <style>
+        body {
+            background-color: var(--panel-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container img {
+            width: 20rem;
+            height: auto;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .mobile h1 {
+            font-size: 5rem;
+        }
+        .mobile .container img{
+            height: auto;
+            width: 70%;
+            margin-bottom: 20px;
+        }
+
+        .mobile .description p {
+            font-size: 1rem;
+        }
+
+        .mobile .description h1 {
+            font-size: 9rem;
+        }
+        .description p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .description h1 {
+            color: var(--accent-color);
+            font-size: 12em;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        a {
+            border: 1px solid var(--accent-color);
+            background-color: var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: var(--panel-color);
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        a:hover {
+            background-color: var(--red);
+            scale: 1.9;
+            transition: 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="desktop">
+        <div class="title" style="text-align: center;">
+            <h1>OOPS!n</h1>
+        </div>
+        <div class="container"
+            style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+            <div class="image" style="margin-right: 20px;">
+                <img src="../resources/images/404.png" alt="Page not found" draggable="false" unselectable="on">
+            </div>
+
+            <div class="description">
+                <h1>404</h1>
+                <p></p>
+                <a href="index.php">Go Back</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile" >
+        <div class="container">
+            <div class="description">
+                <h1>404</h1>
+                <p>The page you are looking for does not exist. </p>
+            </div>
+            <div class="image">
+                <img src="../resources/images/404.png" alt="Page not found">
+            </div>
+            <div class="button">
+                <a href="index.php">Go Back</a>
+            </div>
+        </div>
+    </div>
+
+  <script>
+      window.addEventListener('DOMContentLoaded', function() {
+          window.addEventListener('resize', updateBody);
+  
+          function updateBody() {
+              const desktop = document.querySelector('.desktop');
+              const mobile = document.querySelector('.mobile');
+              if (window.innerWidth <= 1020) {
+                  mobile.style.display = 'block';
+                  desktop.style.display = 'none';
+              } else {
+                  mobile.style.display = 'none';
+                  desktop.style.display = 'block';
+              }
+          }   
+  
+          updateBody(); // Call the function immediately
+      });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+.account-wrapper {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.account-header {
+    margin-bottom: 2rem;
+}
+
+.account-header h1 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.account-header .subtitle {

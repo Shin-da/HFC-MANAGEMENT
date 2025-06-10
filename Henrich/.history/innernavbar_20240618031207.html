@@ -1,0 +1,30 @@
+ <style>
+    .nav {
+        background-color: var(--sidebar-color);
+        border-right: 2px solid var(--border-color);
+        z-index: 100;
+        ma
+    }
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+        color: var(--text-color);
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+    .nav-tabs .nav-link {
+        color: var(--text-color);
+    }
+
+ </style>
+ 
+ <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="nav-price-tab" data-bs-toggle="tab"
+            href="#nav-price" role="tab" aria-controls="nav-price"
+            aria-selected="true">Orders</a>
+    </div>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="nav-history-tab" data-bs-toggle="tab"
+            href="#nav-history" role="tab" aria-controls="nav-price"
+            aria-selected="true">History</a>
+    </div>
+</nav>

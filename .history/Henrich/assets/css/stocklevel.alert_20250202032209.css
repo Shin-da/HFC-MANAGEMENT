@@ -1,0 +1,40 @@
+
+.stock-alerts-container {
+    background: var(--bg-white);
+    border-radius: 12px;
+    border: 1px solid var(--sage-200);
+    box-shadow: var(--shadow-sm);
+}
+
+.alert-header {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--sage-200);
+}
+
+.alert-section h4 {
+    color: var(--text-secondary);
+}
+
+.alert-item {
+    border-radius: 8px;
+    background: var(--bg-light);
+    border: 1px solid var(--sage-200);
+}
+
+.alert-item.out-of-stock {
+    background: var(--rust-light);
+    color: var(--text-light);
+}
+
+.alert-item.low-stock {
+    background: var(--accent-warning);
+    color: var(--text-dark);
+}
+
+.no-alerts {
+    color: var(--forest-medium);
+}
+
+.no-alerts i {
+    color: var(--forest-light);
+}

@@ -1,0 +1,124 @@
+<?php
+require_once '../includes/session.php';
+require_once '../includes/config.php';
+require_once '../includes/Page.php';
+require_once './access_control.php';
+
+$current_page = basename($_SERVER['PHP_SELF'], '.php');
+$_SESSION['current_page'] = $current_page;
+
+// Initialize database connection
+try {
+    $pdo = new PDO(
+        "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME,
+        DB_USER,
+        DB_PASSWORD,
+        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+    );
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+
+// Fetch user data with status check
+function getUserData($pdo, $userId) {
+    $stmt = $pdo->prepare("
+        SELECT *, 
+        CONCAT(first_name, ' ', last_name) as full_name,
+        CASE 
+            WHEN status = 1 THEN 'Active'
+            ELSE 'Inactive'
+        END as account_status,
+        TIME_TO_SEC(TIMEDIFF(NOW(), last_online)) as seconds_offline
+        FROM users 
+        WHERE user_id = :user_id
+    ");
+    $stmt->execute(['user_id' => $userId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// Get user data
+Page::addStyle('../assets/css/sidebar.css');
+Page::addStyle('../assets/css/account.css');
+
+// Start output buffering
+ob_start();
+?>
+
+<div class="account-wrapper">
+    <div class="account-header">
+        <h1>My Account</h1>
+        <p class="subtitle">Manage your account settings</p>
+    </div>
+
+    <div class="account-content">
+        <div class="account-card">
+            <div class="card-header">
+                <h2>Profile Information</h2>
+            </div>
+            <div class="card-body">
+                <form action="./process/edit-account.process.php" method="post" class="account-form">
+                    <input type="hidden" name="user_id" value="<?= htmlspecialchars($_SESSION['user_id']) ?>">
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" 
+                               id="email" 
+                               name="email" 
+                               value="<?= htmlspecialchars($userData['useremail']) ?>" 
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" 
+                               id="username" 
+                               name="username" 
+                               value="<?= htmlspecialchars($userData['username']) ?>" 
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <input type="text" 
+                               id="role" 
+                               value="<?= htmlspecialchars(ucfirst($userData['role'])) ?>" 
+                               disabled>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="account-card">
+            <div class="card-header">
+                <h2>Password Change</h2>
+            </div>
+            <div class="card-body">
+                <form action="./process/request-password-change.process.php" method="post" class="password-form">
+                    <input type="hidden" name="user_id" value="<?= htmlspecialchars($_SESSION['user_id']) ?>">
+                    
+                    <div class="form-group">
+                        <label for="oldpassword">Current Password</label>
+                        <input type="password" 
+                               id="oldpassword" 
+                               name="oldpassword" 
+                               required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-secondary">Request Password Change</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+// Render the page
+Page::render(ob_get_clean());
+?>
+

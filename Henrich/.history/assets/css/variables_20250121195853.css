@@ -1,0 +1,70 @@
+:root {
+    /* Core Layout */
+    --navbar-height: 60px;
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 70px;
+    --content-padding: 2rem;
+    
+    /* Brand Colors Palette */
+    --forest-brown: #6a362b;
+    --rust: #933d24;
+    --orange: #df5c36;
+    --sage: #598777;
+    --forest-green: #385a41;
+    --beige: #e5ba90;
+    --golden: #de9a45;
+    --charcoal: #36302d;
+    --sage-light: #cdd9c5;
+
+    /* UI Colors - Light Theme */
+    --primary: var(--forest-green);
+    --secondary: var(--sage);
+    --accent: var(--orange);
+    --success: var(--olive);
+    --error: var(--rust);
+    --warning: var(--golden);
+    --info: var(--sage);
+    
+    /* Background & Surface Colors - Light Theme */
+    --background: #ffffff;
+    --surface: var(--sage-light);
+    --border: var(--sage);
+    --text-primary: var(--charcoal);
+    --text-secondary: var(--forest-green);
+    --card-bg: #ffffff;
+    
+    /* Sidebar Colors - Light Theme */
+    --sidebar-bg: var(--sage-light);
+    --sidebar-hover: var(--beige);
+    --sidebar-active: var(--olive);
+    --sidebar-text: var(--charcoal);
+    --sidebar-border: var(--sage);
+
+    /* Transitions */
+    --transition-speed: 0.3s;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    /* UI Colors - Dark Theme */
+    --background: var(--charcoal);
+    --surface: var(--forest-brown);
+    --border: var(--rust);
+    --text-primary: var(--beige);
+    --text-secondary: var(--sage-light);
+    --card-bg: var(--forest-brown);
+    
+    /* Sidebar Colors - Dark Theme */
+    --sidebar-bg: var(--forest-brown);
+    --sidebar-hover: var(--rust);
+    --sidebar-active: var(--orange);
+    --sidebar-text: var(--beige);
+    --sidebar-border: var(--rust);
+}
+
+/* Theme transition */
+* {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+}

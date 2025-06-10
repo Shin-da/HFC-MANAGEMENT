@@ -1,0 +1,353 @@
+:root {
+    /* Core Forest Color Palette */
+    --forest-deep: #1a3a32;
+    --forest-primary: #2a4c3e;
+    --forest-medium: #385a41;
+    --forest-light: #4F7942;
+    
+    /* Earth Tones */
+    --sage-dark: #506d5b;
+    --sage-medium: #7EA172;
+    --sage-light: #9dc4a1;
+    --olive-warm: #a6ab8a;
+    --cream-light: #e8edd5;
+    
+    /* Accent Colors */
+    --gold-warm: #d4af37;
+    --gold-light: #e6c66e;
+    --rust-dark: #8b4513;
+    --rust-light: #cd853f;
+    
+    /* Base UI Colors */
+    --bg-primary: var(--forest-primary);
+    --bg-secondary: var(--sage-light);
+    --bg-white: #f5f7f2;
+    --bg-light: ;
+    
+    /* Sidebar Specific */
+    /* --sidebar-bg: #cadbb7;
+    --sidebar-hover: rgba(177, 196, 167, 0.15);
+    --sidebar-active: rgba(125, 156, 112, 0.2);
+    --sidebar-text: var(--sage-900);
+    --sidebar-text-muted: rgba(245, 247, 242, 0.7);
+    --sidebar-text-hover: var(--sage-800);
+    --sidebar-text-active: var(--sage-900);
+     */
+    /* Active States */
+    --tab-active-bg: rgba(245, 247, 242, 0.1);
+    --tab-active-border: var(--gold-warm);
+    --tab-hover-bg: rgba(245, 247, 242, 0.05);
+    
+    /* Submenu Colors */
+    --submenu-bg: rgba(26, 58, 50, 0.6);
+    --submenu-hover: rgba(79, 121, 66, 0.15);
+    --submenu-active: rgba(79, 121, 66, 0.25);
+
+    /* Nature-inspired Color Palette */
+    --forest-deep: #1B4D3E;
+    --forest-primary: #2F5233;
+    --forest-medium: #385a41;
+    --forest-light: #4F7942;
+    --sage-dark: #598777;
+    --sage-medium: #7EA172;
+    --sage-light: #8FBC8F;
+    --olive-warm: #a6ab8a;
+    --cream-light: #C2D3A9;
+    --beige-warm: #e5ba90;
+    --gold-accent: #D4B95E;
+    --rust-dark: #6a362b;
+    --rust-medium: #933d24;
+    --rust-light: #df5c36;
+    --charcoal: #36302d;
+    
+    /* Background Colors */
+    --bg-primary: var(--forest-primary);
+    --bg-secondary: var(--sage-light);
+    --bg-tertiary: var(--cream-light);
+    --bg-light: #F3F7F0;
+    --bg-white: #E8F1E8;
+    
+    /* UI Component Colors */
+    /* --sidebar-bg: var(--sage-200); */
+    --sidebar-hover: rgba(177, 196, 167, 0.15);
+    --sidebar-active: rgba(125, 156, 112, 0.2);
+    --card-bg: var(--bg-white);
+    --header-bg: var(--forest-primary);
+    
+    /* Text Colors */
+    --text-light: var(--bg-white);
+    --text-dark: var(--charcoal);
+    --text-muted: var(--sage-medium);
+    
+    /* Accent Colors */
+    --accent-primary: var(--gold-accent);
+    --accent-secondary: var(--rust-light);
+    --accent-success: var(--sage-medium);
+    --accent-warning: var(--beige-warm);
+    --accent-danger: var(--rust-medium);
+    
+    /* Border Colors */
+    --border-light: rgba(143, 188, 143, 0.2);
+    --border-medium: rgba(89, 135, 119, 0.3);
+    
+    /* Shadow Effects */
+    --shadow-sm: 0 2px 4px rgba(54, 48, 45, 0.08);
+    --shadow-md: 0 4px 6px rgba(54, 48, 45, 0.12);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    
+    /* Navbar Colors */
+    --navbar-bg: var(--forest-primary);
+    --navbar-border: var(--sage-400);
+    --navbar-text: var(--text-dark);
+    --navbar-hover: rgba(255, 255, 255, 0.1);
+    --navbar-active: rgba(255, 255, 255, 0.15);
+    
+    /* Dropdown Colors */
+    --dropdown-bg: var(--forest-primary);
+    --dropdown-border: var(--sage-400);
+    --dropdown-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --dropdown-hover: rgba(255, 255, 255, 0.1);
+    --dropdown-text: var(--text-light);
+    
+    /* Notification Colors */
+    --notification-unread: var(--bg-light);
+    --notification-border: var(--border-light);
+    --badge-bg: var(--accent-danger);
+    
+    /* Font Sizes */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 0.9375rem;
+    --text-lg: 1rem;
+
+    /* Sidebar Text Colors */
+    --sidebar-text: #F3F7F0;
+    --sidebar-text-muted: rgba(243, 247, 240, 0.85); /* Increased from 0.7 */
+    --sidebar-text-hover: var(--gold-accent);
+    --sidebar-text-active: var(--gold-accent);
+    
+    /* Active Tab Styling */
+    --tab-active-bg: var(--beige-warm);
+    --tab-active-border: var(--rust-medium);
+    --tab-active-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --tab-hover-bg: rgba(229, 186, 144, 0.15); /* beige-warm with opacity */
+    
+
+    /* Light theme */
+    --background-color: #f4f6f8;
+    --text-color: #333;
+    --card-bg: #fff;
+    --border-color: #e0e0e0;
+    --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --header-bg: #f8f9fa;
+    --header-text: #333;
+
+    /* Sage Theme Colors */
+    --sage-50: #f4f6f3;
+    --sage-100: #e5ebe2;
+    --sage-200: #cbd8c4;  /* Our base color */
+    --sage-300: #b1c4a7;
+    --sage-400: #97b08b;
+    --sage-500: #7d9c70;
+    --sage-600: #647d59;
+    --sage-700: #4c5e43;
+    --sage-800: #333f2d;
+    --sage-900: #1a1f16;
+
+    /* Sidebar Specific */
+    --sidebar-bg: #cadbb7;
+    --sidebar-hover: rgba(177, 196, 167, 0.15);
+    --sidebar-active: rgba(125, 156, 112, 0.2);
+    --sidebar-text: var(--sage-900);
+    --sidebar-text-muted: rgba(255, 255, 255, 0.85);
+    --sidebar-text-hover: var(--sage-800);
+
+    /* Submenu Colors */
+    --submenu-hover: rgba(229, 186, 144, 0.15);
+    --submenu-active: rgba(229, 186, 144, 0.25);
+    
+    /* Navigation */
+    --menu-item-hover: var(--sage-700);
+    --menu-item-active: var(--sage-600);
+    --submenu-bg: #b1c4a7; /* Increased opacity for better contrast */
+    --submenu-bg: var(--sage-100);
+    
+    /* Borders and Shadows */
+    --sidebar-border: var(--sage-700);
+    --sidebar-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+    /* Base Colors */
+    --sage-base: #cbd8c4;
+    
+    /* Sage Color Scale */
+    --sage-50: #f4f6f3;
+    --sage-100: #e5ebe2;
+    --sage-200: #cbd8c4;  /* Our base color */
+    --sage-300: #b1c4a7;
+    --sage-400: #97b08b;
+    --sage-500: #7d9c70;
+    --sage-600: #647d59;
+    --sage-700: #4c5e43;
+    --sage-800: #333f2d;
+    --sage-900: #1a1f16;
+
+    /* Accent Colors - Complementary to Sage */
+    --accent-rose: #d8c4cb;
+    --accent-lavender: #c4cbd8;
+    --accent-gold: #d8d4c4;
+    
+    /* System Colors */
+    --success: #7d9c70;
+    --warning: #d8d4c4;
+    --danger: #c17676;
+    --info: #76a5c1;
+
+    /* UI Colors */
+    /* --sidebar-bg: var(--sage-medium);
+    --sidebar-hover: rgba(177, 196, 167, 0.15);
+    --sidebar-active: rgba(125, 156, 112, 0.2);
+    --sidebar-text: var(--sage-900);
+    --sidebar-text-hover: var(--sage-800);
+    --sidebar-text-active: var(--sage-900); */
+
+    /* Content Colors */
+    --page-bg: var(--sage-50);
+    --card-bg: #ffffff;
+    --border-light: var(--sage-100);
+    --border-medium: var(--sage-200);
+
+    /* Text Colors */
+    --text-primary: var(--sage-900);
+    --text-secondary: var(--sage-700);
+    --text-muted: var(--sage-500);
+
+    /* Component Colors */
+    --header-bg: var(--sage-100);
+    --navbar-bg: var(--forest-primary);
+    --navbar-border: var(--sage-400);
+    --navbar-text: var(--text-light);
+    --navbar-hover: rgba(255, 255, 255, 0.1);
+    --navbar-active: rgba(255, 255, 255, 0.15);
+    --dropdown-bg: var(--forest-primary);
+    --dropdown-border: var(--sage-400);
+    --dropdown-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --dropdown-hover: rgba(255, 255, 255, 0.1);
+    --dropdown-text: var(--text-light);
+
+    /* Active Tab Styling - Updated */
+    --tab-active-bg: rgba(255, 255, 255, 0.9);
+    /* --tab-active-border: var(--sage-500); */
+    --tab-active-text: var(--sage-800);
+    --tab-hover-bg: rgba(255, 255, 255, 0.7);
+    
+    /* Submenu Colors - Updated */
+    /* --submenu-bg: rgba(27, 77, 62, 0.8); */
+    --submenu-hover: rgba(255, 255, 255, 0.1);
+    --submenu-active: rgba(255, 255, 255, 0.15);
+
+    /* Navigation Colors - Updated */
+    --nav-bg: var(--forest-primary);
+    --nav-text: var(--text-dark);
+    --nav-icon: var(--text-dark);
+    --nav-hover: rgba(255, 255, 255, 0.1);
+    --nav-active: rgba(255, 255, 255, 0.15);
+    --nav-border: var(--sage-400);
+    
+    /* Dropdown/Submenu Colors - Updated */
+    --dropdown-bg: var(--forest-primary);
+    --dropdown-text: var(--text-light);
+    --dropdown-border: var(--nav-border);
+    --dropdown-hover: var(--nav-hover);
+    --dropdown-active: var(--nav-active);
+    
+    /* Icon Colors */
+    --icon-normal: var(--text-light);
+    --icon-hover: var(--gold-accent);
+    --icon-active: var(--gold-accent);
+    
+    /* Badge Colors */
+    --badge-bg: var(--rust-light);
+    --badge-text: var(--text-light);
+
+    /* Icon & Button Colors - Updated for better contrast */
+    --nav-icon: var(--text-dark);
+    --nav-text: var(--bg-white);
+    --icon-normal: var(--bg-white);
+    --icon-hover: var(--gold-accent);
+    --icon-active: var(--gold-warm);
+    
+    /* Dropdown Text Colors - Updated */
+    --dropdown-text: var(--bg-white);
+    --dropdown-text-muted: rgba(255, 255, 255, 0.8);
+    
+    /* Badge Colors - Updated */
+    --badge-bg: var(--rust-light);
+    --badge-text: var(--bg-white);
+
+    /* Transition Timings */
+    --transition-speed: 0.3s;
+    --transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Breakpoints */
+    --breakpoint-mobile: 768px;
+    --breakpoint-tablet: 992px;
+    --breakpoint-desktop: 1200px;
+}
+
+[data-theme="dark"] {
+    /* UI Colors - Dark Theme */
+    --background: var(--charcoal);
+    --surface: var(--rust-dark);
+    --border: var(--rust-medium);
+    --text-primary: var(--beige-warm);
+    --text-secondary: var(--sage-light);
+    --card-bg: var(--rust-dark);
+    
+    /* Sidebar Colors - Dark Theme */
+    --sidebar-bg: var(--sage-700);
+    --sidebar-hover: rgba(203, 216, 196, 0.1);
+    --sidebar-active: rgba(203, 216, 196, 0.2);
+    --sidebar-text: var(--sage-100);
+    --sidebar-border: var(--rust-medium);
+
+    --background-color: #1a1a1a;
+    --text-color: #fff;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+    --card-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    --header-bg: #333;
+    --header-text: #fff;
+
+    /* Dark Mode Colors */
+    --sage-base-dark: #4c5e43;
+    
+    --sidebar-bg: var(--sage-700);
+    --sidebar-hover: rgba(203, 216, 196, 0.1);
+    --sidebar-active: rgba(203, 216, 196, 0.2);
+    --sidebar-text: var(--sage-100);
+    --sidebar-text-hover: #ffffff;
+    
+    --page-bg: var(--sage-900);
+    --card-bg: var(--sage-800);
+    --text-primary: var(--sage-100);
+    --text-secondary: var(--sage-200);
+    --text-muted: var(--sage-300);
+
+    /* Active Tab Styling - Dark Theme */
+    --tab-active-bg: rgba(255, 255, 255, 0.15);
+    --tab-active-text: var(--bg-white);
+    --tab-hover-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* Theme transition */
+* {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+}

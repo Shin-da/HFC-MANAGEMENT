@@ -2,9 +2,10 @@
 /node_modules
 /vendor
 
-# IDE files
+# IDE and editor files
 .vscode/
 .idea/
+.history/
 
 # Environment files
 .env

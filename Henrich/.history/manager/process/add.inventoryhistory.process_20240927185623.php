@@ -1,0 +1,38 @@
+<!-- add.inventoryhistory.process -->
+<?php
+require '/xampp/htdocs/HenrichProto/database/dbconnect.php';
+
+$batchid = $_POST['batchid'];
+$dateofarrival = $_POST['dateofarrival'];
+$encoder = $_POST['encoder'];
+$dateencoded = $_POST['dateencoded'];
+$description = $_POST['description'];
+$datestockin = $_POST['datestockin'];
+$datestockout = $_POST['datestockout'];
+$totalboxes = $_POST['totalboxes'];
+$totalweight = $_POST['totalweight'];
+$totalcost = $_POST['totalcost'];
+
+for ($i = 0; $i < count($batchid); $i++) {
+    $batchid = $batchid[$i];
+    $dateofarrival = $dateofarrival[$i];
+    $encoder = $encoder[$i];
+    $dateencoded = $dateencoded[$i];
+    $description = $description[$i];
+    $datestockin = $datestockin[$i];
+    $datestockout = $datestockout[$i];
+    $totalboxes = $totalboxes[$i];
+    $totalweight = $totalweight[$i];
+    $totalcost = $totalcost[$i];
+
+    $sql = "INSERT INTO inventoryhistory (batchid, dateofarrival, encoder, dateencoded, description, datestockin, datestockout, totalboxes, totalweight, totalcost) VALUES ('$batchid', '$dateofarrival', '$encoder', '$dateencoded', '$description', '$datestockin', '$datestockout', '$totalboxes', '$totalweight', '$totalcost')";
+
+    if ($conn->query($sql) === TRUE) {
+/*************  ✨ Codeium Command ⭐  *************/
+        header("Location: ../add.inventoryhistory.php");
+        exit;
+/******  fc160cc8-781c-4782-a163-7717d393b1e5  *******/
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}

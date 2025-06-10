@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- META TAGS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FAVICON -->
+    <link rel="icon" href="/assets/images/henrichlogo.png">
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    
+    <title><?php echo Page::getTitle(); ?></title>
+
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    
+    <!-- Toast notifications -->
+    <!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"> -->
+    <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> -->
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+    
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/admin-navbar.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/shared-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/admin-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/admin-layout.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/calendar.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/customer-pages.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/form.css">
+
+    <!-- JAVASCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/datetime.js"></script>
+    <script src="../assets/js/weather.js"></script>
+    <script src="../assets/js/product_rank.js"></script>
+    <script src="../assets/js/holidays.js"></script>
+    <script src="../assets/js/search.js"></script>
+    
+    <?php
+    // Fix the alerts path inclusion
+    require_once BASE_PATH . '/templates/alerts.php';
+    ?>
+</head>
+<body class="<?php echo Page::getBodyClass(); ?>">
+    <?php 
+    // Fix sidebar and navbar includes using relative paths
+    require_once dirname(__DIR__) . '/includes/sidebar.php';
+    require_once dirname(__DIR__) . '/includes/navbar.php';
+    ?>
+    <main class="main-content">
+</body>
+</html>

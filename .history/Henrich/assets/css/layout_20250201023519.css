@@ -1,0 +1,54 @@
+:root {
+    --sidebar-width: 250px;
+    --sidebar-collapsed-width: 64px;
+    --navbar-height: 64px;
+    --transition-speed: 0.3s;
+}
+
+/* App Layout */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    transition: margin-left var(--transition-speed) ease;
+}
+
+/* Content Container */
+.page-container {
+    padding: calc(var(--navbar-height) + 20px) 20px 20px;
+}
+
+/* Sidebar States */
+[data-sidebar-state="collapsed"] .main-content {
+    margin-left: var(--sidebar-collapsed-width);
+}
+
+[data-sidebar-state="hidden"] .main-content {
+    margin-left: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .app-wrapper {
+        data-sidebar-state: "collapsed";
+    }
+    
+    .main-content {
+        margin-left: var(--sidebar-collapsed-width);
+    }
+}
+
+@media (max-width: 767px) {
+    .app-wrapper {
+        data-sidebar-state: "hidden";
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+}

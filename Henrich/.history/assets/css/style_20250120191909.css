@@ -1,0 +1,124 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Base Layout */
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.supervisor-body {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    background: var(--background);
+}
+
+/* Content Area */
+.content-wrapper {
+    flex: 1;
+    min-width: 0; /* Important: prevents flex item from overflowing */
+    margin-left: 260px; /* Sidebar width */
+    background: var(--background);
+    transition: margin-left 0.3s ease;
+}
+
+.content-wrapper.expanded {
+    margin-left: 0;
+    width: 100%;
+}
+
+.content-wrapper.collapsed {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+}
+
+/* Main Content Area */
+.dashboard-wrapper {
+    width: 100%;
+    padding: 1.5rem;
+    min-height: 100%;
+}
+
+/* Sidebar States */
+.sidebar.collapsed ~ .content-wrapper {
+    margin-left: 70px;
+}
+
+.sidebar.hidden ~ .content-wrapper {
+    width: 100%;
+    margin-left: 0;
+}
+
+/* Core Layout */
+.home-section {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    margin-left: 260px; /* Sidebar width */
+    transition: margin-left 0.3s ease;
+}
+
+/* Sidebar States */
+.sidebar.collapsed ~ .home-section {
+    margin-left: 70px;
+}
+
+/* Dashboard Components */
+.stats-grid {
+    display: grid;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .content-wrapper {
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper,
+    .supervisor-body .content-wrapper,
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .dashboard-wrapper {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .content-wrapper {
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        margin-left: 0;
+    }
+}

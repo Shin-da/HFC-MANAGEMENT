@@ -1,0 +1,161 @@
+<div class="top">
+     <button class="button toggle" id="toggle">
+          <i class="bx bx-menu toggle"></i>
+     </button>
+     <div class="search-box">
+          <i class='bx bx-search-alt-2' style="font-size: 24px"></i>
+          <input type="text" id="myInput" onkeyup="search()"
+               placeholder="Search...">
+     </div>
+
+     <!-- settings -->
+     <button class='button settings-btn' id="settings-btn">
+          <i class="bx bx-cog icon settings-btn"></i>
+     </button>
+
+</div>
+<div class="dropdown-content" id="settings-dropdown">
+
+     <div class="bottom-content">
+          <li class>
+               <a href="Forms/changePasswordForm.php">Change Password</a>
+          </li>
+
+          <li class>
+               <a href="logout.php">
+                    <i class="bx bx-log-out icon"></i>
+                    <span class="text nav-text">Logout</span>
+               </a>
+          </li>
+          <li class="mode">
+               <div class="moon-sun">
+                    <i class="bx bx-moon icon moon"></i>
+                    <i class="bx bx-sun icon sun "></i>
+               </div>
+               <span class="mode-text text">Dark mode</span>
+
+               <div class="toggle-switch">
+                    <span class="switch"></span>
+               </div>
+
+          </li>
+     </div>
+</div>
+<style>
+          /* The container <div> - needed to position the dropdown content */
+
+
+
+          /* Dropdown Content (Hidden by Default) */
+          .dropdown-content {
+               display: none;
+               position: fixed;
+               background: var(--panel-color);
+               top: 60px;
+               right: 15px;
+
+               min-width: 250px;
+               box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+               z-index: 100;
+          }
+
+          .show {
+               display: block;
+               z-index: 100;
+
+          }
+
+          /* Links inside the dropdown */
+          .dropdown-content a {
+               color: black;
+               padding: 12px 16px;
+               text-decoration: none;
+               display: block;
+          }
+
+          /* Change color of dropdown links on hover */
+          .dropdown-content a:hover {
+               background-color: #BBAB8C;
+          }
+
+          /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */ 
+
+          /* settings  */
+               .mode {
+               position: relative;
+               border-radius: 6px;
+               background-color: var(--primary-color-light);
+               transition: var(--tran-05);
+          }
+          
+               .mode .moon-sun {
+               height: 50px;
+               width: 60px;
+               display: flex;
+               align-items: center;
+          }
+          
+          .mode i {
+               position: absolute;
+               transition: var(--tran-03);
+          }
+          
+          .mode i.sun {
+               opacity: 0;
+          }
+          
+          body.dark  .mode i.sun {
+               opacity: 1;
+          }
+          
+          body.dark .mode i.moon {
+               opacity: 0;
+          }
+          
+               .mode .toggle-switch {
+               position: absolute;
+               right: 0;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               height: 100%;
+               min-width: 60px;
+               cursor: pointer;
+               border-radius: 6px;
+               background-color: var(--primary-color-light);
+               transition: var(--tran-05);
+          }
+          
+          .toggle-switch .switch {
+               position: relative;
+               height: 22px;
+               width: 44px;
+               border-radius: 25px;
+               background: var(--toggle-color);
+               transition: var(--tran-05);
+          }
+     </style>
+
+<!-- js for Settings -->
+<script>
+                    const settingsBtn = document.querySelector(".settings-btn");
+                    /* When the user clicks on the button, 
+                    toggle between hiding and showing the dropdown content */
+                    document.getElementById("settings-btn").onclick = function() {
+                         document.getElementById("settings-dropdown").classList.toggle("show");
+                    }
+
+                    // Close the dropdown if the user clicks outside of it
+                    window.onclick = function(event) {
+                         if (!event.target.matches('.settings-btn')) {
+                              var dropdowns = document.getElementsByClassName("dropdown-content");
+                              var i;
+                              for (i = 0; i < dropdowns.length; i++) {
+                                   var openDropdown = dropdowns[i];
+                                   if (openDropdown.classList.contains('show')) {
+                                        openDropdown.classList.remove('show');
+                                   }
+                              }
+                         }
+                    }
+               </script>

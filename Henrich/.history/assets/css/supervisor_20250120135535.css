@@ -1,0 +1,72 @@
+/* Supervisor Layout */
+.supervisor-body {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background);
+}
+
+.content-wrapper {
+    flex: 1;
+    margin-left: 260px;
+    transition: margin-left 0.3s ease;
+}
+
+.content-wrapper.expanded {
+    margin-left: 70px;
+}
+
+.sidebar-collapsed .content-wrapper {
+    margin-left: 70px;
+}
+
+/* Dashboard Components */
+.dashboard-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        margin-left: 0;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .dashboard-wrapper {
+        padding: 1rem;
+    }
+}

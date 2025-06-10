@@ -1,0 +1,39 @@
+.sidebar {
+    /* Inherit base sidebar styles */
+    // ...existing code...
+}
+
+.sidebar .break {
+    margin: 1.5rem 0 0.5rem;
+    padding: 0 1rem;
+}
+
+.sidebar .break p {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.sidebar .nav-link.active {
+    background: var(--primary-light);
+}
+
+.sidebar .nav-link.active a {
+    color: var(--primary);
+}
+
+.sidebar .nav-link.active i {
+    color: var(--primary);
+}
+
+.sidebar .role {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.sidebar .header-text .name {
+    font-weight: 600;
+    color: var(--text-primary);
+}

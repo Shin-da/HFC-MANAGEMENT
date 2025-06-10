@@ -1,0 +1,1377 @@
+/* Root Variables */
+:root {
+    --sidebar-expanded-width: 260px;
+    --sidebar-collapsed-width: 70px;
+    --navbar-height: 64px;
+}
+
+/* Navbar Layout */
+.navbar {
+    position: fixed; 
+    top: 0;
+    right: 0;
+    left: 260px;  /* Match sidebar expanded width */
+    height: 64px;  /* Fixed navbar height */
+    background: var(--bg-surface);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-light);
+    /* padding: 0.75rem 1.5rem; */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    transition: left 0.3s ease;
+}
+
+.navbar.collapsed {
+    left: 70px;  /* Match sidebar collapsed width */
+}
+
+.navbar.hidden {
+    left: 0;
+}
+
+/* Navigation Components */
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 1rem;
+}
+
+/* Toggle Button */
+.toggle-sidebar {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.toggle-sidebar:hover {
+    background: var(--sidebar-hover);
+    color: var(--primary);
+}
+
+/* Actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* States */
+
+/* Expanded Navbar */
+.navbar.expanded {
+    left: var(--sidebar-expanded-width);
+}
+
+.sidebar-collapsed ~ .navbar,
+.page-wrapper.collapsed ~ .navbar {
+    left: var(--sidebar-collapsed-width);
+}
+
+.sidebar-hidden ~ .navbar,
+.page-wrapper.expanded ~ .navbar {
+    left: 0;
+}
+
+/* Navigation Items */
+.nav-item {
+    position: relative;
+}
+
+/* Nav buttons with better hover effects */
+.nav-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-button:hover {
+    color: var(--primary);
+    background: var(--hover);
+    transform: translateY(-1px);
+}
+
+.nav-button:active {
+    transform: translateY(0);
+}
+
+/* Improved user button */
+.nav-button.user-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    padding-right: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+
+.nav-button.user-btn:hover {
+    border-color: var(--primary);
+    background: var(--hover);
+}
+
+.nav-button.user-btn .bx-chevron-down {
+    transition: transform 0.2s ease;
+}
+
+.nav-item.active .nav-button.user-btn .bx-chevron-down {
+    transform: rotate(-180deg);
+}
+
+/* User Menu */
+.user-menu .nav-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    background: var(--cream-light);
+    color: var(--sand);
+    border-radius: 20px;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.user-menu .nav-button:hover {
+    background: var(--primary-dark);
+}
+
+/* Dropdown Panel */
+.dropdown-panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 280px;
+    background: var(--surface);
+    border: 1px solid var(--tab-active-border);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    margin-top: 0.75rem;
+    overflow: hidden;
+}
+
+.nav-item.active .dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Notification Dropdown */
+.notification-dropdown {
+    position: relative;
+    z-index: 1001;
+}
+
+.notification-dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 320px;
+    max-width: 400px;
+    max-height: 400px;
+    margin-top: 0.5rem;
+    background: var(--surface, white);
+    border: 1px solid var( --tab-active-border);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+    overflow-y: auto;
+}
+
+.notification-dropdown.active .notification-dropdown-content {
+    display: block;
+}
+
+.notifications-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface, white);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+    background-color: var(--hover, #f5f5f5);
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-content {
+    p {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    small {
+        display: block;
+        color: var(--text-secondary);
+        margin-top: 0.25rem;
+    }
+}
+
+.dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Menu items with better hover states */
+.menu-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-links li {
+    margin: 0;
+}
+
+.menu-links li a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 0.875rem;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.menu-links li a:hover {
+    background: var(--hover);
+    color: var(--primary);
+    padding-left: 1.25rem;
+}
+
+.menu-links li a i {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.menu-links li a:hover i {
+    color: var(--primary);
+}
+
+/* Badge enhancements */
+.badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    background: var(--accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--surface);
+}
+
+/* Divider styling */
+.nav-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border);
+    margin: 0 0.75rem;
+}
+
+/* Responsive Behavior */
+@media (max-width: 1200px) {
+    .navbar {
+        left: var(--sidebar-collapsed-width);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        left: 0;
+        padding: 0 1rem;
+        width: 100%;
+    }
+    
+    .user-menu .nav-button .user-name {
+        display: none;
+    }
+}
+
+/* Base Layout & Transitions */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--sidebar-expanded-width);
+    background: #1d3937;
+    border-right: 1px solid #91855a;
+    transition: all 0.3s ease;
+    z-index: 100;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Content Adjustments */
+.content-wrapper {
+    margin-left: 260px;  /* Match sidebar expanded width */
+    padding-top: 64px;   /* Match navbar height */
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+}
+
+.content-wrapper.collapsed {
+    /* margin-left: 70px;   */
+    /* Match sidebar collapsed width */
+}
+
+.content-wrapper.hidden {
+    margin-left: 0;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.expanded {
+        transform: translateX(0);
+        width: var(--sidebar-expanded-width);
+    }
+
+    .content-wrapper,
+    .content-wrapper.collapsed,
+    .content-wrapper.expanded {
+        margin-left: 0;
+    }
+
+    .navbar,
+    .navbar.collapsed,
+    .navbar.expanded {
+        left: 0;
+    }
+}
+
+/* ...existing component styles... */
+
+/* =========================================
+1. Base Sidebar Structure
+========================================= */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--sidebar-expanded-width);
+    background: #1d3937;
+    border-right: 1px solid #91855a;
+    transition: all var(--transition-speed) var(--transition-curve);
+    z-index: 100;
+    box-shadow: 2px 0 8px rgba(25, 80, 66, 0.15);
+    overflow: visible !important; /* Force visible to allow tooltips */
+}
+/* =========================================
+2. Header Section
+========================================= */
+.sidebar header {
+    /* padding: 3px 10px; */
+    height: var(--navbar-height);
+    background: #195042;
+    color: #ffffff;
+    border-bottom: 1px solid #91855a;
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================
+Logo Container
+========================================= */
+.image-header {
+    display: flex;
+    align-items: center;
+}
+
+/* =========================================
+Logo Base Styles
+========================================= */
+.image-header .small-logo {
+    display: none;
+}
+
+.image-header .long-logo {
+    display: block;
+    height: 50px;
+    padding: 0px 10px;
+}
+
+.image-header span img {
+    height: 50px;
+    padding-top: 10px;
+}
+
+/* =========================================
+Sidebar States
+========================================= */
+/* Collapsed State */
+.sidebar.collapsed {
+    width: 70px;
+    overflow: hidden;
+}
+
+.sidebar.collapsed .image-header {
+    justify-content: center;
+}
+
+.sidebar.collapsed .image-header .small-logo {
+    display: block;
+    height: 50px;
+    padding-top: 10px;
+}
+
+.sidebar.collapsed .image-header .long-logo {
+    display: none;
+}
+
+.sidebar.collapsed .text,
+.sidebar.collapsed .header-text,
+.sidebar.collapsed .sub-menu-links,
+.sidebar.collapsed .arrow,
+.sidebar.collapsed .session .text,
+.sidebar.collapsed .break p {
+    /* display: none; */
+    width: 0;
+    opacity: 0;
+}
+
+/* Hidden State */
+.sidebar.hidden {
+    width: 0;
+    transform: translateX(-100%);
+}
+
+.sidebar.hidden .image-header .small-logo,
+.sidebar.hidden .image-header .long-logo {
+    display: none;
+}
+/* =========================================
+3. Menu Bar & Session Info
+========================================= */
+.menu-bar {
+    height: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden; /* Control overflow at menu level */
+    width: 100%;
+
+    /* Customizing the scrollbar */
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #195042;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #91855a;
+        border-radius: 8px;
+
+        &:hover {
+            background: #d6cabc;
+        }
+    }
+}
+
+.menu-bar .session {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 12px;
+    padding: 12px 12px;
+    background: #195042;
+    border: 1px solid #91855a;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    letter-spacing: 0.03em;
+    color: #ffffff;
+}
+
+/* Remove list styles and underlines */
+.menu-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-links li {
+    list-style-type: none;
+}
+
+.nav-link a,
+.sub-nav-link a {
+    text-decoration: none !important;
+}
+
+.nav-link i,
+.sub-nav-link i {
+    text-decoration: none !important;
+}
+
+.sub-menu-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sub-menu-links li {
+    list-style-type: none;
+}
+
+
+
+/* Ensure icons don't have underlines */
+.sidebar i {
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================
+4. Navigation Links
+========================================= */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+/* Navigation Links - Improved Readability */
+.nav-link a {
+    display: flex;
+    align-items: center;
+    padding: 12px 12px;
+    margin: 4px 8px;
+    gap: 12px;
+    color: #ffffff;
+    opacity: 0.9;
+    /* Slightly reduced opacity for inactive state */
+    text-decoration: none;
+    border-radius: 8px;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+}
+
+.nav-link i {
+    font-size: 1.25rem;
+    min-width: 24px;
+    color: #ffffff;
+    opacity: 0.9;
+    /* Adjusted icon opacity */
+}
+
+/* =========================================
+5. Submenu Styling
+========================================= */
+.sub-menu-links {
+    margin: 0 12px 0 25px;
+    padding: 4px 0;
+    border-left: 2px solid var(--border-medium);
+    /* background: var(--submenu-bg); */
+    border-radius: 0 8px 8px 0;
+    display: none;
+}
+
+.sub-nav-link a {
+    display: flex;
+    align-items: center;
+    padding: 12px 12px;
+    margin: 4px 8px;
+    gap: 12px;
+    color: #ffffff !important;
+    opacity: 0.9;
+    text-decoration: none;
+    border-radius: 8px;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+}
+
+.sub-nav-link i {
+    font-size: 1.25rem;
+    min-width: 24px;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+.arrow {
+    margin-left: auto;
+    transition: transform 0.3s;
+}
+
+/* =========================================
+6. Section Breaks
+========================================= */
+.break {
+    margin: 1.5rem 0 0.5rem;
+    padding: 0 1rem;
+}
+
+.break p {
+    color: #91855a;
+    opacity: 0.8;
+    /* Adjusted for section headers */
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 16px 16px 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+7. States & Interactions
+========================================= */
+/* Hover States */
+.nav-link a:hover,
+.sub-nav-link a:hover {
+    opacity: 1;
+    background: #195042;
+    color: #ffffff !important;
+    transform: translateX(4px);
+}
+
+/* Active States */
+.nav-link.active>a,
+.nav-link a.active,
+.sub-nav-link.active>a,
+.sub-nav-link a.active {
+    opacity: 1;
+    color: #ffffff !important;
+    background: #91855a;
+    border-left-color: #91855a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+.sub-menu.active>a {
+    background: #91855a !important;
+    color: #ffffff !important;
+    border-radius: 8px;
+
+    i {
+        text-decoration: none !important;
+    }
+}
+
+.sub-menu.active .arrow {
+    transform: rotate(180deg);
+}
+
+.sub-menu.active .sub-menu-links {
+    display: block;
+}
+
+/* =========================================
+8. Responsive States
+========================================= */
+/* Closed State */
+.sidebar.close {
+    width: var(--sidebar-mini-width);
+}
+
+.sidebar.close .text,
+.sidebar.close .header-text,
+.sidebar.close .sub-menu-links,
+.sidebar.close .arrow {
+    display: none;
+}
+
+/* Hidden State */
+.sidebar.hidden {
+    width: 0;
+    transform: translateX(-100%);
+    overflow: hidden;
+}
+
+.sidebar.hidden .image-text,
+.sidebar.hidden .icon,
+.sidebar.hidden .text {
+    opacity: 0;
+}
+
+/* Content Wrapper Adjustments */
+.content-wrapper {
+    margin-left: 260px;  /* Match sidebar expanded width */
+    padding-top: 64px;   /* Match navbar height */
+    min-height: 100vh;
+    transition: margin-left var(--transition-speed) var(--transition-curve);
+}
+
+.sidebar.close~.content-wrapper {
+    margin-left: var(--sidebar-mini-width);
+}
+
+.sidebar.hidden~.content-wrapper {
+    margin-left: 0;
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        margin-left: 0;
+    }
+}
+
+/* =========================================
+9. Media Queries
+========================================= */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .content-wrapper {
+        margin-left: 0;
+    }
+}
+
+.menu-items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.nav-links li {
+    position: relative;
+    margin: 8px 0;
+    list-style: none;
+    background: transparent;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.nav-links li:hover {
+    background: var(--sidebar-hover);
+}
+
+.nav-links li.active {
+    background: var(--sidebar-active);
+}
+
+.nav-links li a {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+    color: var(--sidebar-text);
+    transition: all 0.3s ease;
+}
+
+.nav-links li:hover a {
+    color: var(--sidebar-text-hover);
+}
+
+.nav-links li.active a {
+    color: var(--sidebar-text-active);
+}
+
+.nav-links li i {
+    min-width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.nav-links li a .link-name {
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.sidebar.close .nav-links li a .link-name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Submenu styles */
+.sub-menu {
+    /* padding: 0.5rem; */
+    margin-top: -10px;
+    /* background: var(--sage-300); */
+    border-left: 2px solid var(--sage-400);
+
+    a {
+        color: var(--sidebar-text);
+    }
+}
+
+
+.menu-items li.showMenu .sub-menu {
+    display: block;
+}
+
+.sub-menu .link-name {
+    display: none;
+}
+
+.sidebar.close .sub-menu {
+    position: absolute;
+    left: 100%;
+    top: -10px;
+    margin-top: 0;
+    padding: 10px 20px;
+    border-radius: 0 6px 6px 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.close .nav-links li:hover .sub-menu {
+    top: 0;
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.4s ease;
+}
+
+.sidebar.close .sub-menu .link-name {
+    display: block;
+    font-size: 15px;
+    opacity: 1;
+}
+
+/* Logo styles */
+.logo-details {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo-details i {
+    font-size: 30px;
+    color: var(--sidebar-text);
+    height: 50px;
+    min-width: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.logo-details .logo_name {
+    font-size: 22px;
+    color: var(--sidebar-text);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.sidebar.close .logo_name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* Theme toggle */
+.theme-toggle {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    width: calc(var(--sidebar-width) - 2rem);
+    background: var(--submenu-bg);
+    padding: 13px 0;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.sidebar.close .theme-toggle {
+    width: calc(var(--sidebar-mini-width) - 2rem);
+}
+
+/* Tooltip/Label Styling - Updated */
+.sidebar.collapsed .nav-link,
+.sidebar.collapsed .sub-menu {
+    position: relative;
+}
+
+.sidebar.collapsed .nav-link a::after,
+.sidebar.collapsed .menu-link::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 70px;  /* Align with sidebar width */
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--surface);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border);
+    z-index: 2000;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Arrow for tooltip */
+.sidebar.collapsed .nav-link a::before,
+.sidebar.collapsed .menu-link::before {
+    content: '';
+    position: absolute;
+    left: 65px;  /* Slightly to the left of tooltip */
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: var(--border);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Show on hover */
+.sidebar.collapsed .nav-link:hover > a::after,
+.sidebar.collapsed .nav-link:hover > a::before,
+.sidebar.collapsed .nav-link a:hover::after,
+.sidebar.collapsed .nav-link a:hover::before,
+.sidebar.collapsed .sub-menu:hover > .menu-link::after,
+.sidebar.collapsed .sub-menu:hover > .menu-link::before {
+    opacity: 1;
+    visibility: visible;    z-index: 2000;
+}
+
+/* Remove old tooltip styles */
+/* Delete or comment out all other tooltip-related styles */
+
+/* Tooltip/Label Styling */
+.nav-link a,
+.sub-menu .menu-link {
+    position: relative;
+}
+
+/* Label - Basic Style */
+.nav-link a::after,
+.sub-menu .menu-link::after {
+    content: attr(data-label);
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--surface);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border);
+    pointer-events: none;
+    transition: all 0.2s ease;
+    z-index: 1001;
+}
+
+/* Arrow Pointer */
+.nav-link a::before,
+.sub-menu .menu-link::before {
+    content: '';
+    position: absolute;
+    left: calc(100% + 5px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-right-color: var(--border);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 1001;
+}
+
+/* Show Label & Arrow on Hover when Sidebar is Collapsed */
+.sidebar.collapsed .nav-link a:hover::after,
+.sidebar.collapsed .sub-menu .menu-link:hover::after,
+.sidebar.collapsed .nav-link a:hover::before,
+.sidebar.collapsed .sub-menu .menu-link:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hide Labels when Sidebar is Expanded */
+.sidebar:not(.collapsed) .nav-link a::after,
+.sidebar:not(.collapsed) .sub-menu .menu-link::after,
+.sidebar:not(.collapsed) .nav-link a::before,
+.sidebar:not(.collapsed) .sub-menu .menu-link::before {
+    display: none;
+}
+
+/* Add arrow to label */
+.sidebar.collapsed .nav-link a::before,
+.sidebar.collapsed .sub-menu .menu-link::before {
+    content: '';
+    position: absolute;
+    left: calc(100% + 5px);
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent var(--border) transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+/* Show arrow on hover */
+.sidebar.collapsed .nav-link a:hover::before,
+.sidebar.collapsed .sub-menu .menu-link:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+ 
+/* Tooltip Styles */
+.sidebar.collapsed .nav-link a,
+.sidebar.collapsed .menu-link {
+    position: relative;
+    overflow: visible; /* Allow tooltip to overflow */
+}
+
+/* Prevent sidebar expansion */
+.sidebar.collapsed {
+    width: 70px;
+    overflow: hidden; /* Hide content overflow */
+}
+
+/* Container for tooltips */
+.tooltip-container {
+    position: fixed;
+    left: 70px; /* Align with collapsed sidebar width */
+    pointer-events: none;
+    z-index: 1100;
+}
+
+/* Updated tooltip styles */
+.sidebar.collapsed .nav-link a::after,
+.sidebar.collapsed .menu-link::after {
+    content: attr(data-label);
+    position: fixed; /* Change from absolute to fixed */
+    left: 75px; /* Adjust based on collapsed width */
+    background: var(--surface);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border);
+    z-index: 1100;
+    pointer-events: none;
+}
+
+/* Arrow positioning */
+.sidebar.collapsed .nav-link a::before,
+.sidebar.collapsed .menu-link::before {
+    content: '';
+    position: fixed; /* Change from absolute to fixed */
+    left: 70px; /* Align with sidebar edge */
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: var(--border);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1100;
+}
+
+/* Show tooltip on hover */
+.sidebar.collapsed .nav-link:hover a::after,
+.sidebar.collapsed .nav-link:hover a::before,
+.sidebar.collapsed .menu-link:hover::after,
+.sidebar.collapsed .menu-link:hover::before {
+    opacity: 1;
+    visibility: visible;
+ 
+}
+
+/* Ensure tooltips only show in collapsed state */
+.sidebar:not(.collapsed) .nav-link a::after,
+.sidebar:not(.collapsed) .nav-link a::before,
+.sidebar:not(.collapsed) .menu-link::after,
+.sidebar:not(.collapsed) .menu-link::before {
+    display: none;
+}
+
+/* Updated Tooltip Styles */
+.sidebar.collapsed .nav-link,
+.sidebar.collapsed .nav-link a,
+.sidebar.collapsed .sub-menu,
+.sidebar.collapsed .menu-link {
+    position: relative;
+}
+
+/* Remove fixed positioning and adjust selectors */
+.sidebar.collapsed .nav-link a::after,
+.sidebar.collapsed .menu-link::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--surface);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border);
+    z-index: 2000;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Arrow adjustments */
+.sidebar.collapsed .nav-link a::before,
+.sidebar.collapsed .menu-link::before {
+    content: '';
+    position: absolute;
+    left: 65px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: var(--border);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Show tooltips on hover */
+.sidebar.collapsed .nav-link:hover > a::after,
+.sidebar.collapsed .nav-link:hover > a::before,
+.sidebar.collapsed .nav-link a:hover::after,
+.sidebar.collapsed .nav-link a:hover::before,
+.sidebar.collapsed .sub-menu:hover > .menu-link::after,
+.sidebar.collapsed .sub-menu:hover > .menu-link::before {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2000;
+}
+
+/* Remove all other tooltip-related styles */
+
+/* Base sidebar and menu structure */
+.sidebar {
+    position: fixed;
+    width: 260px;
+    overflow: visible !important; /* Keep this to allow tooltips to show */
+    z-index: 100;
+}
+
+.menu-bar {
+    overflow: hidden; /* Control overflow here instead */
+    width: 100%;
+}
+
+/* Simplified Tooltip Styles */
+.sidebar.collapsed .nav-link,
+.sidebar.collapsed .menu-link {
+    position: relative;
+}
+
+/* Basic tooltip style */
+.nav-link a::after,
+.menu-link::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Arrow style */
+.nav-link a::before,
+.menu-link::before {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: var(--border);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/* Show tooltips only in collapsed state */
+.sidebar.collapsed .nav-link a:hover::after,
+.sidebar.collapsed .menu-link:hover::after,
+.sidebar.collapsed .nav-link a:hover::before,
+.sidebar.collapsed .menu-link:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Remove all other tooltip related styles */
+
+/* Dropdown Menu Styling */
+.sub-menu {
+    position: relative;
+}
+
+/* Default state (expanded sidebar) */
+.sub-menu-links {
+    padding: 0;
+    margin: 0 8px 0 48px;  /* Align with parent menu item */
+    border-left: 2px solid var(--border-medium);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sub-menu.active .sub-menu-links {
+    max-height: 500px;  /* Large enough to contain content */
+    opacity: 1;
+    padding: 8px 0;
+}
+
+/* Arrow animation */
+.sub-menu .arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.sub-menu.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* Collapsed sidebar dropdown */
+.sidebar.collapsed .sub-menu-links {
+    position: absolute;
+    left: 70px;  /* Width of collapsed sidebar */
+    top: 0;
+    margin: 0;
+    min-width: 180px;
+    background: #1d3937;
+    border: 1px solid #91855a;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(25, 80, 66, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    z-index: 1000;
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar.collapsed .sub-menu:hover .sub-menu-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Submenu items styling */
+.sub-nav-link a {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    opacity: 0.9;
+}
+
+/* Hover effects */
+.sub-nav-link a:hover {
+    background: #195042;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .sidebar.collapsed .sub-menu-links {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+    }
+}

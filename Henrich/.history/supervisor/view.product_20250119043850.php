@@ -1,0 +1,3 @@
+<?php
+require '../reusable/redirect404.php';
+require '../session/session.php';

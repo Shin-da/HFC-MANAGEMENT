@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-dark: #385a41;
+    --primary-light: #598777;
+    --secondary-dark: #6a362b;
+    --secondary-light: #933d24;
+    --accent-warm: #df5c36;
+    --accent-neutral: #a6ab8a;
+    --background-light: #cdd9c5;
+    --background-warm: #e5ba90;
+    --accent-gold: #de9a45;
+    --text-dark: #36302d;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+}
+
+.admin-nav {
+    background: var(--primary-dark);
+    color: white;
+}
+
+.nav-brand span {
+    color: var(--background-warm);
+}
+
+.nav-links a {
+    color: var(--background-light);
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+}
+
+.btn-primary {
+    background: var(--primary-light);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: var(--secondary-light);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: var(--secondary-dark);
+}
+
+.stat-card {
+    border-left: 4px solid var(--primary-light);
+}
+
+.action-card {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+    color: white;
+}
+
+.action-card:hover {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+}
+
+.page-header h2 {
+    color: var(--primary-dark);
+}
+
+.alert-success {
+    background: var(--accent-neutral);
+    color: var(--primary-dark);
+}
+
+.status-active {
+    color: var(--primary-light);
+}
+
+.status-inactive {
+    color: var(--secondary-light);
+}
+
+/* Admin Layout */
+.admin-body {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-main {
+    flex: 1;
+    margin-left: 260px;
+    padding: 2rem;
+    background: var(--background-light);
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed + .admin-main {
+    margin-left: 70px;
+}
+
+/* Sidebar Theme Overrides */
+.sidebar {
+    background: linear-gradient(180deg, var(--primary-dark), var(--secondary-dark));
+}
+
+.sidebar .logo-details img {
+    height: 40px;
+    width: auto;
+}
+
+.sidebar .logo-details span {
+    color: var(--background-warm);
+    font-weight: 600;
+}
+
+.sidebar .nav-links li a {
+    color: var(--background-light);
+}
+
+.sidebar .nav-links li.active a {
+    background: var(--primary-light);
+    color: white;
+}
+
+.sidebar .nav-links li a:hover {
+    background: var(--secondary-light);
+    color: var(--accent-gold);
+}
+
+.sidebar .user-info {
+    border-top: 1px solid var(--primary-light);
+    padding: 1rem;
+}
+
+.badge {
+    background: var(--accent-warm);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}

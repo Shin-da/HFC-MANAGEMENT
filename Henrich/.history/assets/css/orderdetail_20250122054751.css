@@ -1,0 +1,15 @@
+.order-detail-wrapper {
+    padding: 2rem;
+    background: var(--surface);
+}
+
+.detail-header {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(54, 48, 45, 0.1);
+    border-left: 4px solid var(--accent);
+}
+
+/* ...rest of existing CSS from customerorderdetail.php... */

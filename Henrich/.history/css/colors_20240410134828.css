@@ -1,0 +1,44 @@
+:root {
+	/* ===== Colors ===== */
+	--body-color: #f0f2f5;
+	--sidebar-color: #FFF;
+	--primary-color: #695CFE;
+	--primary-color-light: #F6F5FF;
+	--toggle-color: #DDD;
+	--text-color: #707070;
+	--tex-color-light: #A6A6A6;
+	--border-color: #dee2e6;
+
+	--accent-color: #c45061; 
+	
+	--box1-color: #ad8e46;
+	--box2-color: #7f4747;
+	--box3-color: #385273;
+
+	--success-color: #55b86c;
+
+
+	/* ====== Transition ====== */
+	--tran-03: all 0.2s ease;
+	--tran-03: all 0.3s ease;
+	--tran-04: all 0.3s ease;
+	--tran-05: all 0.3s ease;
+}
+
+
+
+
+:root {
+    --panel-color: #fff;
+    --text-color: #333;
+    --black-light-color: #6c757d;
+    --toggle-color: #e9ecef;
+}
+
+body.dark {
+    --body-color: #18191a;
+    --navbar-color: #242526;
+    --panel-color: #3a3b3c;
+    --text-color: #ccc;
+    --black-light-color: #ccc;
+}

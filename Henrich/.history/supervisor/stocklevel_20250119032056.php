@@ -1,0 +1,196 @@
+<?php
+require '../reusable/redirect404.php';
+require '../session/session.php';
+require '../database/dbconnect.php';
+$current_page = basename($_SERVER['PHP_SELF'], '.php');
+
+// Calculate inventory statistics
+try {
+    $conn->begin_transaction();
+    
+    // Get inventory statistics with a single query
+    $inventoryStats = $conn->query("
+        SELECT 
+            COUNT(*) as total_products,
+            SUM(CASE WHEN availablequantity <= reorder_point THEN 1 ELSE 0 END) as low_stock,
+            SUM(CASE WHEN availablequantity = 0 THEN 1 ELSE 0 END) as out_of_stock,
+            SUM(availablequantity * unit_price) as total_value
+        FROM inventory i
+        LEFT JOIN productlist p ON i.productcode = p.productcode
+    ")->fetch_assoc();
+    
+    // Add real-time monitoring
+    echo "<script>
+        function checkStockLevels() {
+            fetch('check_stock_levels.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.alerts.length > 0) {
+                        notifyLowStock(data.alerts);
+                    }
+                });
+        }
+        setInterval(checkStockLevels, 300000); // Check every 5 minutes
+    </script>";
+    
+    $conn->commit();
+} catch (Exception $e) {
+    $conn->rollback();
+    error_log("Inventory stats error: " . $e->getMessage());
+}
+
+// Get inventory value trends for the last 7 days
+$trendsQuery = "SELECT 
+    DATE(stockmovementdate) as date,
+    SUM(CAST(totalpieces AS DECIMAL) * CAST(REPLACE(productprice, '₱', '') AS DECIMAL)) as daily_value
+FROM stockmovement sm
+JOIN productlist p ON sm.productcode = p.productcode
+WHERE stockmovementdate >= DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY)
+GROUP BY DATE(stockmovementdate)
+ORDER BY date";
+
+$trendsResult = $conn->query($trendsQuery);
+$trendsData = [
+    'dates' => [],
+    'values' => []
+];
+
+if ($trendsResult) {
+    while ($row = $trendsResult->fetch_assoc()) {
+        $trendsData['dates'][] = $row['date'];
+        $trendsData['values'][] = $row['daily_value'];
+    }
+}
+
+// Convert PHP array to JavaScript object
+$trendsDataJSON = json_encode($trendsData);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Management</title>
+    <?php require '../reusable/header.php'; ?>
+    <link rel="stylesheet" type="text/css" href="../resources/css/stocklevel.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/table.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/shared-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const trendsData = <?php echo $trendsDataJSON; ?>;
+    </script>
+</head>
+<body>
+    <?php include '../reusable/sidebar.php'; ?>
+    <section class="panel">
+        <?php include '../reusable/navbarNoSearch.html'; ?>
+        
+        <div class="container-fluid dashboard-container">
+            <!-- Stats Container -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total Products</h3>
+                    <div class="value"><?= $inventoryStats['total_products'] ?></div>
+                </div>
+                <div class="stat-card">
+                    <h3>Low Stock Items</h3>
+                    <div class="value"><?= $inventoryStats['low_stock'] ?></div>
+                </div>
+                <div class="stat-card">
+                    <h3>Out of Stock</h3>
+                    <div class="value"><?= $inventoryStats['out_of_stock'] ?></div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Value</h3>
+                    <div class="value">₱<?= number_format($inventoryStats['total_value'], 2) ?></div>
+                </div>
+            </div>
+
+            <!-- Stock Overview Section -->
+            <div class="stock-overview">
+                <div class="stock-chart">
+                    <div class="table-header">
+                        <h2>Stock Levels Overview</h2>
+                    </div>
+                    <?php include 'stocklevel.chart.php'; ?>
+                </div>
+                <div class="stock-alerts">
+                    <?php include 'stocklevel.alert.php'; ?>
+                </div>
+            </div>
+
+            <!-- Inventory Management Section -->
+            <div class="container-fluid inventory-section">
+                <div class="table-header">
+                    <div class="title-section">
+                        <h2>INVENTORY</h2>
+                        <span class="subtitle">Stock Management Dashboard</span>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn export-btn" onclick="exportToExcel()">
+                            <i class="bx bx-export"></i> Export to Excel
+                        </button>
+                        <button class="btn export-btn" onclick="exportToPDF()">
+                            <i class="bx bx-file"></i> Export to PDF
+                        </button>
+                        <a class="btn add-btn" href="add.stockmovement.php">
+                            <i class="bx bx-plus"></i> Encode to Inventory
+                        </a>
+                    </div>
+                </div>
+            
+                <!-- Value Trends Chart -->
+                <div class="stock-trends">
+                    <div class="table-header">
+                        <h2>Inventory Value Trends</h2>
+                    </div>
+                    <canvas id="valueTrendsChart" style="width: 100%; height: 300px;"></canvas>
+                </div>
+
+                <!-- Stock Movement History -->
+                <div class="stock-history">
+                    <div class="table-header">
+                        <h2>Recent Stock Movements</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <?php include 'stockmovement.history.php'; ?>
+                    </div>
+                </div>
+
+                <!-- Search and Filter Section -->
+                <div class="search-filter-section">
+                    <div class="search-box">
+                        <input type="text" id="general-search" onkeyup="searchTable()" 
+                               placeholder="Search inventory...">
+                    </div>
+                    <div class="filter-controls">
+                        <select id="category-filter" onchange="filterByCategory()">
+                            <option value="">All Categories</option>
+                            <?php
+                            $categories = $conn->query("SELECT DISTINCT productcategory FROM inventory");
+                            while($cat = $categories->fetch_assoc()) {
+                                echo "<option value='".$cat['productcategory']."'>".$cat['productcategory']."</option>";
+                            }
+                            ?>
+                        </select>
+                        <select id="stock-status" onchange="filterByStock()">
+                            <option value="">All Stock Status</option>
+                            <option value="low">Low Stock</option>
+                            <option value="out">Out of Stock</option>
+                            <option value="normal">Normal</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Inventory Table -->
+                <div class="table-responsive">
+                    <?php include 'stocklevel.table.php'; ?>
+                </div>
+            </div>
+        </div>
+        
+    <?php include_once("../reusable/footer.php"); ?>
+    </section>
+
+    <script src="../resources/js/table.js"></script>
+    <script src="../resources/js/stocklevel.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<nav class="top">
+     <button class="button toggle" id="toggle">
+       <i class="bx bx-menu toggle"></i>
+     </button>
+   
+     <ul class="actions">
+       <li id="notification-btn"> <!-- notifications -->
+         <button class="button notification-btn">
+           <i class="bx bx-bell icon notification-btn" id="notification-dot"></i>
+         </button>
+         <!-- Notifications Dropdown -->
+         <div class="dropdown-content dropdown-notifications" id="notification-dropdown">
+           <div class="menu-bar">
+             <div class="menu">
+               <h4>Notifications</h4>
+               <ul class="menu-links" id="notifications-list">
+                 <!-- Add your notifications here -->
+               </ul>
+               <div class="pagination-buttons" id="pagination-buttons"></div>
+               <div class="loading-spinner" id="loading-spinner" style="display: none;">Loading...</div>
+             </div>
+           </div>
+         </div>
+       </li>
+   
+       <li id="message-btn"> <!-- messages -->
+         <button class="button message-btn">
+           <i class="bx bxs-message-rounded" id="message-dot"></i>
+         </button>
+         <!-- Messages Dropdown -->
+         <div class="dropdown-content dropdown-messages" id="message-dropdown">
+           <div class="menu-bar">
+             <div class="menu">
+               <h4>Messages</h4>
+               <ul class="menu-links" id="messages-list">
+                 <!-- Add your messages here -->
+               </ul>
+               <div class="pagination-buttons" id="pagination-buttons"></div>
+               <div class="loading-spinner" id="loading-spinner" style="display: none;">Loading...</div>
+             </div>
+           </div>
+         </div>
+       </li>
+   
+       <li class="settings-btn"> <!-- settings -->
+         <button class="button settings-btn">
+           <i class="bx bxs-user-circle icon -btn"></i>
+         </button>
+         <div class="dropdown-content dropdown-settings" id="settings-dropdown">
+           <div class="menu-bar">
+             <div class="menu">
+               <h4>Settings</h4>
+               <ul class="menu-links" id="settings-list">
+                 <!-- Add your settings here -->
+               </ul>
+             </div>
+           </div>
+         </div>
+       </li>
+     </ul>
+   </nav>
+   
+   <style>
+     .top {
+       background-color: #333;
+       color: #fff;
+       text-align: center;
+     }
+   
+     .actions {
+       list-style: none;
+       margin: 0;
+       padding: 0;
+       display: flex;
+       justify-content: space-between;
+     }
+   
+     .actions li {
+       margin-right: 20px;
+       position: relative;
+     }
+   
+     .button {
+       background-color: #333;
+       color: #fff;
+       border: none;
+       padding: 10px 20px;
+       font-size: 16px;
+       cursor: pointer;
+     }
+   
+     .button:hover {
+       background-color: #444;
+     }
+   
+     .dropdown-content {
+       display: none;
+       position: absolute;
+       background-color: #333;
+       color: #fff;
+       padding: 1em;
+       border: 1px solid #333;
+       z-index: 1;
+       top: 100%;
+       left: 0;
+     }
+   
+     .dropdown-content.show {
+       display: block;
+     }
+   
+     .menu-bar {
+       background-color: #333;
+       color: #fff;
+       padding: 1em;
+       border-bottom: 1px solid #333;
+     }
+   
+     .menu {
+       list-style: none;
+       margin: 0;
+       padding: 0;
+     }
+   
+     .menu-links {
+       list-style: none;
+       margin: 0;
+       padding: 0;
+     }
+   
+     .menu-links li {
+       margin-bottom: 10px;
+     }
+   
+     .pagination-buttons {
+       display: flex;
+       justify-content: space-between;
+     }
+   </style>
+   
+   <script>
+     // Get the notification button and the notification dropdown
+     const notificationButton = document.querySelector('.notification-btn');
+     const notificationDropdown = document.getElementById('notification-dropdown');
+   
+     // Add an event listener to the notification button
+     notificationButton.addEventListener('click', () => {
+       // Toggle the visibility of the notification dropdown
+       notificationDropdown.classList.toggle('show');
+     });
+   
+     // Get the message button and the message dot
+     const messageButton = document.querySelector('.message-btn');
+     const messageDot = document.getElementById('message-dot');
+   
+     // Add an event listener to the message button
+     messageButton.addEventListener('click', () => {
+       // Toggle the visibility of the message dropdown
+       const messageDropdown = document.getElementById('message-dropdown');
+       messageDropdown.classList.toggle('show');
+   
+       // Remove the message dot
+       messageDot.style.display = 'none';
+     });
+   
+     // Get the settings button and the settings dropdown
+     const settingsButton = document.querySelector('.settings-btn');
+     const settingsDropdown = document.getElementById('settings-dropdown');
+   
+     // Add an event listener to the settings button
+     settingsButton.addEventListener('click', () => {
+       // Toggle the visibility of the settings dropdown
+       settingsDropdown.classList.toggle('show');
+     });
+   
+     // Add an event listener to the window
+     window.addEventListener('click', (e) => {
+       // If the click is outside the notification dropdown, hide it
+       if (!notificationDropdown.contains(e.target) && !notificationButton.contains(e.target)) {
+         notificationDropdown.classList.remove('show');
+       }
+   
+       // If the click is outside the message dropdown, hide it
+       if (!document.getElementById('message-dropdown').contains(e.target) && !messageButton.contains(e.target)) {
+         document.getElementById('message-dropdown').classList.remove('show');
+       }
+   
+       // If the click is outside the settings dropdown, hide it
+       if (!settingsDropdown.contains(e.target) && !settingsButton.contains(e.target)) {
+         settingsDropdown.classList.remove('show');
+       }
+     });
+   </script>
+   
+   
+   

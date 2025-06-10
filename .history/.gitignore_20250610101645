@@ -1,0 +1,40 @@
+# Dependencies
+/node_modules/
+/vendor/
+composer.lock
+package-lock.json
+
+# IDE and Editor files
+.vscode/
+.idea/
+.history/
+
+# Environment and Configuration files
+.env
+.env.*
+.env.local
+.env.*.local
+/config/database.php
+
+# Logs and Debug files
+*.log
+php_errors.log
+debug_*.php
+test_*.php
+test-*.php
+*-test.*
+
+# Cache and Temporary files
+/cache/
+/tmp/
+.DS_Store
+
+# Uploaded files and media
+/Online Shop/uploads/*
+!/Online Shop/uploads/.gitkeep
+
+# Development files
+bs-config.js
+
+# Database
+*.sql

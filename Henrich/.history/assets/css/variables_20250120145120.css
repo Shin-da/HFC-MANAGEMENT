@@ -1,0 +1,92 @@
+:root {
+    /* Core Layout */
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 70px;
+    --content-padding: 2rem;
+    
+    /* Colors */
+    --primary: #385a41;
+    --secondary: #598777;
+    --accent: #df5c36;
+    --success: #28a745;
+    --error: #dc3545;
+    --warning: #ffc107;
+    --info: #17a2b8;
+    --dark: #36302d;
+    --light: #e5ba90;
+    --forest: #6a362b;
+    --sand: #f3f7f0;
+
+    /* UI Colors */
+    --background: #ffffff;
+    --surface: #f8faf8;
+    --border: #cdd9c5;
+    --text-primary: #36302d;
+    --text-secondary: #598777;
+    
+    /* Sidebar Colors */
+    --sidebar-bg: #f8f9fa;
+    --sidebar-hover: #edf2ff;
+    --sidebar-active: #e7f1ff;
+    --sidebar-text: #2c3e50;
+    --sidebar-border: #e9ecef;
+
+    /* Transitions */
+    --transition-speed: 0.3s;
+
+    /* Dark Mode Colors */
+    --dm-background: #1a1a1a;
+    --dm-surface: #2d2d2d;
+    --dm-border: #404040;
+    --dm-text-primary: #e0e0e0;
+    --dm-text-secondary: #a0a0a0;
+    --dm-sidebar-bg: #2d2d2d;
+    --dm-sidebar-hover: #3d3d3d;
+    --dm-sidebar-active: #4d4d4d;
+    --dm-card-bg: #363636;
+}
+
+/* Dark Mode Class */
+[data-theme="dark"] {
+    --background: var(--dm-background);
+    --surface: var(--dm-surface);
+    --border: var(--dm-border);
+    --text-primary: var(--dm-text-primary);
+    --text-secondary: var(--dm-text-secondary);
+    --sidebar-bg: var(--dm-sidebar-bg);
+    --sidebar-hover: var(--dm-sidebar-hover);
+    --sidebar-active: var(--dm-sidebar-active);
+    --card-bg: var(--dm-card-bg);
+    --sidebar-text: var(--dm-text-primary);
+    --debug-theme: dark;
+}
+
+:root[data-theme="light"] {
+    /* Light theme colors */
+    --background: #ffffff;
+    --surface: #f8faf8;
+    --text-primary: #36302d;
+    --text-secondary: #598777;
+    --debug-theme: light;
+    /* ...existing light theme variables... */
+}
+
+:root[data-theme="dark"] {
+    /* Dark theme colors */
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --card-bg: #363636;
+    --border: #404040;
+    --sidebar-bg: #2d2d2d;
+    --sidebar-hover: #3d3d3d;
+    --sidebar-active: #4d4d4d;
+    --sidebar-text: #e0e0e0;
+    /* ...existing dark theme variables... */
+}
+
+/* Theme transition */
+* {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+}

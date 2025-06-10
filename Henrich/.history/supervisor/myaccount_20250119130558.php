@@ -1,0 +1,215 @@
+<?php
+require '../reusable/redirect404.php';
+require '../session/session.php';
+require '../database/dbconnect.php'; 
+$current_page = basename($_SERVER['PHP_SELF'], '.php');
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MY ACCOUNT</title>
+    <?php require '../reusable/header.php'; ?>    
+    <style>
+        .container-fluid {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .account-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .profile-card {
+            background: var(--sand);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar i {
+            font-size: 3rem;
+            color: var(--sand);
+        }
+
+        .user-info h2 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .user-role {
+            color: var(--secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .account-details {
+            background: var(--sand);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--background);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(56, 90, 65, 0.1);
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: var(--sand);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .account-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <?php 
+    include '../reusable/sidebar.php';
+    
+    $uid = $_SESSION['uid'];
+    $sql = "SELECT * FROM user WHERE uid = '$uid'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $useremail = $row['useremail'];
+        $username = $row['username'];
+        $role = $row['role'];
+    } else {
+        header("Location: ../404.php");
+        exit();
+    }
+    ?>
+    
+    <?php include '../reusable/sidebar.php'; ?>
+    <?php include '../reusable/navbar.html'; ?>
+    <section class="panel">
+        <div class="container-fluid">
+            <div class="account-wrapper">
+                <div class="profile-card">
+                    <div class="avatar">
+                        <i class="bx bxs-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <h2><?php echo $username; ?></h2>
+                        <p class="user-role"><?php echo $role; ?></p>
+                    </div>
+                </div>
+
+                <div class="account-details">
+                    <form action="./process/edit-account.process.php" method="post" class="form-section">
+                        <h3>Account Information</h3>
+                        <input type="hidden" name="uid" value="<?php echo $uid; ?>">
+                        <div class="input-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" value="<?php echo $useremail; ?>" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" value="<?php echo $username; ?>" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="role">Role</label>
+                            <select id="role" name="role" disabled>
+                                <option value="superadmin" <?php if ($role == 'superadmin') echo 'selected'; ?>>Super Admin</option>
+                                <option value="admin" <?php if ($role == 'admin') echo 'selected'; ?>>Admin</option>
+                                <option value="supervisor" <?php if ($role == 'supervisor') echo 'selected'; ?>>Supervisor</option>
+                                <option value="cashier" <?php if ($role == 'cashier') echo 'selected'; ?>>Cashier</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-submit">Save Changes</button>
+                    </form>
+
+                    <form action="./process/request-password-change.process.php" method="post" class="form-section">
+                        <h3>Change Password</h3>
+                        <input type="hidden" name="uid" value="<?php echo $uid; ?>">
+                        <div class="input-group">
+                            <label for="oldpassword">Current Password</label>
+                            <input type="password" id="oldpassword" name="oldpassword" required>
+                        </div>
+                        <button type="submit" class="btn-submit">Request Password Change</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <?php require '../reusable/footer.php'; ?>
+    </section>
+
+

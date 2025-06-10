@@ -1,0 +1,24 @@
+RewriteEngine On
+RewriteBase "/HFC MANAGEMENT/Henrich/"
+
+# Allow spaces in URLs
+Options +MultiViews
+Options -Indexes
+
+# Handle requests for CSS files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^assets/css/(.*)$ assets/css/$1 [L]
+
+# Handle requests for JavaScript files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^assets/js/(.*)$ assets/js/$1 [L]
+
+# Handle API requests
+RewriteRule ^api/(.*)$ api/$1 [QSA,L]
+
+# Prevent direct access to include files
+RewriteRule ^includes/ - [F,L]
+RewriteRule ^vendor/ - [F,L]
+
+# Handle 404 errors
+ErrorDocument 404 /HFC MANAGEMENT/Henrich/404.php

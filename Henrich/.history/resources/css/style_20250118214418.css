@@ -1,0 +1,130 @@
+:root {
+    --primary: #6a362b;
+    --secondary: #933d24;
+    --accent: #df5c36;
+    --success: #598777;
+    --info: #a6ab8a;
+    --warning: #de9a45;
+    --dark: #36302d;
+    --light: #cdd9c5;
+    --forest: #385a41;
+    --sand: #e5ba90;
+
+    /* Theme Variables */
+    --bg-primary: var(--light);
+    --bg-secondary: var(--sand);
+    --text-primary: var(--dark);
+    --text-secondary: var(--primary);
+    --border-color: var(--forest);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--light);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--light);
+}
+
+/* Card Styles */
+.card {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+.card-header {
+    background-color: var(--primary);
+    color: var(--light);
+}
+
+/* Table Styles */
+.table {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.table thead th {
+    background-color: var(--primary);
+    color: var(--light);
+    border-color: var(--border-color);
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--info);
+    color: var(--dark);
+}
+
+/* Form Controls */
+.form-control {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(223, 92, 54, 0.25);
+}
+
+/* Alert Styles */
+.alert-success {
+    background-color: var(--success);
+    border-color: var(--forest);
+    color: var(--light);
+}
+
+.alert-warning {
+    background-color: var(--warning);
+    border-color: var(--sand);
+    color: var(--dark);
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--primary);
+}
+
+.navbar-brand, .nav-link {
+    color: var(--light) !important;
+}
+
+.nav-link:hover {
+    color: var(--sand) !important;
+}
+
+/* Custom Classes */
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-secondary {
+    color: var(--secondary) !important;
+}
+
+.bg-custom {
+    background-color: var(--primary);
+    color: var(--light);
+}
+
+/* ...existing code... */
+

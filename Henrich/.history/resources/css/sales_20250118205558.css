@@ -1,0 +1,175 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --danger-color: #e74c3c;
+    --light-bg: #f8f9fa;
+    --border-color: #dee2e6;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+}
+
+.chartscontainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.chartscontainer > div {
+    width: 50%;
+}
+
+.chartBox, .polarAreaChart {
+    float: left;
+    padding: 0.5rem;
+    height: 100%;
+    width: 100%;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e9ecef;
+    margin-bottom: 1rem;
+}
+
+.chartBox canvas, .polarAreaChart canvas {
+    background-color: #e9ecef;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#polarAreaChartContainer {
+    display: inline-block;
+    vertical-align: top;
+    height: 290px;
+}
+
+/* Dashboard Styles */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--light-bg);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Filter Controls */
+.filter-controls {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-controls select,
+.filter-controls button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background: white;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.filter-controls button {
+    /* background: var(--accent-color); */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-controls button:hover {
+    background: var(--secondary-color);
+}
+
+/* Trend Indicators */
+.trend-indicator {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.trend-up {
+    background: #e3fcef;
+    color: #0a8a3f;
+}
+
+.trend-down {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* Analytics Insights */
+.analytics-insights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.insight-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.insight-card h3 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    font-size: 1.2rem;
+}
+
+.stat-card.highlight {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    color: white;
+}
+
+.stat-card.highlight .stat-value,
+.stat-card.highlight .stat-label {
+    color: white;
+}

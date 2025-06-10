@@ -1,0 +1,51 @@
+.card {
+    border-color: var(--border);
+    background-color: var(--card-bg);
+}
+
+.btn-custom {
+    background-color: var(--secondary);
+    color: var(--light);
+}
+
+.btn-custom:hover {
+    background-color: var(--primary);
+}
+
+.alert-custom {
+    background-color: var(--info);
+    border-color: var(--secondary);
+    color: var(--dark);
+}
+
+.stat-card {
+    border-left: 4px solid var(--secondary);
+}
+
+.stat-card.success {
+    border-left-color: var(--success);
+}
+
+.stat-card.warning {
+    border-left-color: var(--warning);
+}
+
+/* Status Indicators */
+.status-active {
+    color: var(--success);
+}
+
+.status-pending {
+    color: var(--warning);
+}
+
+.table-custom thead {
+    background-color: var(--primary);
+    color: var(--light);
+}
+
+.table-custom tbody tr:hover {
+    background-color: var(--sand);
+}
+
+/* ...existing code... */

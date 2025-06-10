@@ -1,0 +1,193 @@
+<style>
+    html {
+        background-color: #3c763d;
+    }
+
+    .body {
+        background-color: #f2f2f2;
+        margin: 10px;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #a94442;
+    }
+
+    .alert {
+        background-color: #dff0d8;
+        padding: 10px;
+        border-radius: 5px;
+        color: #3c763d;
+        border: 1px solid #3c763d;
+    }
+
+    .alert-danger {
+        background-color: #f2dede;
+        border-color: #ebccd1;
+        color: #a94442;
+    }
+
+    .alert-success {
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+        color: #3c763d;
+    }
+
+    .output-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .output-table td,
+    .output-table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .output-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .output-table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
+<?= "<div class='body'>"; ?>
+<?php
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+require '/xampp/htdocs/HenrichProto/database/dbconnect.php';
+require '/xampp/htdocs/HenrichProto/session/session.php';
+
+header('Content-Type: application/json');
+
+// Start transaction
+$conn->begin_transaction();
+
+try {
+    $role = $_SESSION['role'];
+
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        throw new Exception('Invalid request method');
+    }
+
+    // Validate required fields
+    $requiredFields = ['ibdid', 'batchid', 'productcode', 'productname', 'numberofbox', 'totalpieces', 'totalweight'];
+    $missingFields = array();
+    foreach ($requiredFields as $field) {
+        if (!isset($_POST[$field]) || empty($_POST[$field])) {
+            $missingFields[] = $field;
+        }
+    }
+
+    if (!empty($missingFields)) {
+        throw new Exception("Missing required fields: " . implode(', ', $missingFields));
+    }
+
+    // Get form data
+    $ibdids = $_POST['ibdid'];
+    $batchids = $_POST['batchid'];
+    $productcodes = $_POST['productcode'] ?? [];
+    $productnames = $_POST['productname'] ?? [];
+    $numberofboxes = $_POST['numberofbox'] ?? [];
+    $totalpiecess = $_POST['totalpieces'] ?? [];
+    $totalweightss = $_POST['totalweight'] ?? [];
+    $encoder = $_SESSION['role'];
+
+    // Insert records
+    foreach ($productcodes as $key => $productcode) {
+        $stmt = $conn->prepare("INSERT INTO stockmovement (
+            ibdid, batchid, productcode, productname, 
+            numberofbox, totalpieces, totalweight, 
+            encoder, dateencoded
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+
+        if (!$stmt) {
+            throw new Exception("Prepare failed: " . $conn->error);
+        }
+
+        $ibdid = $ibdids[$key];
+        $batchid = is_array($batchids) ? $batchids[0] : $batchids;
+               <th>Date Encoded</th>
+               </tr>";
+        foreach ($productcodes as $key => $productcode) {
+            echo "<tr>";
+            echo "<td>" . (isset($ibdids[$key]) ? $ibdids[$key] : '') . "</td>";
+            echo "<td>" . (is_array($batchids) ? implode(', ', $batchids) : $batchids) . "</td>";
+            echo "<td>" . $productcode . "</td>";
+            echo "<td>" . (isset($productnames[$key]) ? $productnames[$key] : '') . "</td>";
+            echo "<td>" . (isset($numberofboxes[$key]) ? $numberofboxes[$key] : '') . " </td>";
+            echo "<td>" . (isset($totalpiecess[$key]) ? $totalpiecess[$key] : '') . "</td>";
+            echo "<td>" . (isset($totalweightss[$key]) ? $totalweightss[$key] : '') . "</td>";
+            echo "<td>" . $encoder . "</td>";
+            echo "<td>" . (isset($dateencodeds[$key]) ? $dateencodeds[$key] : '') . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        // Check if any of the form fields are empty
+        $hasEmptyValue = false;
+        foreach ($productcodes as $key => $productcode) {
+            if (empty($productcode) || empty($productnames[$key]) || empty($numberofboxes[$key]) || empty($totalpiecess[$key]) || empty($totalweightss[$key])) {
+                $hasEmptyValue = true;
+                break;
+            }
+        }
+        if ($hasEmptyValue) {
+            echo "<div class='alert alert-danger'>Error: Invalid form data</div>";
+            exit;
+        }
+
+        // Insert the data into the database
+        foreach ($productcodes as $key => $productcode) {
+            $ibdid = $ibdids[$key] ?? '';
+            $batchid = implode(', ', $batchids);
+            $productname = $productnames[$key] ?? '';
+            $numberofbox = $numberofboxes[$key] ?? '';
+            $totalpieces = $totalpiecess[$key] ?? '';
+            $totalweight = $totalweightss[$key] ?? '';
+
+            $dateencoded = $dateencodeds[$key] ?? '';
+
+            // Prepare the insert statement
+            // Prepare the insert statement
+            $stmt = $conn->prepare("INSERT INTO stockmovement (ibdid, batchid, productcode, productname, numberofbox, totalpieces, totalweight, encoder, dateencoded) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iissiiiss", $ibdid, $batchid, $productcode, $productname, $numberofbox, $totalpieces, $totalweight, $encoder, $dateencoded);
+            // Execute the insert statement
+            if (!$stmt->execute()) {
+                throw new Exception("Error inserting record: " . $stmt->error);
+            } else {
+                // Log the successful insertion
+                error_log("Successfully added stock movement: Product $productcode, Batch $batchid");
+                echo "<div class='alert alert-success'>Data inserted successfully!</div>";
+            }
+        }
+
+        // Commit transaction
+        $conn->commit();
+        // Only send JSON response, not HTML
+        header('Content-Type: application/json');
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'Stock movement recorded successfully',
+            'redirect' => 'stocklevel.php'
+        ]);
+        exit;
+    }
+} catch (Exception $e) {
+    header('Content-Type: application/json');
+    error_log("Error in stock movement: " . $e->getMessage());
+    echo json_encode([
+        'status' => 'error',
+        'message' => $e->getMessage()
+    ]);
+    exit;
+}
+?>
+<?= '</div>'; ?>
+<?php require 'add.stockactivitylog.process.php'; ?>

@@ -1,0 +1,147 @@
+:root {
+    /* Modern Green Color Palette */
+    --primary-50: #f0f5f4;
+    --primary-100: #d6e5e3;
+    --primary-200: #b3ccc9;
+    --primary-300: #8fb2ae;
+    --primary-400: #6b9894;
+    --primary-500: #1d3937;  /* Main dark green */
+    --primary-600: #195042;  /* Medium green */
+    --primary-700: #91855a;  /* Olive gold */
+    --primary-800: #d6cabc;  /* Light beige */
+    --primary-900: #0f1d1c;
+
+    /* Neutral Colors - Adjusted to complement the green palette */
+    --neutral-50: #f8f9f8;
+    --neutral-100: #f0f2f0;
+    --neutral-200: #e2e5e2;
+    --neutral-300: #cbd1cb;
+    --neutral-400: #94a194;
+    --neutral-500: #64746b;
+    --neutral-600: #475552;
+    --neutral-700: #334139;
+    --neutral-800: #1e2924;
+    --neutral-900: #0f1512;
+    
+    /* Accent Colors - Complementing the green theme */
+    --accent-blue: #3b7f96;
+    --accent-blue-light: #60a5b2;
+    --accent-blue-dark: #25525e;
+    --accent-amber: #91855a;  /* Using the olive gold */
+    --accent-amber-light: #b3a87c;
+    --accent-amber-dark: #6f6445;
+    --accent-rose: #96574b;
+    --accent-rose-light: #b27a70;
+    --accent-rose-dark: #734238;
+
+    /* Semantic Colors - Adjusted for the green theme */
+    --success: #195042;  /* Using the medium green */
+    --success-light: #2a6b59;
+    --success-dark: #123c31;
+    --warning: #91855a;  /* Using the olive gold */
+    --warning-light: #b3a87c;
+    --warning-dark: #6f6445;
+    --error: #963b3b;
+    --error-light: #b25e5e;
+    --error-dark: #732d2d;
+    --info: #3b7f96;
+    --info-light: #60a5b2;
+    --info-dark: #25525e;
+    
+    /* Background Colors */
+    --bg-primary: var(--neutral-50);
+    --bg-secondary: var(--neutral-100);
+    --bg-tertiary: var(--neutral-200);
+    --bg-surface: #ffffff;
+    --bg-surface-hover: var(--neutral-50);
+    
+    /* Text Colors */
+    --text-primary: var(--primary-500);
+    --text-secondary: var(--neutral-600);
+    --text-tertiary: var(--neutral-500);
+    --text-muted: var(--neutral-400);
+    --text-inverse: #ffffff;
+    
+    /* Border Colors */
+    --border-light: var(--neutral-200);
+    --border-medium: var(--neutral-300);
+    --border-dark: var(--neutral-400);
+
+    /* Shadow System */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-full: 9999px;
+
+    /* Spacing System */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.75rem;
+    --font-size-7xl: 4.5rem;
+    --font-size-8xl: 6rem;
+    --font-size-9xl: 8rem;
+    
+    /* Transitions */
+    --transition-all: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-colors: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-opacity: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-shadow: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-transform: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Z-index */
+    --z-0: 0;
+    --z-10: 10;
+    --z-20: 20;
+    --z-30: 30;
+    --z-40: 40;
+    --z-50: 50;
+    --z-auto: auto;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --bg-primary: var(--primary-900);
+    --bg-secondary: var(--primary-800);
+    --bg-tertiary: var(--primary-700);
+    --bg-surface: var(--primary-800);
+    --bg-surface-hover: var(--primary-700);
+
+    --text-primary: var(--neutral-50);
+    --text-secondary: var(--neutral-200);
+    --text-tertiary: var(--neutral-400);
+    --text-muted: var(--neutral-500);
+    --text-inverse: var(--primary-900);
+
+    --border-light: var(--primary-700);
+    --border-medium: var(--primary-600);
+    --border-dark: var(--primary-500);
+}

@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Core Colors */
+    --primary: #385a41;      /* Deep forest green */
+    --secondary: #598777;    /* Sage green */
+    --accent: #df5c36;       /* Warm orange */
+    --success: #28a745;      /* Updated success color */
+    --error: #dc3545;        /* New error color */
+    --warning: #ffc107;      /* Updated warning color */
+    --info: #17a2b8;         /* Updated info color */
+    --dark: #36302d;         /* Dark brown */
+    --light: #e5ba90;        /* Warm beige */
+    --forest: #6a362b;       /* Deep brown */
+    --sand: #f3f7f0;         /* Off white */
+
+    /* UI Colors */
+    --background: #ffffff;
+    --surface: #f8faf8;
+    --border: #cdd9c5;
+    --text-primary: #36302d;
+    --text-secondary: #598777;
+    --link: var(--accent);
+    
+    /* Component Colors */
+    --header-bg: var(--primary);
+    --sidebar-bg: var(--surface);
+    --card-bg: #ffffff;
+    --panel-bg: var(--surface);
+    
+    /* Semantic Colors */
+    --body-color: var(--light);
+    --border-color: var(--forest);
+    --sidebar-color: var(--sand);
+    --panel-color: var(--info);
+    --panel-color-dark: var(--success);
+    
+    /* Text Colors */
+    --text-color: var(--dark);
+    --text-color-white: var(--light);
+    
+    /* State Colors */
+    --grey-active: var(--dark);
+    --grey-inactive: var(--primary);
+    --grey-hover-color: var(--secondary);
+    
+    /* Accent Variants */
+    --accent-color-dark: var(--secondary);
+    --accent-color-dark-inactive: var(--primary);
+    
+    /* Component Colors */
+    --primary-color: var(--primary);
+    --primary-color-light: var(--light);
+    
+    /* Status Colors */
+    --danger-color: var(--accent);
+    --danger-color-dark: var(--secondary);
+    
+    /* Transitions */
+    --tran-03: all 0.2s ease-in-out;
+    --tran-04: all 0.3s ease-in-out;
+    --tran-05: all 0.3s ease-in-out;
+
+    /* Sidebar Specific Colors */
+    --sidebar-bg: #f8f9fa;           /* Light gray background */
+    --sidebar-hover: #edf2ff;        /* Soft blue hover */
+    --sidebar-active: #e7f1ff;       /* Lighter blue active */
+    --sidebar-text: #2c3e50;         /* Dark blue-gray text */
+    --sidebar-text-hover: #1a73e8;   /* Bright blue on hover */
+    --sidebar-border: #e9ecef;       /* Light border */
+    --sidebar-icon: #5f6368;         /* Icon color */
+    --sidebar-header-bg: #1a73e8;    /* Header background */
+    --sidebar-header-text: #ffffff;   /* Header text */
+    --sidebar-divider: #e1e4e8;      /* Section divider */
+    
+    /* Updated Navbar Colors */
+    --navbar-bg: #ffffff;
+    --navbar-border: #e9ecef;
+    --navbar-text: #2c3e50;
+    --navbar-icon: #5f6368;
+    --navbar-hover: #f8f9fa;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text-primary);
+}
+
+/* Remove these dark mode styles */
+body.dark {
+    /* Remove all dark mode styles as they're now handled by data-theme attribute */
+}
+
+body.dark .switch::before {
+	left: 24px;
+}
+
+/* Core Layout */
+.main-content {
+    flex: 1;
+    /* width: calc(100% - var(--sidebar-width)); */
+    margin-left: var(--sidebar-width);
+    transition: all var(--transition-speed) ease;
+    padding: var(--content-padding);
+}
+
+.main-content.expanded {
+    width: calc(100% - var(--sidebar-collapsed-width));
+    margin-left: var(--sidebar-collapsed-width);
+}
+
+/* Layout Components */
+/* .panel {
+    position: relative;
+    left: 220px;
+    min-height: 100vh;
+    margin-top: 45px;
+    width: calc(100% - 220px);
+    transition: var(--tran-05);
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border);
+}
+
+.panel-content {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+} */
+
+/* Dashboard Layout */
+.dashboard {
+    transition: var(--tran-05);
+    background-color: var(--panel-color);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
+
+/* Container Styles */
+.container, .container-fluid {
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: var(--sidebar-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Typography */
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* Utilities */
+.active {
+    background-color: var(--primary-color-light);
+}
+
+.dash {
+    margin-bottom: 6vh;
+}
+
+/* Media */
+img {
+    width: 100%;
+    background-size: contain;
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--navbar-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--navbar-border);
+}
+
+.nav-link {
+    color: var(--navbar-text) !important;
+}
+
+.nav-link:hover {
+    color: var(--navbar-hover) !important;
+    opacity: 0.9;
+}
+
+
+/* Common Components */
+.card {
+    background: var(--surface);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.card-header {
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-primary);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--light);
+}
+
+.btn-primary:hover {
+    background-color: #933d24;
+    border-color: #933d24;
+}
+
+/* Status Cards */
+.stat-card {
+    background-color: var(--card-bg);
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card.success {
+    border-left-color: var(--success);
+}
+
+.stat-card.warning {
+    border-left-color: var(--warning);
+}
+
+/* Tables */
+.table thead th {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border);
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--surface);
+}
+
+/* Form Controls */
+.form-control {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(223, 92, 54, 0.15);
+}
+
+
+/* Activity Logs Styles */
+.filter-form {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 5px;
+}
+
+.filter-form select,
+.filter-form input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.logs-table th,
+.logs-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.logs-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.logs-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.logs-table tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Layout Structure */
+.home-section {
+    position: relative;
+    left: 260px;
+    width: calc(100% - 260px);
+    transition: all 0.5s ease;
+    padding: 12px;
+}
+
+.home-content {
+    padding: 20px;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Remove or comment out these conflicting layout styles */
+.home-section,
+.panel,
+.content-wrapper {
+    /* Remove these styles as they're now handled in supervisor-layout.css */
+    position: static;
+    left: auto;
+    width: auto;
+    margin-left: 0;
+}
+
+/* When sidebar is closed */
+.sidebar.close ~ .home-section {
+    left: 78px;
+    width: calc(100% - 78px);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .home-section {
+        left: 0;
+        width: 100%;
+    }
+    .sidebar.close ~ .home-section {
+        left: 0;
+        width: 100%;
+    }
+}

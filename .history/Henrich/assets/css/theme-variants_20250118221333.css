@@ -1,0 +1,87 @@
+/* Sales Operation Theme */
+.sales-theme {
+    --operation-primary: #df5c36;    /* Warm orange as primary */
+    --operation-secondary: #de9a45;   /* Warm amber */
+    --operation-accent: #e5ba90;      /* Warm beige */
+    --operation-surface: #fff9f5;     /* Warm white */
+    --operation-border: #f4d9c6;      /* Light orange */
+    --operation-highlight: #933d24;   /* Deep orange */
+    
+    /* Status Colors */
+    --status-pending: #de9a45;
+    --status-processing: #df5c36;
+    --status-completed: #a6ab8a;
+    --status-cancelled: #6a362b;
+}
+
+/* Inventory Operation Theme */
+.inventory-theme {
+    --operation-primary: #385a41;     /* Deep forest green */
+    --operation-secondary: #598777;    /* Sage green */
+    --operation-accent: #a6ab8a;       /* Muted sage */
+    --operation-surface: #f3f7f0;      /* Light sage */
+    --operation-border: #cdd9c5;       /* Light green */
+    --operation-highlight: #36302d;    /* Dark brown */
+    
+    /* Status Colors */
+    --status-low: #de9a45;
+    --status-critical: #df5c36;
+    --status-good: #a6ab8a;
+    --status-excess: #598777;
+}
+
+/* Common Operation Styles */
+.operation-header {
+    background: var(--operation-primary);
+    color: var(--light);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.operation-card {
+    background: var(--operation-surface);
+    border: 1px solid var(--operation-border);
+    border-left: 4px solid var(--operation-primary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.operation-nav {
+    background: var(--operation-surface);
+    border-bottom: 2px solid var(--operation-border);
+    margin-bottom: 1.5rem;
+}
+
+.operation-nav .nav-link {
+    color: var(--text-primary);
+    padding: 1rem 1.5rem;
+    border-bottom: 3px solid transparent;
+}
+
+.operation-nav .nav-link.active {
+    color: var(--operation-primary);
+    border-bottom-color: var(--operation-primary);
+}
+
+.operation-btn {
+    background: var(--operation-primary);
+    color: var(--light);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: var(--tran-03);
+}
+
+.operation-btn:hover {
+    background: var(--operation-highlight);
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}

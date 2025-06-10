@@ -1,0 +1,92 @@
+.my-account-page .container-fluid {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.my-account-page .main-content {
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+.my-account-page h2 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.my-account-page h3 {
+    color: var(--text-primary);
+    margin: 2rem 0 1rem;
+    font-size: 1.2rem;
+}
+
+.my-account-page .input-group {
+    margin-bottom: 1.25rem;
+}
+
+.my-account-page .input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+}
+
+.my-account-page .input-group input,
+.my-account-page .input-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-medium);
+    border-radius: 5px;
+    background-color: var(--bg-white);
+    color: var(--text-primary);
+    transition: var(--transition-fast);
+}
+
+.my-account-page .input-group input:focus,
+.my-account-page .input-group select:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+}
+
+.my-account-page .input-group select:disabled {
+    background-color: var(--bg-secondary);
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.my-account-page .btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.my-account-page .btn-primary {
+    background-color: var(--forest-primary);
+    color: var(--text-light);
+}
+
+.my-account-page .btn-secondary {
+    background-color: var(--sage-medium);
+    color: var(--text-light);
+}
+
+.my-account-page .btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.my-account-page .password-change-form {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-light);
+}

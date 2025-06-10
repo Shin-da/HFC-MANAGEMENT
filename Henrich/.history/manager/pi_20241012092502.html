@@ -1,0 +1,24 @@
+/*************  ✨ Codeium Command 🌟  *************/
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PI</title>
+    <style>
+        p {
+            white-space: pre;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <p id="pi"></p>
+
+    <script>
+        document.getElementById("pi").innerHTML = Math.PI.toPrecision(100000).replace(/([0-9])\1{10,}/g, '$1');
+        document.getElementById("pi").innerHTML = Math.PI.toPrecision(50);
+    </script>
+</body>
+</html>
+
+
+/******  44ad1d8b-f06a-49e2-9d53-508bebb927dd  *******/

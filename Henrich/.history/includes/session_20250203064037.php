@@ -1,0 +1,52 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Debug logging
+error_log("Session check in session.php: " . print_r($_SESSION, true));
+
+// Add this debugging code temporarily
+error_log("Session data in session.php:");
+error_log(print_r($_SESSION, true));
+
+// Set session timeout to 30 minutes
+if (isset($_SESSION['timeout'])) {
+    if (time() - $_SESSION['timeout'] > 1800) {
+        session_unset();
+        session_destroy();
+        header("Location: ../index.php?error=Session Expired");
+        exit();
+    }
+    $_SESSION['timeout'] = time();
+} else {
+    $_SESSION['timeout'] = time();
+}
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {  // Changed from uid to user_id
+    header("Location: ../index.php?error=You've been logged out");
+    exit();
+}
+
+// Fetch username from database table user based on session role
+require_once dirname(__DIR__) . '/includes/config.php';
+$result = $stmt->get_result();
+
+if ($result->num_rows != 1) {
+    session_unset();
+    session_destroy();
+    header("Location: ../index.php?error=Invalid session");
+    exit();
+}
+
+$row = $result->fetch_assoc();
+$_SESSION['username'] = $row['username'];
+
+// Login success flag handling
+$login_success = false;
+if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
+    $login_success = true;
+    unset($_SESSION['login_success']);
+}
+

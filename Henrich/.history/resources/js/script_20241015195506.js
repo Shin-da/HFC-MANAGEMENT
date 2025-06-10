@@ -1,0 +1,108 @@
+const body = document.querySelector("body"),
+    sidebar = body.querySelector(".sidebar"),
+    toggle = document.getElementById("toggle"),
+    panel = document.querySelector(".panel"),
+    searchBtn = body.querySelector(".search-box"),
+    modeSwitch = body.querySelector(".toggle-switch"),
+    modeText = body.querySelector(".mode-text");
+
+
+// searchBtn.addEventListener("click", () => {
+//     sidebar.classList.remove("close");
+// });
+
+
+// modeSwitch.addEventListener("click", () => {
+//     body.classList.toggle("dark");
+
+//     if (body.classList.contains("dark")) {
+//         modeText.innerText = "Light mode";
+//         localStorage.setItem("theme", "dark");
+//     } else {
+//         modeText.innerText = "Dark mode";
+//         localStorage.setItem("theme", "light");
+//     }
+// }
+// );
+/*************  ✨ Codeium Command 🌟  *************/
+
+const currentTheme = localStorage.getItem("theme");
+const sidebarClosed = localStorage.getItem("sidebarClosed");
+const sidebarHidden = localStorage.getItem("sidebarHidden");
+const sidebarOpen = localStorage.getItem("sidebarOpen");
+// if (currentTheme) {
+//     body.classList.toggle("dark", currentTheme === "dark");
+//     modeText.innerText = currentTheme === "dark" ? "Light mode" : "Dark mode";
+// }
+
+if (sidebarHidden) {
+    sidebar.classList.toggle("hidden", sidebarHidden === "true");
+    toggle.classList.toggle("hidden", sidebarHidden === "true");
+    console.log("Sidebar is hidden: ", sidebarHidden);
+}
+
+if (sidebarClosed) {
+    sidebar.classList.toggle("close", sidebarClosed === "true");
+    toggle.classList.toggle("close", sidebarClosed === "true");
+    console.log("Sidebar is closed: ", sidebarClosed);
+}
+
+console.log("Window width: ", window.innerWidth);
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 991) {
+        sidebar.classList.remove("hidden");
+        sidebar.classList.remove("close");
+        sidebar.classList.add("open");
+        console.log("Sidebar is open: ", window.innerWidth);
+    }
+    if (window.innerWidth < 991 && window.innerWidth > 600) {
+        sidebar.classList.remove("hidden");
+        sidebar.classList.toggle("close");
+        sidebar.classList.remove("open");
+        console.log("Sidebar is close: ", window.innerWidth);
+    }
+    if (window.innerWidth < 600) {
+        sidebar.classList.add("hidden");
+        if (sidebar.classList.contains("hidden")) {
+            toggle.classList.add("hidden");
+        }
+        console.log("Sidebar is hidden: ", window.innerWidth);
+    }
+
+});
+
+toggle.addEventListener("click", () => {
+    if (window.innerWidth < 600) {
+        sidebar.classList.toggle("hidden");
+        sidebar.classList.toggle("close");
+        sidebar.classList.remove("open");
+    } else if (window.innerWidth < 991) {
+        sidebar.classList.toggle("close");
+        sidebar.classList.remove("open");
+        toggle.classList.toggle("close");
+    } else {
+        sidebar.classList.remove("hidden");
+        sidebar.classList.remove("close");
+        sidebar.classList.add("open");
+    }
+    localStorage.setItem("sidebarHidden", sidebar.classList.contains("hidden"));
+    localStorage.setItem("sidebarClosed", sidebar.classList.contains("close"));
+    localStorage.setItem("sidebarOpen", sidebar.classList.contains("open"));
+});
+/******  76e825a4-a7e9-4729-9904-07e060f15660  *******/
+// if the screen is less than 600px, sidebar will be hidden
+
+
+
+const navLinkEls = document.querySelectorAll(".nav-link");
+const windowpathname = window.location.pathname;
+
+
+navLinkEls.forEach((navLinkEl) => {
+    if (navLinkEl.href.includes(windowpathname)) {
+        navLinkEl.classList.add("active");
+    }
+});
+
+

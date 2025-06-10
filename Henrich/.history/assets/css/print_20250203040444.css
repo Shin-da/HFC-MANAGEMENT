@@ -1,0 +1,135 @@
+@media print {
+    @page {
+        margin: 0.5in;
+        size: auto;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.4;
+        color: #000;
+    }
+
+    /* Hide all page elements by default */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Only show the order detail wrapper and its contents */
+    .order-detail-wrapper,
+    .order-detail-wrapper * {
+        visibility: visible;
+    }
+
+    /* Position the order detail wrapper at the top */
+    .order-detail-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 20px !important;
+    }
+
+    /* Hide specific elements */
+    .sidebar,
+    .navbar,
+    .action-bar,
+    [data-tippy-root],
+    .no-print,
+    #navbar,
+    #sidebar {
+        display: none !important;
+    }
+
+    .order-detail-wrapper {
+        max-width: 100%;
+        margin: 0;
+        padding: 0 !important;
+    }
+
+    /* Header Section */
+    .company-header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 15px;
+    }
+
+    .company-header h1 {
+        margin: 0;
+        font-size: 24pt;
+        color: #000;
+    }
+
+    .company-header p {
+        margin: 5px 0;
+        font-size: 10pt;
+    }
+
+    /* Order Details */
+    .detail-header {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .detail-header h2 {
+        font-size: 18pt;
+        margin-bottom: 10px;
+    }
+
+    .status-indicator {
+        display: inline-block;
+        padding: 5px 15px;
+        border: 2px solid #000;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+
+    /* Grid Layout */
+    .order-info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 20px 0;
+        page-break-inside: avoid;
+    }
+
+    .info-card {
+        border: 1px solid #ddd;
+        padding: 15px;
+        break-inside: avoid;
+    }
+
+    /* Table Styles */
+    .order-items {
+        margin-top: 30px;
+    }
+
+    .order-items table {
+        page-break-inside: avoid;
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+    }
+
+    .order-items th {
+        background-color: #f0f0f0 !important;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+        text-align: left;
+        padding: 10px;
+        border: 1px solid #000;
+    }
+
+    .order-items td {
+        padding: 8px 10px;
+        border: 1px solid #000;
+    }
+
+    .total-row {
+        font-weight: bold;
+        right: 20px;
+        width: 100px;
+        height: 100px;
+    }
+}

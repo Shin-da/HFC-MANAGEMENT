@@ -1,0 +1,49 @@
+.form-wrapper {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(54, 48, 45, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+    color: var(--text-primary);
+    transition: var(--tran-03);
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(223, 92, 54, 0.15);
+}
+
+.form-select {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+}
+
+.form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(223, 92, 54, 0.15);
+}
+
+.btn-submit {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--light);
+    padding: 10px 20px;
+    transition: var(--tran-03);
+}
+
+.btn-submit:hover {

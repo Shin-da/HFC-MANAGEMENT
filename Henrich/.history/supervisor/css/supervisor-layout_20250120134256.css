@@ -1,0 +1,50 @@
+/* Core Layout */
+.supervisor-body {
+    display: flex;
+    min-height: 100vh;
+    display: flex;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    min-height: 100vh;
+    margin-left: 260px; /* Match sidebar width */
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+    background: var(--background);
+}
+
+/* Content area when sidebar is collapsed */
+.sidebar.collapsed ~ .main-content {
+    margin-left: 70px;
+}
+
+.sidebar.hidden ~ .main-content {
+    margin-left: 0;
+}
+
+/* Dashboard wrapper adjustments */
+.dashboard-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+    
+    .dashboard-wrapper {
+        padding: 0.5rem;
+    }
+}

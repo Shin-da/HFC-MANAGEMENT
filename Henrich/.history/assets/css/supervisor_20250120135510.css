@@ -1,0 +1,33 @@
+/* Supervisor Layout */
+.supervisor-body {
+    display: flex;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex: 1;
+    margin-left: 260px;
+    transition: margin-left 0.3s ease;
+}
+
+.content-wrapper.expanded {
+    margin-left: 70px;
+}
+
+.sidebar-collapsed .content-wrapper {
+    margin-left: 70px;
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        margin-left: 0;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+}

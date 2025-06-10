@@ -1,0 +1,38 @@
+<?php
+require_once '../../../includes/config.php';
+require_once '../../../includes/session.php';
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'ceo') {
+    http_response_code(403);
+    exit(json_encode(['error' => 'Unauthorized access']));
+}
+
+$period = $_GET['period'] ?? 'current';
+
+try {
+    $response = [
+        'summary' => getPayrollSummary($conn, $period),
+        'distribution' => getSalaryDistribution($conn),
+        'trends' => getPayrollTrends($conn),
+        'departments' => getDepartmentBreakdown($conn)
+    ];
+    
+    echo json_encode($response);
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
+}
+
+function getPayrollSummary($conn, $period) {
+    $query = "SELECT 
+        SUM(base_salary + allowances) as total_payroll,
+        COUNT(DISTINCT employee_id) as employee_count,
+        AVG(base_salary) as average_salary
+    FROM employee_payroll
+    WHERE pay_period = ?";
+    
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('s', $period);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_assoc();
+}

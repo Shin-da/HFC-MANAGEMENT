@@ -1,0 +1,256 @@
+/* Notifications CSS
+   Styles for the notification system components
+   To be included in pages that use the notification system
+*/
+
+/* Notification Counter */
+.notification-counter {
+    position: relative;
+    cursor: pointer;
+}
+
+.notification-counter .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 50%;
+    padding: 0.25rem 0.4rem;
+    font-size: 0.75rem;
+    min-width: 1rem;
+    text-align: center;
+}
+
+/* Notification Panel */
+.notification-panel {
+    position: fixed;
+    top: 60px;
+    right: -400px;
+    width: 350px;
+    max-width: 90vw;
+    height: 500px;
+    max-height: 80vh;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.notification-panel.active {
+    right: 10px;
+}
+
+.notification-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notification-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.notification-header .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #777;
+}
+
+.notification-header .mark-all-read-btn {
+    background: none;
+    border: none;
+    color: #2196F3;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.notification-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.notification-footer {
+    padding: 10px 15px;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.notification-footer .view-all-btn {
+    background: none;
+    border: none;
+    color: #2196F3;
+    cursor: pointer;
+}
+
+/* Notification Item */
+.notification-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.notification-item:hover {
+    background-color: #f9f9f9;
+}
+
+.notification-item.unread {
+    background-color: #f0f7ff;
+}
+
+.notification-item.unread:hover {
+    background-color: #e6f2ff;
+}
+
+.notification-icon {
+    flex: 0 0 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    color: white;
+}
+
+.notification-icon.info {
+    background-color: #2196F3;
+}
+
+.notification-icon.success {
+    background-color: #4CAF50;
+}
+
+.notification-icon.warning {
+    background-color: #FFC107;
+}
+
+.notification-icon.danger {
+    background-color: #F44336;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.notification-message {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.notification-time {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.notification-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.notification-actions button {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    padding: 3px;
+    margin: 2px 0;
+    font-size: 0.9rem;
+}
+
+.notification-actions button:hover {
+    color: #333;
+}
+
+.no-notifications {
+    padding: 20px;
+    text-align: center;
+    color: #888;
+}
+
+/* Notification page specific styles */
+.notifications-page {
+    padding: 20px;
+}
+
+.notifications-page .notifications-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.notifications-page .filter-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.notifications-page .notification-list {
+    max-height: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.notifications-page .notification-item {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.notifications-page .notification-item:last-child {
+    border-bottom: none;
+}
+
+.notifications-page .clear-all-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.notifications-page .mark-all-btn {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+.notifications-page .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+}
+
+.notifications-page .empty-state i {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.notifications-page .empty-state p {
+    font-size: 1.1rem;
+} 

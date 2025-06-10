@@ -1,0 +1,103 @@
+/*************  ✨ Codeium Command 🌟  *************/
+<?php // stocklevel.chart.php
+
+if (isset($_SESSION['uid']) && isset($_SESSION['role'])) {
+    if ($_SESSION['role'] == 'supervisor') {   
+
+        $sql = "SELECT * FROM inventory";
+        if (isset($_GET['category'])) {
+            $category = $_GET['category'];
+            $sql .= " WHERE category = '$category'";
+        }
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $onhand[] = $row['onhand'];
+                $productcode[] = $row['productcode'];
+                $productdescription[] = $row['productdescription'];
+                $category[] = $row['category'];
+            }
+        }
+
+        // Create a canvas element to render the chart
+        echo '<canvas id="stock-chart" style="width: 100%; height: 300px;"></canvas>';
+
+        // Include the Chart.js library
+        echo '<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>';
+
+        // Create the chart using Chart.js
+        echo '<script>';
+        echo 'var ctx = document.getElementById("stock-chart").getContext("2d");';
+        echo 'var chart = new Chart(ctx, {';
+        echo '  type: "bar",';
+        echo '  data: {';
+        echo '    labels: ' . json_encode($productcode) . ',';
+        echo '    datasets: [{';
+        echo '      label: "Stock Levels",';
+        echo '      data: ' . json_encode($onhand) . ',';
+        echo '      backgroundColor: [';
+        foreach ($productcode as $key => $value) {
+            echo '"rgba('. rand(0,255) . ',' . rand(0,255) . ',' . rand(0,255) . ', 0.2)"';
+            if ($key < count($productcode) - 1) {
+                echo ',';
+            }
+        }
+        echo '      ],';
+        echo '      borderColor: [';
+        foreach ($productcode as $key => $value) {
+            echo '"rgba('. rand(0,255) . ',' . rand(0,255) . ',' . rand(0,255) . ', 1)"';
+            if ($key < count($productcode) - 1) {
+                echo ',';
+            }
+        }
+        echo '      ],';
+        echo '      borderWidth: 1';
+        echo '    }]';
+        echo '  },';
+        echo '  options: {';
+        echo '    scales: {';
+        echo '      y: {';
+        echo '        beginAtZero: true';
+        echo '      }';
+        echo '    },';
+        echo '    plugins: {';
+        echo '      title: {';
+        echo '        display: true,';
+        echo '        text: "Stock Levels"';
+        echo '      },';
+        echo '      tooltip: {';
+        echo '        callbacks: {';
+        echo '          label: function(context) {';
+        echo '            var label = context.label || "";';
+        echo '            var value = context.formattedValue || "";';
+        echo '            return label + ": " + value + " " + $category[context.dataIndex] + " - " + $productdescription[context.dataIndex];';
+        echo '          }';
+        echo '        }';
+        echo '      }';
+        echo '    }';
+        echo '  }';
+        echo '});';
+        echo '</script>';
+
+        // Add filter form
+        echo '<form action="" method="get">';
+        echo '<label for="category">Filter by category:</label>';
+        echo '<select name="category" id="category">';
+        echo '<option value="">All</option>';
+        $categories = array_unique($category);
+        foreach ($categories as $value) {
+            echo '<option value="' . $value . '">' . $value . '</option>';
+        }
+        echo '</select>';
+        echo '<input type="submit" value="Filter">';
+        echo '</form>';
+
+    } else {
+        header("Location: ../index.php");
+        exit();
+    }
+}
+
+
+/******  30923714-9e89-4edf-80db-3b02fbd3a58a  *******/

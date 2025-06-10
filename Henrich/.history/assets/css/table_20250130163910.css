@@ -1,0 +1,401 @@
+.table-container {
+    /* background-color: var(--sidebar-color); */
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+.table-wrapper {
+    background: var(--bg-);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    margin: 20px 0;
+    border: 1px solid var(--sage-200);
+}
+
+.table {
+    width: 100%;
+
+    border-collapse: collapse;
+    /* border: 1px solid var(--border-color); */
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    /* background-color: var(--sage-100); */
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--sage-300);
+    border-bottom: 2px solid var(--gold-light);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    .table-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        /* width: 100%; */
+        gap: 10px;
+    }
+
+    .title {
+        /* font-size: 20px; */
+        color: var(--forest-deep); /* Change this to ensure visibility */
+    }
+
+    .title h2 {
+        color: var(--forest-deep);
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .title span {
+        color: var(--sage-600);
+    }
+
+    .btn {
+        background-color: var(--);
+        border: none;
+        padding: 10px 10px;
+        width: fit-content;
+        font-size: 16px;
+        color: var(--text-color-white);
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}
+
+  /* search from codepen.io */
+        /* From Uiverse.io by satyamchaudharydev */ 
+/* From uiverse.io by @satyamchaudharydev */
+/* removing default style of button */
+
+.form button {
+    border: none;
+    background: none;
+    color: #8b8ba7;
+  }
+  /* styling of whole input container */
+  .form {
+    --timing: 0.3s;
+    --width-of-input: 100%;
+    --height-of-input: 40px;
+    --border-height: 2px;
+    --input-bg: var(--bg-white);
+    --border-color: var(--sage-300);
+    --border-radius: 30px;
+    --after-border-radius: 1px;
+    position: relative;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
+    display: flex;
+    align-items: center;
+    padding-inline: 0.8em;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease;
+    background: var(--input-bg,#fff);
+  }
+  /* styling of Input */
+  .input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+  }
+  /* styling of animated border */
+  .form:before {
+    content: "";
+    position: absolute;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: var(--border-height);
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+    transition: transform var(--timing) ease;
+  }
+  /* Hover on Input */
+  .form:focus-within {
+    border-radius: var(--after-border-radius);
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  /* here is code of animated border */
+  .form:focus-within:before {
+    transform: scale(1);
+  }
+  /* styling of close button */
+  /* == you can click the close button to remove text == */
+  .reset {
+    border: none;
+    background: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+  /* close button shown when typing */
+  input:not(:placeholder-shown) ~ .reset {
+    opacity: 1;
+    visibility: visible;
+  }
+  /* sizing svg icons */
+  .form svg {
+    width: 17px;
+    margin-top: 3px;
+  }
+
+    /*  */
+
+
+.table td,
+.table th {
+    border: 1px solid var(--sage-200);
+    
+    padding: 10px;
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.table .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a i {
+        font-size: 20px;
+    }
+}
+
+.table tr:nth-child(even) {
+    background-color: var(--sage-50);
+}
+
+.table tr:hover {
+    background-color: var(--sage-100);
+}
+
+.table .clickable-row:hover {
+    background-color: var(--sage-200);
+    border: 1px solid var(--forest-primary);
+    color: var(--forest-primary);
+    cursor: pointer;
+}
+
+.table .clickable-row {
+    cursor: pointer;
+}
+
+.table th {
+    font-weight: bold;
+    background-color: var(--forest-primary);
+    color: var(--bg-white);
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(145deg, var(--forest-primary), var(--forest-medium));
+    color: var(--bg-white);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    padding: 1rem;
+    text-align: left;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background: var(--cream-light);
+}
+
+.filter-row td {
+    background-color: var(--bg-light);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0;
+    margin: 0;
+    text-align: center;
+
+}
+
+.filter-row {
+    th {
+        background-color: var(--sidebar-color);
+        background: var(--bg-white);
+        padding: 0.75rem;
+    }
+
+    input {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        padding: 5px;
+        outline: none;
+        color: var(--accent-color);
+        width: 100%;
+        padding: 8px;
+        border: 1px solid var(--border-medium);
+        background-color: var(--bg-white);
+        color: var(--text-primary);
+        border-radius: 4px;
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid var(--sage-300);
+        border-radius: 4px;
+        color: var(--text-primary);
+        background: var(--bg-white);
+    }
+
+    input:focus {
+        border-color: var(--forest-medium);
+        outline: none;
+    }
+
+    input::placeholder {
+        color: var(--sage-400);
+    }
+}
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 50%; */
+    margin-top: 20px;
+    background-color: var(--panel-color);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    gap: 5px;
+}
+
+.pagination li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 5px;
+    padding: 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.pagination li a {
+    /* background-color: var(--primary-color); */
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid var(--sage-300);
+    color: var(--text-primary);
+    background: var(--bg-white);
+    border-radius: 4px;
+    transition: var(--tran-03);
+    background: var(--bg-white);
+    border: 1px solid var(--sage-300);
+    color: var (--forest-deep);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.pagination li a:hover,
+.pagination li.active a {
+    background-color: var(--forest-primary);
+    color: var(--bg-white);
+    border-color: var(--forest-medium);
+    background: linear-gradient(145deg, var(--gold-warm), var(--rust-light));
+    color: var(--bg-white);
+    border-color: transparent;
+}
+
+.pagination a.active {
+    background-color: var(--primary);
+    color: var(--light);
+    border-color: var(--primary);
+}
+
+.dataTables_info {
+    color: var(--text-secondary);
+}
+
+@media only screen and (max-width: 600px) {
+    .table {
+        font-size: 14px;
+    }
+
+    .table td,
+    .table th {
+        padding: 5px;
+    }
+}
+
+/* Add these to your existing table.css */
+
+.activity-table td {
+    border-color: var(--sage-200);
+}
+
+.activity-table th {
+    background-color: var(--forest-primary);
+    color: var(--bg-white);
+}
+
+.activity-table tr:nth-child(even) {
+    background-color: var(--sage-50);
+}
+
+.activity-table tr:hover {
+    background-color: var(--sage-100);
+}
+
+.activity-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    display: inline-block;
+}
+
+.table-section {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--sage-200);
+    margin-top: 2rem;
+}

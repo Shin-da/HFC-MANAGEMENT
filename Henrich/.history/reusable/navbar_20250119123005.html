@@ -1,0 +1,260 @@
+<nav class="top">
+     <button class="button toggle" id="sidebar-toggle" type="button">
+         <i class="bx bx-menu"></i>
+     </button>
+     <ul class="actions">
+         <li id="notification-btn"> <!-- notifications -->
+             <button class="button notification-btn">
+                 <i class="bx bx-bell icon notification-btn" id="notification-dot"></i>
+             </button>
+             <!-- Notifications Dropdown -->
+             <div class="dropdown-content dropdown-notifications" id="notification-dropdown">
+                 <div class="menu-bar">
+                     <div class="menu">
+                         <h4>Notifications</h4>
+                         <ul class="menu-links" id="notifications-list">
+                             <!-- Add your notifications here -->
+                             <li><a href="#"><i class="bx bx-right-arrow-alt"></i> Notification 1</a></li>
+                             <li><a href="#"><i class="bx bx-right-arrow-alt"></i> Notification 2</a></li>
+                             <li><a href="#"><i class="bx bx-right-arrow-alt"></i> Notification 3</a></li>
+                         </ul>
+                         <div class="pagination-buttons" id="pagination-buttons"></div>
+                         <div class="loading-spinner" id="loading-spinner" style="display: none;">Loading...</div>
+                     </div>
+                 </div>
+             </div>
+         </li>
+ 
+         <li id="message-btn"> <!-- messages -->
+             <button class="button message-btn">
+                 <i class="bx bxs-message-rounded" id="message-dot"></i>
+             </button>
+             <!-- Messages Dropdown -->
+             <div class="dropdown-content dropdown-messages" id="message-dropdown">
+                 <div class="menu-bar">
+                     <div class="menu">
+                         <h4>Messages</h4>
+                         <ul class="menu-links" id="messages-list">
+                             <!-- Add your messages here -->
+                             <li><a href="#"><i class="bx bx-right-arrow-alt"></i> Message 1</a></li>
+                             <li><a href="#"><i class="bx bx-right-arrow-alt"></i> Message 2</a></li>
+                             <li><a href="#"><i class="bx bx-right-arrow-alt"></i> Message 3</a></li>
+                         </ul>
+                         <div class="pagination-buttons" id="pagination-buttons"></div>
+                         <div class="loading-spinner" id="loading-spinner" style="display: none;">Loading...</div>
+                     </div>
+                 </div>
+             </div>
+         </li>
+ 
+         <li class="settings-btn"> <!-- settings -->
+             <button class="button settings-btn">
+                 <i class="bx bxs-user-circle icon settings-btn"></i>
+             </button>
+             <div class="dropdown-content dropdown-settings" id="settings-dropdown">
+                 <div class="menu-bar">
+                     <div class="menu">
+                         <h4>Settings</h4>
+                         <ul class="menu-links" id="settings-list">
+                             <li><a href="myaccount.php"><i class="bx bx-user"></i> My Account</a></li>
+                             <li><a href="Forms/changePasswordForm.php"><i class="bx bx-key"></i> Change Password</a></li>
+                             <li><a href="../login/logout.php"><i class="bx bx-right-arrow-alt"></i> Logout</a></li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+         </li>
+     </ul>
+ </nav>
+ 
+ <style>
+     .top {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         background-color: var(--navbar-bg);
+         color: var(--sand);
+         border-bottom: 1px solid var(--navbar-border);
+         padding: 0.75rem;
+         height: 60px;
+         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+     }
+ 
+     .actions {
+         list-style: none;
+         margin: 0;
+         padding: 0;
+         display: flex;
+         justify-content: space-between;
+     }
+ 
+     .actions li {
+         margin-right: 20px;
+         position: relative;
+     }
+ 
+     .button {
+         background-color: transparent;
+         color: var(--navbar-text);
+         border: none;
+         padding: 10px 20px;
+         cursor: pointer;
+         transition: var(--tran-03);
+     }
+ 
+     .button:hover {
+         background-color: var(--secondary);
+         color: var(--light);
+     }
+ 
+     .button.toggle {
+         position: fixed;
+         left: 220px;
+         top: 0;
+         z-index: 101;
+         padding: 0.75rem;
+         background: var(--primary);
+         border: none;
+         cursor: pointer;
+         color: var(--sand);
+         transition: left 0.3s ease;
+     }
+ 
+     .dropdown-content {
+         display: none;
+         position: absolute;
+         background-color: var(--sand);
+         border: 1px solid var(--border);
+         color: #333;
+         min-width:200px;
+         
+         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+         z-index: 1;
+         top: 100%;
+         right: 0;
+     }
+ 
+     .dropdown-content.show {
+         display: block;
+     }
+     
+     .menu-bar {
+         background-color: var(--sidebar-color);
+         color: #fff;
+     }
+     
+     .menu {
+         list-style: none;
+         color : #333;
+         margin: 0;
+         padding: 0;
+         background-color: var(--sand);
+         color: var(--text-primary);
+     }
+     
+     .menu-links {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         background-color: var(--surface);
+         
+         color: #333;
+         list-style: none;
+         padding: 1em;
+         margin: 0;
+     }
+ 
+     .menu-links li {
+         margin-bottom: 10px;
+     }
+ 
+     .menu-links a {
+         color: var(--text-primary);
+         text-decoration: none;
+         transition: var(--tran-03);
+     }
+ 
+     .menu-links a:hover {
+         color: var(--accent);
+         background-color: var(--light);
+     }
+ 
+     .pagination-buttons {
+         display: flex;
+         justify-content: space-between;
+     }
+ 
+     /* Dark mode */
+     body.dark .top {
+         background-color: var(--dark);
+         border-bottom-color: var(--border);
+     }
+ 
+     body.dark .button {
+         color: var(--light);
+     }
+ 
+     body.dark .dropdown-content {
+         background-color: var(--dark);
+         border-color: var(--border);
+     }
+ 
+     body.dark .menu-links a {
+         color: var (--light);
+     }
+ 
+     body.dark .menu-links a:hover {
+         background-color: var(--forest);
+         color: var(--sand);
+     }
+ 
+     /* Handle toggle button position in different sidebar states */
+     .sidebar.close ~ nav .button.toggle {
+         left: 64px;
+     }
+ 
+     .sidebar.hidden ~ nav .button.toggle {
+         left: 0;
+     }
+ </style>
+ 
+ <script>
+     // Function to toggle dropdown visibility
+     function toggleDropdown(button, dropdown) {
+         button.addEventListener('click', (event) => {
+             event.stopPropagation(); // Prevent event from bubbling up
+             const openDropdown = document.querySelector('.dropdown-content.show');
+             if (openDropdown && openDropdown !== dropdown) {
+                 openDropdown.classList.remove('show');
+             }
+             dropdown.classList.toggle('show');
+         });
+     }
+ 
+     // Initialize dropdowns
+     const notificationButton = document.querySelector('.notification-btn');
+     const notificationDropdown = document.getElementById('notification-dropdown');
+     toggleDropdown(notificationButton, notificationDropdown);
+ 
+     const messageButton = document.querySelector('.message-btn');
+     const messageDropdown = document.getElementById('message-dropdown');
+     toggleDropdown(messageButton, messageDropdown);
+ 
+     const settingsButton = document.querySelector('.settings-btn');
+     const settingsDropdown = document.getElementById('settings-dropdown');
+     toggleDropdown(settingsButton, settingsDropdown);
+ 
+     // Close dropdowns when clicking outside
+     window.addEventListener('click', (e) => {
+         if (!notificationDropdown.contains(e.target) && !notificationButton.contains(e.target)) {
+             notificationDropdown.classList.remove('show');
+         }
+         if (!messageDropdown.contains(e.target) && !messageButton.contains(e.target)) {
+             messageDropdown.classList.remove('show');
+         }
+         if (!settingsDropdown.contains(e.target) && !settingsButton.contains(e.target)) {
+             settingsDropdown.classList.remove('show');
+         }
+     });
+ </script>
+ 

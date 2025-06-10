@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-dark: #385a41;
+    --primary-light: #598777;
+    --secondary-dark: #6a362b;
+    --secondary-light: #933d24;
+    --accent-warm: #df5c36;
+    --accent-neutral: #a6ab8a;
+    --background-light: #cdd9c5;
+    --background-warm: #e5ba90;
+    --accent-gold: #de9a45;
+    --text-dark: #36302d;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+}
+
+.admin-nav {
+    background: var(--primary-dark);
+    color: white;
+}
+
+.nav-brand span {
+    color: var(--background-warm);
+}
+
+.nav-links a {
+    color: var(--background-light);
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+}
+
+.btn-primary {
+    background: var(--primary-light);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: var(--secondary-light);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: var(--secondary-dark);
+}
+
+.stat-card {
+    border-left: 4px solid var(--primary-light);
+}
+
+.action-card {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+    color: white;
+}
+
+.action-card:hover {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+}
+
+.page-header h2 {
+    color: var(--primary-dark);
+}
+
+.alert-success {
+    background: var(--accent-neutral);
+    color: var(--primary-dark);
+}
+
+.status-active {
+    color: var(--primary-light);
+}
+
+.status-inactive {
+    color: var(--secondary-light);
+}

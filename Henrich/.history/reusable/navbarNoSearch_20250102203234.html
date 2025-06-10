@@ -1,0 +1,70 @@
+<nav class="top">
+    <button class="button toggle" id="toggle">
+        <i class="bx bx-menu toggle"></i>
+    </button>
+
+    <ul class="actions">
+        <li id="notification-btn"> <!-- notifications -->
+            <button class="button notification-btn" onclick="toggleDropdown('notification-dropdown')">
+                <i class="bx bx-bell icon notification-btn" id="notification-dot"></i>
+            </button>
+            <!-- Notifications Dropdown -->
+            <div class="dropdown-content dropdown-notifications" id="notification-dropdown">
+                <div class="menu-bar">
+                    <div class="menu">
+                        <h4>Notifications</h4>
+                        <ul class="menu-links" id="notifications-list">
+                            <!-- Add your notifications here -->
+                        </ul>
+                        <div class="pagination-buttons" id="pagination-buttons"></div>
+                        <div class="loading-spinner" id="loading-spinner" style="display: none;">Loading...</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li id="message-btn"> <!-- messages -->
+            <button class="button message-btn" onclick="toggleDropdown('message-dropdown')">
+                <i class="bx bxs-message-rounded" id="message-dot"></i>
+            </button>
+            <!-- Messages Dropdown -->
+            <div class="dropdown-content dropdown-messages" id="message-dropdown">
+                <div class="menu-bar">
+                    <div class="menu">
+                        <h4>Messages</h4>
+                        <ul class="menu-links" id="messages-list">
+                            <!-- Add your messages here -->
+                        </ul>
+                        <div class="pagination-buttons" id="pagination-buttons"></div>
+                        <div class="loading-spinner" id="loading-spinner" style="display: none;">Loading...</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="settings-btn"> <!-- settings -->
+            <button class="button settings-btn" onclick="toggleDropdown('settings-dropdown')">
+                <i class="bx bxs-user-circle icon -btn"></i>
+            </button>
+            <div class="dropdown-content dropdown-settings" id="settings-dropdown">
+                <div class="menu-bar">
+                    <div class="menu">
+                        <h4>Settings</h4>
+                        <ul class="menu-links" id="settings-list">
+                            <!-- Add your settings here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<script>
+    // Function to toggle dropdown visibility
+    function toggleDropdown(id) {
+        const dropdown = document.getElementById(id);
+        dropdown.classList.toggle('show');
+    }
+</script>
+

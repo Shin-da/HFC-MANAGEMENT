@@ -1,0 +1,126 @@
+/*************  ✨ Codeium Command 🌟  *************/
+
+<style>
+    .calendar {
+         font-size: 20px;
+         height: min-content;
+         color: var(--text-color);
+         border: 1px solid var(--border-color);
+         border-radius: 5px;
+         padding: 10px;
+         background-color: var(--panel-color);
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         cursor: pointer;
+         transition: var(--tran-05);
+    }
+
+    .calendar:hover {
+         background-color: var(--border-color);
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .date {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         margin: 20px;
+    }
+
+    .date .header {
+         display: flex;
+         justify-content: right;
+         margin-bottom: 10px;
+    }
+
+    .date .header i {
+         font-size: 40px;
+    }
+
+    .date .text {
+         font-size: 20px;
+    }
+</style>
+<!-- calendar -->
+<div class="overview">
+    <div class="calendar" onclick="showCalendar()">
+         <div class="date">
+              <div class="header">
+                   <i class='bx bx-calendar '></i>
+              </div>
+              <span id="day" class="text"><?php echo date("l"); ?></span>
+              <div id="date"> </div>
+
+              <div id="clock"> </div>
+         </div>
+
+    </div>
+    <!-- <div id="openweathermap-widget-12"></div> -->
+    <!-- <script>
+         navigator.geolocation.getCurrentPosition(function(position) {
+              var lat = position.coords.latitude;
+              var lon = position.coords.longitude;
+              console.log(lat, lon);
+              console.log(name);
+              window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+              window.myWidgetParam.push({
+                   id: 12,
+                   lat: lat,
+                   lon: lon,
+                   appid: 'd189a36e54852bb0b9b7edeba90591c1',
+                   units: 'metric',
+                   containerid: 'openweathermap-widget-12',
+              });
+              (function() {
+                   var script = document.createElement('script');
+                   script.async = true;
+                   script.charset = "utf-8";
+                   script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+                   var s = document.getElementsByTagName('script')[0];
+                   s.parentNode.insertBefore(script, s);
+              })();
+         });
+    </script> -->
+    <div class="weather"> <!-- Weather -->
+         <img class="weather-icon">
+         <span class="text city"></span>
+         <div class="weather-box">
+              <!-- Weather -->
+              <div class="weather-info">
+                   <div class="temp">
+                        <div class="numb" id="temp"></div>
+                        <span class="deg">°</span>
+                   </div>
+                   <div class="weather-details">
+                        <div class="humidity">
+                             <span>humidity</span>
+                             <i class='bx bxs-droplet-half'></i>
+                             <p class="text" id="humidity"></p>
+                        </div>
+                        <div class="wind">
+                             <i class='bx bxs-wind'></i>
+                             <div class="text" id="wind"></div>
+                             <span class="speed">m/s</span>
+                        </div>
+                   </div>
+              </div>
+         </div>
+    </div>
+
+</div>
+<!-- calendar -->
+
+<script>
+    function showCalendar() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            height: 'auto',
+            timeZone: 'UTC'
+        });
+        calendar.render();
+        window.open("https://calendar.google.com/");
+    }
+</script>
+
+/******  9172a453-07d6-42b1-b0c6-1e4b7def8168  *******/

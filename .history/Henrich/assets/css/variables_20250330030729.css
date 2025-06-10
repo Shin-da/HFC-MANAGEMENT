@@ -1,0 +1,147 @@
+:root {
+    /* Modern Color Palette */
+    --primary-50: #f0f9f4;
+    --primary-100: #dcf2e5;
+    --primary-200: #b9e4cc;
+    --primary-300: #8ed3b0;
+    --primary-400: #5fbe94;
+    --primary-500: #3da67a;  /* Main brand color */
+    --primary-600: #2f855f;
+    --primary-700: #256a4a;
+    --primary-800: #1d5239;
+    --primary-900: #173c2a;
+
+    /* Neutral Colors */
+    --neutral-50: #f8fafc;
+    --neutral-100: #f1f5f9;
+    --neutral-200: #e2e8f0;
+    --neutral-300: #cbd5e1;
+    --neutral-400: #94a3b8;
+    --neutral-500: #64748b;
+    --neutral-600: #475569;
+    --neutral-700: #334155;
+    --neutral-800: #1e293b;
+    --neutral-900: #0f172a;
+
+    /* Accent Colors */
+    --accent-blue: #3b82f6;
+    --accent-blue-light: #60a5fa;
+    --accent-blue-dark: #2563eb;
+    --accent-amber: #f59e0b;
+    --accent-amber-light: #fbbf24;
+    --accent-amber-dark: #d97706;
+    --accent-rose: #f43f5e;
+    --accent-rose-light: #fb7185;
+    --accent-rose-dark: #e11d48;
+
+    /* Semantic Colors */
+    --success: #22c55e;
+    --success-light: #4ade80;
+    --success-dark: #16a34a;
+    --warning: #f59e0b;
+    --warning-light: #fbbf24;
+    --warning-dark: #d97706;
+    --error: #ef4444;
+    --error-light: #f87171;
+    --error-dark: #dc2626;
+    --info: #3b82f6;
+    --info-light: #60a5fa;
+    --info-dark: #2563eb;
+
+    /* Background Colors */
+    --bg-primary: var(--neutral-50);
+    --bg-secondary: var(--neutral-100);
+    --bg-tertiary: var(--neutral-200);
+    --bg-surface: #ffffff;
+    --bg-surface-hover: var(--neutral-50);
+
+    /* Text Colors */
+    --text-primary: var(--neutral-900);
+    --text-secondary: var(--neutral-700);
+    --text-tertiary: var(--neutral-500);
+    --text-muted: var(--neutral-400);
+    --text-inverse: #ffffff;
+
+    /* Border Colors */
+    --border-light: var(--neutral-200);
+    --border-medium: var(--neutral-300);
+    --border-dark: var(--neutral-400);
+
+    /* Shadow System */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-full: 9999px;
+
+    /* Spacing System */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.75rem;
+    --font-size-7xl: 4.5rem;
+    --font-size-8xl: 6rem;
+    --font-size-9xl: 8rem;
+
+    /* Transitions */
+    --transition-all: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-colors: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-opacity: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-shadow: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-transform: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Z-index */
+    --z-0: 0;
+    --z-10: 10;
+    --z-20: 20;
+    --z-30: 30;
+    --z-40: 40;
+    --z-50: 50;
+    --z-auto: auto;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --bg-primary: var(--neutral-900);
+    --bg-secondary: var(--neutral-800);
+    --bg-tertiary: var(--neutral-700);
+    --bg-surface: var(--neutral-800);
+    --bg-surface-hover: var(--neutral-700);
+
+    --text-primary: var(--neutral-50);
+    --text-secondary: var(--neutral-200);
+    --text-tertiary: var(--neutral-400);
+    --text-muted: var(--neutral-500);
+    --text-inverse: var(--neutral-900);
+
+    --border-light: var(--neutral-700);
+    --border-medium: var(--neutral-600);
+    --border-dark: var(--neutral-500);
+}

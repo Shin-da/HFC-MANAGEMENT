@@ -1,0 +1,239 @@
+/*************  ✨ Codeium Command 🌟  *************/
+<style>
+ /* ======== Navbar ========  */
+
+ .panel .top {
+	z-index: 9999999;
+	top: 0;
+	left: 220px;
+	display: flex;
+	/* width: calc(100% - 220px); */
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--sidebar-color);
+	border-bottom: 1px solid var(--border-color); 	
+	padding: 0 20px;
+	/* transition: var(--tran-05); */
+}
+
+.panel .top .actions {
+	display: flex;
+	align-items: center;
+}
+/* .panel .top .toggle {
+	font-size: 22px;
+	height: 25px;
+	width: 25px;
+	color: var(--text-color);
+	cursor: pointer;
+} */
+
+.panel .top .i {
+	font-size: 22px;
+	color: var(--text-color);
+	margin: 0 14px 0 14px;
+	cursor: pointer;
+}
+
+.panel .top .button {
+	/* margin-left: 20px; */
+	/* width: 40px; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	font-size: 29px;
+	background-color: transparent;
+	color: var(--text-color);
+	border: none;
+	cursor: pointer;
+	/* border-radius: 50%; */
+	z-index: 999999999;
+}
+
+.panel .top .toggle {
+	/* padding-left: 10px; */
+}
+
+.panel .top .settings-btn {
+	/* padding-right: 50px; */
+}
+
+.panel .top .button:hover {
+	color: var(--text-color);
+	transition: var(--tran-02);
+}
+
+.panel .top .nav-link {
+	color: var(--text-color);
+	text-decoration: none;
+	margin-left: 16px;
+}
+
+.panel .top .nav-link:hover {
+	color: var(--black-light-color);
+}
+
+ 
+     </style>
+
+     <div class="top">
+          <button class="button toggle" id="toggle">
+               <i class="bx bx-menu toggle"></i>
+          </button>
+     
+          <div class="actions">
+               <div> <!-- messages -->
+                    <button class='button message-btn' id="message-btn">
+               <div> <!-- notifications -->
+                    <button class='button notification-btn' id="notification-btn">
+                    <i class="bx bx-bell icon notification-btn"></i>
+               </button>
+          </div>
+     
+          <div> <!-- messages -->
+               <button class='button message-btn' id="message-btn">
+                    <i class='bx bx-message-square-dots' ></i>
+               </button>
+          </div>
+     
+          <div> <!-- notifications -->
+               <button class='button notification-btn' id="notification-btn">
+                    <i class="bx bx-bell icon notification-btn"></i>
+               </button>
+                </button>
+          </div>
+     
+          <div> <!-- settings -->
+               <button class='button settings-btn' id="settings-btn">
+                    <i class="bx bx-cog icon settings-btn"></i>
+               </button>
+          </div>
+     </div>
+
+<!-- Notification Dropdown -->
+<div class="dropdown-content" id="notification-dropdown">
+     <div class="menu-bar">
+          <div class="menu">
+               <ul class="menu-links">
+                    <li class="nav-link">
+                         <a href="Forms/notificationForm.php">
+                              <i class="bx bx-bell icon"></i>
+                              <span
+                                   class="text nav-text">Notification</span>
+                         </a>
+                    </li>
+               </ul>
+          </div>
+     </div>
+</div> 
+<!-- Message Dropdown -->
+<div class="dropdown-content dropdown-message" id="message-dropdown">
+     <div class="menu-bar">
+          <div class="menu">
+               <ul class="menu-links">
+                    <li class="nav-link">
+                         <a href="Forms/messageForm.php">
+                              <i class="bx bx-message-square-dots icon"></i>
+                              <span class="text nav-text">Message</span>
+                         </a>
+                    </li>
+               </ul>
+          </div>
+     </div>
+</div>
+<!-- Settings Dropdown -->
+<div class="dropdown-content dropdown-settings" id="settings-dropdown">
+
+     <div class="menu-bar">
+          <div class="menu">
+
+               <ul class="menu-links">
+                    <li class="nav-link" id="profile">
+                         <a href="Forms/profileForm.php">
+                              <i class="bx bx-user icon"></i>
+                              <span class="text nav-text">Profile</span>
+                         </a>
+                    </li>
+                    <li class="nav-link " id="changePassword">
+                         <a href="Forms/changePasswordForm.php">
+                              <i class="bx bx-key icon"></i>
+                              <span class="text nav-text">Change Password</span>
+                         </a>
+                    </li>
+               </ul>
+
+          </div>
+          <hr>
+          <li class>
+               <a href="../login/logout.php">
+                    <i class="bx bx-log-out icon"></i>
+                    <span class="text nav-text">Logout</span>
+               </a>
+          </li>
+     </div>
+
+</div>
+
+<!-- Notification JS -->
+<script>
+     const notificationBtn = document.querySelector(".notification-btn");
+     /* When the user clicks on the button, 
+     toggle between hiding and showing the dropdown content */
+     notificationBtn.addEventListener('click', function() {
+          const notificationDropdown = document.getElementById("notification-dropdown");
+          notificationDropdown.classList.toggle("show");
+     });
+
+     // Close the dropdown if the user clicks outside of it
+     window.onclick = function(event) {
+          const notificationDropdown = document.getElementById("notification-dropdown");
+          if (!event.target.matches('.notification-btn') && !notificationDropdown.contains(event.target)) {
+               notificationDropdown.classList.remove('show');
+          }
+     }
+</script>
+
+<!-- Message JS -->
+<script>
+     const messageBtn = document.querySelector(".message-btn");
+     /* When the user clicks on the button, 
+     toggle between hiding and showing the dropdown content */
+     messageBtn.addEventListener('click', function() {
+          const messageDropdown = document.getElementById("message-dropdown");
+          messageDropdown.classList.toggle("show");
+     });
+
+     // Close the dropdown if the user clicks outside of it
+     window.onclick = function(event) {
+          const messageDropdown = document.getElementById("message-dropdown");
+          if (!event.target.matches('.message-btn') && !messageDropdown.contains(event.target)) {
+               messageDropdown.classList.remove('show');
+          }
+     }
+</script>
+
+<!-- Settings JS -->
+<script>
+     const settingsBtn = document.querySelector(".settings-btn");
+     /* When the user clicks on the button, 
+     toggle between hiding and showing the dropdown content */
+     document.getElementById("settings-btn").onclick = function() {
+          document.getElementById("settings-dropdown").classList.toggle("show");
+     }
+
+     // Close the dropdown if the user clicks outside of it
+     window.onclick = function(event) {
+          if (!event.target.matches('.settings-btn')) {
+               var dropdowns = document.getElementsByClassName("dropdown-settings");
+               var i;
+               for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                         openDropdown.classList.remove('show');
+                    }
+               }
+          }
+     }
+</script>
+/******  0f449937-299d-49aa-b57c-295ead28bc46  *******/

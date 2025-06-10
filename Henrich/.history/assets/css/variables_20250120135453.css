@@ -1,0 +1,24 @@
+:root {
+    /* Core Layout */
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 70px;
+    --content-padding: 2rem;
+    
+    /* Colors */
+    --primary: #385a41;
+    --secondary: #598777;
+    --accent: #df5c36;
+    --success: #28a745;
+    --error: #dc3545;
+    --warning: #ffc107;
+    
+    /* Component Colors */
+    --sidebar-bg: var(--surface);
+    --sidebar-hover: #edf2ff;
+    --sidebar-active: #e7f1ff;
+    --sidebar-text: #2c3e50;
+    
+    /* Transitions */
+    --transition-speed: 0.3s;
+    --transition-timing: ease;
+}

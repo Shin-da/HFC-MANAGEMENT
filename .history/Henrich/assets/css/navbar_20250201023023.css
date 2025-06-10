@@ -1,0 +1,37 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: var(--sidebar-width);
+    height: 64px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    transition: left var(--transition-speed) ease;
+    z-index: 999;
+}
+
+/* Adjust navbar when sidebar is collapsed */
+.sidebar.collapsed ~ .navbar {
+    left: var(--sidebar-collapsed-width);
+}
+
+/* Adjust navbar when sidebar is hidden */
+.sidebar.hidden ~ .navbar {
+    left: 0;
+}
+
+/* Responsive behavior */
+@media (max-width: 991px) {
+    .navbar {
+        left: var(--sidebar-collapsed-width);
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        left: 0;
+    }
+}
+
+/* Rest of the navbar styling */
+// ...existing navbar styles without the state-related code...

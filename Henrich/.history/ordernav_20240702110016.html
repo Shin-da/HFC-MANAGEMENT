@@ -1,0 +1,67 @@
+
+<head>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+    .ordernav .nav {
+        display: flex;
+        align-items: center;
+        justify-content:left;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        background-color: var(--sidebar-color);
+        border-right: 2px solid var(--border-color);
+        z-index: 100;
+        height: 50px;
+        border-bottom: 2px solid var(--grey-active);
+        box-shadow:  0 2px 4px  rgba(0, 0, 0, 0.1);
+        margin-top: 0.5rem;
+        transition: var(--tran-05);
+    }
+
+    .ordernav .nav .ordernav-link {
+        color: var(--text-color);
+        background-color: var(--sidebar-color);
+        border-color: var(--border-color);
+        padding: 0.5rem 1rem;
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+        transition: var(--tran-03);
+        font-size: 1.2rem; 
+     
+        cursor: pointer;
+        width: max-content;
+    }
+    .ordernav .nav .ordernav-link:hover {
+        color: #fff;
+        background-color: var(--grey-hover-color);
+        border-color: var(--accent-color);
+    }
+
+    .ordernav .nav .ordernav-link.active {
+        color: #fff;
+        background-color: var(--grey-active);
+        border-color: var(--accent-color);
+    }
+
+    .ordernav .nav .ordernav-link + .ordernav-link {
+        margin-left: 0;
+    }
+
+ </style>
+
+</head>
+
+<nav class="ordernav">
+    <div class="nav" id="ordernav-tab" role="tablist">
+        <a class="ordernav-link active" id="ordernav-price-tab"
+            data-bs-toggle="tab"
+            href="#ordernav-price" role="tab" aria-controls="ordernav-price"
+            aria-selected="true">Orders</a>
+        <a class="ordernav-link" id="ordernav-history-tab"
+            data-bs-toggle="tab"
+            href="#ordernav-history" role="tab" aria-controls="ordernav-history"
+            aria-selected="true">History</a>
+    </div>
+</nav>
+

@@ -1,0 +1,42 @@
+:root {
+    --customer-primary: #2c3e50;
+    --customer-secondary: #34495e;
+    --status-pending: #f1c40f;
+    --status-processing: #3498db;
+    --status-completed: #2ecc71;
+    --status-cancelled: #e74c3c;
+}
+
+/* Order List Styling */
+.order-list {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.order-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Status Pills */
+.status-pill {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.status-pending {
+    background-color: var(--status-pending);
+    color: #000;
+}
+
+.status-processing {

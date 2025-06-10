@@ -1,0 +1,73 @@
+/* Theme-aware containers */
+.theme-aware {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: var(--tran-03);
+}
+
+.theme-container {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.theme-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--tran-03);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+/* Product Grid Layout */
+.product-grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) 2fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Product Image */
+.product-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+/* Product Info */
+.info-group {
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+    .product-image img {
+        box-shadow: var(--dark-card-shadow);
+    }
+
+    .info-group {
+        border-color: var(--dark-border-color);
+    }
+
+    .theme-btn:hover {
+        background: var(--dark-button-hover);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}

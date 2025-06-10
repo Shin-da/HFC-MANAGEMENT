@@ -1,0 +1,76 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once '../database/dbconnect.php';
+
+header('Content-Type: application/json');
+
+try {
+    $search = isset($_GET['search']) ? trim($_GET['search']) : '';
+    
+    // Updated query to match your actual table structure
+    $sql = "SELECT 
+        productcode,
+        p.productname,
+        p.productcategory,
+        p.productprice,
+        p.productweight,
+        p.piecesperbox,
+        COALESCE((
+            SELECT SUM(i.totalpieces) 
+            FROM inventory i 
+            WHERE i.productcode = p.productcode
+        ), 0) as availablequantity
+    FROM products p
+    WHERE (p.productcode LIKE ? OR p.productname LIKE ?)
+    AND p.productstatus = 'Active'
+    LIMIT 10";
+    
+    $stmt = $conn->prepare($sql);
+    $searchTerm = "%{$search}%";
+    $stmt->bind_param("ss", $searchTerm, $searchTerm);
+    
+    if (!$stmt->execute()) {
+        throw new Exception("Query failed: " . $stmt->error);
+    }
+    
+    $result = $stmt->get_result();
+    $products = [];
+    
+    while ($row = $result->fetch_assoc()) {
+        $availableQty = (int)$row['availablequantity'];
+        $products[] = [
+            'id' => $row['productcode'],
+            'text' => $row['productcode'] . ' - ' . $row['productname'],
+            'productname' => $row['productname'],
+            'productweight' => $row['productweight'],
+            'productprice' => $row['productprice'],
+            'piecesperbox' => $row['piecesperbox'],
+            'availablequantity' => $availableQty,
+            'stockClass' => getStockClass($availableQty)
+        ];
+    }
+    
+    // Log the response for debugging
+    error_log("Products found: " . json_encode($products));
+    
+    echo json_encode([
+        'results' => $products,
+        'pagination' => ['more' => false]
+    ]);
+
+} catch (Exception $e) {
+    error_log("Error in get_products.php: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode([
+        'error' => true,
+        'message' => $e->getMessage()
+    ]);
+}
+
+function getStockClass($qty) {
+    if ($qty <= 0) return 'out-of-stock';
+    if ($qty < 5) return 'low-stock';
+    return 'in-stock';
+}

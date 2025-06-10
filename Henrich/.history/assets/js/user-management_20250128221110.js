@@ -1,0 +1,278 @@
+document.addEventListener('DOMContentLoaded', function() {
+    initializeUserManagement();
+    setupUserFilters();
+});
+
+const UserManagement = {
+    init() {
+        this.bindEvents();
+        this.setupFilters();
+    },
+
+    bindEvents() {
+        // Status toggle handling
+        document.querySelectorAll('.status-toggle').forEach(toggle => {
+            toggle.addEventListener('change', (e) => this.handleStatusToggle(e));
+        });
+
+        // Edit user handling
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+            btn.addEventListener('click', (e) => this.handleEditUser(e));
+        });
+    },
+
+    async handleStatusToggle(e) {
+        const userId = e.target.dataset.userId;
+        const status = e.target.checked ? 'active' : 'inactive';
+
+        try {
+            await AdminCore.handleUserAction('update_user_status', {
+                user_id: userId,
+                status: status
+            });
+
+            // Update UI
+            const userCard = e.target.closest('.user-card');
+            const statusBadge = userCard.querySelector('.user-status');
+            statusBadge.className = `user-status ${status}`;
+            statusBadge.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+
+        } catch (error) {
+            // Revert toggle if action failed
+            e.target.checked = !e.target.checked;
+        }
+    },
+
+    async handleDeleteUser(userId) {
+        const confirmed = await AdminCore.confirmAction('Are you sure you want to delete this user?');
+
+        if (confirmed) {
+            try {
+                await AdminCore.handleUserAction('delete_user', { user_id: userId });
+                const userCard = document.querySelector(`.user-card[data-user-id="${userId}"]`);
+                userCard.remove();
+            } catch (error) {
+                // Error handling is done in AdminCore
+            }
+        }
+    },
+
+    setupFilters() {
+        const searchInput = document.querySelector('.search-input');
+        const roleFilter = document.querySelector('.role-filter');
+        const statusFilter = document.querySelector('.status-filter');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', this.filterUsers.bind(this));
+        }
+        if (roleFilter) {
+            roleFilter.addEventListener('change', this.filterUsers.bind(this));
+        }
+        if (statusFilter) {
+            statusFilter.addEventListener('change', this.filterUsers.bind(this));
+        }
+    },
+
+    filterUsers() {
+        const searchTerm = document.querySelector('.search-input').value.toLowerCase();
+        const role = document.querySelector('.role-filter').value;
+        const status = document.querySelector('.status-filter').value;
+
+        document.querySelectorAll('.user-card').forEach(card => {
+            const userRole = card.dataset.role;
+            const userStatus = card.querySelector('.user-status').classList.contains('active') ? 'active' : 'inactive';
+            const userText = card.textContent.toLowerCase();
+
+            const matchesSearch = searchTerm === '' || userText.includes(searchTerm);
+            const matchesRole = role === 'all' || userRole === role;
+            const matchesStatus = status === 'all' || userStatus === status;
+
+            card.style.display = matchesSearch && matchesRole && matchesStatus ? '' : 'none';
+        });
+    }
+};
+
+function setupUserFilters() {
+    const searchInput = document.querySelector('.search-input');
+    const roleFilter = document.querySelector('.role-filter');
+    const statusFilter = document.querySelector('.status-filter');
+
+    const filterUsers = () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const role = roleFilter.value;
+        const status = statusFilter.value;
+
+        document.querySelectorAll('.user-card').forEach(card => {
+            const userRole = card.dataset.role;
+            const userStatus = card.querySelector('.user-status').classList.contains('active') ? 'active' : 'inactive';
+            const userText = card.textContent.toLowerCase();
+
+            const matchesSearch = searchTerm === '' || userText.includes(searchTerm);
+            const matchesRole = role === 'all' || userRole === role;
+            const matchesStatus = status === 'all' || userStatus === status;
+
+            card.style.display = matchesSearch && matchesRole && matchesStatus ? '' : 'none';
+        });
+    };
+
+    [searchInput, roleFilter, statusFilter].forEach(element => {
+        element.addEventListener('change', filterUsers);
+        element.addEventListener('keyup', filterUsers);
+    });
+}
+
+// Search and filter functionality
+const filterUsers = (searchTerm) => {
+    const cards = document.querySelectorAll('.user-card');
+    const term = searchTerm.toLowerCase();
+
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(term) ? '' : 'none';
+    });
+};
+
+const filterByRole = (role) => {
+    const cards = document.querySelectorAll('.user-card');
+    cards.forEach(card => {
+        if (role === 'all' || card.dataset.role === role) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+};
+
+const filterByStatus = (status) => {
+    const cards = document.querySelectorAll('.user-card');
+    cards.forEach(card => {
+        if (status === 'all' || card.dataset.status === status) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+};
+
+// Modal handling
+const toggleAddForm = () => {
+    const modal = document.getElementById('addUserModal');
+    modal.classList.toggle('active');
+    document.body.style.overflow = modal.classList.contains('active') ? 'hidden' : '';
+};
+
+// Status toggle handling
+document.addEventListener('DOMContentLoaded', () => {
+    const statusToggles = document.querySelectorAll('.status-toggle');
+    
+    statusToggles.forEach(toggle => {
+        toggle.addEventListener('change', async (e) => {
+            const userId = e.target.dataset.userId;
+            const newStatus = e.target.checked ? 'active' : 'inactive';
+            
+            try {
+                const response = await fetch('update-user-status.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userId,
+                        status: newStatus
+                    })
+                });
+
+                if (!response.ok) throw new Error('Status update failed');
+
+                const card = e.target.closest('.user-card');
+                const statusText = card.querySelector('.user-status');
+                statusText.className = `user-status ${newStatus}`;
+                statusText.innerHTML = `
+                    <span class="status-dot"></span>
+                    ${newStatus.charAt(0).toUpperCase() + newStatus.slice(1)}
+                `;
+                
+                showToast(`User status updated to ${newStatus}`);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Failed to update user status', 'error');
+                e.target.checked = !e.target.checked; // Revert toggle
+            }
+        });
+    });
+});
+
+// Toast notification
+const showToast = (message, type = 'success') => {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+        <span>${message}</span>
+    `;
+    
+    document.body.appendChild(toast);
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 100);
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+};
+
+// Form validation
+const validateForm = (form) => {
+    const required = form.querySelectorAll('[required]');
+    let isValid = true;
+    
+    required.forEach(field => {
+        if (!field.value.trim()) {
+            isValid = false;
+            field.classList.add('error');
+            
+            const errorMsg = document.createElement('span');
+            errorMsg.className = 'error-message';
+            errorMsg.textContent = 'This field is required';
+            
+            if (!field.nextElementSibling?.classList.contains('error-message')) {
+                field.parentNode.appendChild(errorMsg);
+            }
+        } else {
+            field.classList.remove('error');
+            const errorMsg = field.parentNode.querySelector('.error-message');
+            if (errorMsg) errorMsg.remove();
+        }
+    });
+    
+    return isValid;
+};
+
+// Add form submission handling
+document.getElementById('addUserForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm(e.target)) return;
+    
+    const formData = new FormData(e.target);
+    
+    try {
+        const response = await fetch(e.target.action, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) throw new Error('Failed to add user');
+
+        const result = await response.json();
+        showToast(result.message);
+        toggleAddForm();
+        location.reload(); // Refresh to show new user
+        
+    } catch (error) {
+        console.error('Error:', error);
+        showToast('Failed to add user', 'error');
+    }
+});

@@ -1,0 +1,132 @@
+<style>
+     .dropdown {
+          position: relative;
+          display: inline-block;
+     }
+
+     .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: var(--sidebar-color);
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+     }
+
+     .dropdown-content a {
+          color: var(--text-color);
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+     }
+
+     .dropdown-content a:hover {
+          background-color: var(--accent-color);
+     }
+
+     .dropdown:hover .dropdown-content {
+          display: block;
+     }
+
+     .dropdown:hover .bx {
+          color: var(--text-color);
+     }
+
+     @media (max-width: 768px) {
+          .button-group {
+               display: none;
+          }
+
+          .toggle-menu {
+               display: inline-block;
+          }
+     }
+
+     @media (min-width: 769px) {
+          .toggle-menu {
+               display: none;
+          }
+     }
+</style>
+
+<!-- Toggle Menu for Small Screens -->
+<div class="dropdown toggle-menu">
+     <button class="button toggle-btn" onclick="toggleDropdown('button-group')">
+          <i class="bx bx-menu icon"></i>
+     </button>
+     <div class="dropdown-content" id="button-group">
+          <a href="#" onclick="toggleDropdown('notification-dropdown')">
+               <i class="bx bx-bell icon"></i> Notifications
+          </a>
+          <a href="#" onclick="toggleDropdown('message-dropdown')">
+               <i class="bx bx-message-square-dots icon"></i> Messages
+          </a>
+          <a href="#" onclick="toggleDropdown('settings-dropdown')">
+               <i class="bx bx-cog icon"></i> Settings
+          </a>
+     </div>
+</div>
+
+<!-- Button Group for Large Screens -->
+<div class="button-group">
+     <!-- Notification Dropdown -->
+     <div class="dropdown">
+          <button class="button notification-btn" id="notification-btn" onclick="toggleDropdown('notification-dropdown')">
+               <i class="bx bx-bell icon notification-btn"></i>
+          </button>
+          <div class="dropdown-content" id="notification-dropdown">
+               <a href="Forms/notificationForm.php">
+                    <i class="bx bx-bell icon"></i>
+                    <span class="text nav-text">Notification</span>
+               </a>
+          </div>
+     </div>
+
+     <!-- Message Dropdown -->
+     <div class="dropdown">
+          <button class="button message-btn" id="message-btn" onclick="toggleDropdown('message-dropdown')">
+               <i class="bx bx-message-square-dots icon"></i>
+          </button>
+          <div class="dropdown-content dropdown-message" id="message-dropdown">
+               <a href="Forms/messageForm.php">
+                    <i class="bx bx-message-square-dots icon"></i>
+                    <span class="text nav-text">Message</span>
+               </a>
+          </div>
+     </div>
+
+     <!-- Settings Dropdown -->
+     <div class="dropdown">
+          <button class="button settings-btn" id="settings-btn" onclick="toggleDropdown('settings-dropdown')">
+               <i class="bx bx-cog icon settings-btn"></i>
+          </button>
+          <div class="dropdown-content dropdown-settings" id="settings-dropdown">
+               <a href="Forms/profileForm.php">
+                    <i class="bx bx-user icon"></i>
+                    <span class="text nav-text">Profile</span>
+               </a>
+               <a href="Forms/changePasswordForm.php">
+                    <i class="bx bx-key icon"></i>
+                    <span class="text nav-text">Change Password</span>
+               </a>
+               <hr>
+               <a href="../login/logout.php">
+                    <i class="bx bx-log-out icon"></i>
+                    <span class="text nav-text">Logout</span>
+               </a>
+          </div>
+     </div>
+</div>
+
+<!-- Toggle Dropdown Function -->
+<script>
+     function toggleDropdown(id) {
+          var x = document.getElementById(id);
+          if (x.classList.contains("show")) {
+               x.classList.remove("show");
+          } else {
+               x.classList.add("show");
+          }
+     }
+</script>
+

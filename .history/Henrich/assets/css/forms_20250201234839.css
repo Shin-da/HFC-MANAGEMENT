@@ -1,0 +1,523 @@
+.form-wrapper {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(54, 48, 45, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+    color: var(--text-primary);
+    transition: var(--tran-03);
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 1px;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(223, 92, 54, 0.15);
+}
+
+.form-select {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border-radius: 1px;
+    box-sizing: border-box;
+}
+
+.form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(223, 92, 54, 0.15);
+}
+
+.btn-submit {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--light);
+    padding: 10px 20px;
+    transition: var(--tran-03);
+}
+
+.btn-submit:hover {
+    background-color: #933d24;
+    border-color: #933d24;
+}
+
+.form-text {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.invalid-feedback {
+    color: var(--accent);
+}
+
+/* Table Styles */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
+}
+
+.table-header .btn {
+    width: auto;
+}
+
+thead {
+    border-radius: 5px;
+    background-color: var(--grey-active);
+}
+
+th, td {
+    text-align: left;
+    padding: 2px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th {
+    color: white;
+    padding: 8px;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    
+}
+/* Button Styles */
+.btn {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--blue-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-color-dark);
+}
+
+.btn-secondary {
+    background-color: var(--panel-color);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--panel-color-dark);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-color-dark);
+}
+
+/* Helper Classes */
+.required {
+    color: var(--danger-color);
+}
+
+/* Bottom Form Section */
+.bottom-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.bottom-form .buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.bottom-form .btn {
+    width: auto;
+    border: solid 1px var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Order Form Specific Styles */
+.order-form-container {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.order-details-section,
+.customer-details-section,
+.products-section {
+    margin-bottom: 2rem;
+}
+
+input[readonly] {
+    background: var(--background);
+    cursor: not-allowed;
+}
+
+.order-summary {
+    background: var(--surface);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.total-info {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    font-weight: 500;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.submit-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Enhanced Order Form Section Styling */
+.order-form-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--sage-200);
+}
+
+/* Order Details Section Enhancement */
+.order-details-section {
+    background: var(--bg-white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--sage-200);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.order-details-section table,
+.customer-details-section table {
+    margin: 0;
+}
+
+.order-details-section th,
+.customer-details-section th {
+    background: var(--forest-primary);
+    color: var(--bg-white);
+    font-size: 0.85rem;
+    padding: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.order-details-section td,
+.customer-details-section td {
+    padding: 12px;
+    background: var(--bg-white);
+}
+
+.order-details-section input,
+.order-details-section select,
+.customer-details-section input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--sage-200);
+    border-radius: 4px;
+    background-color: var(--bg-white);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.order-details-section input:focus,
+.order-details-section select:focus,
+.customer-details-section input:focus {
+    border-color: var(--forest-light);
+    box-shadow: 0 0 0 2px rgba(79, 121, 66, 0.1);
+    outline: none;
+}
+
+.order-details-section input[readonly],
+.customer-details-section input[readonly] {
+    background-color: var(--sage-50);
+    cursor: not-allowed;
+    color: var(--text-secondary);
+}
+
+/* Customer Details Section Enhancement */
+.customer-details-section {
+    background: var(--bg-white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--sage-200);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Section Headers */
+.order-details-section::before,
+.customer-details-section::before {
+    content: 'Order Details';
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold-warm);
+}
+
+.customer-details-section::before {
+    content: 'Customer Details';
+}
+
+/* Required Field Indicator */
+.required-field::after {
+    content: '*';
+    color: var(--rust-light);
+    margin-left: 4px;
+}
+
+/* Table Header Enhancements */
+.order-details-section thead th,
+.customer-details-section thead th {
+    background: linear-gradient(145deg, var(--forest-primary), var(--forest-medium));
+    border-bottom: none;
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 768px) {
+    .order-details-section,
+    .customer-details-section {
+        padding: 1rem;
+    }
+
+    .order-details-section::before,
+    .customer-details-section::before {
+        font-size: 1rem;
+    }
+
+    .order-details-section td,
+    .customer-details-section td {
+        padding: 8px;
+    }
+}
+
+/* Customer Order Form Specific Styles */
+.order-form-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
+}
+
+.order-section {
+    background: var(--bg-white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-light);
+}
+
+.order-section h3 {
+    color: var(--forest-deep);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--sage-medium);
+    font-size: 1.2rem;
+}
+
+/* Product Table Enhancements */
+.product-table {
+    margin-top: 1rem;
+}
+
+.product-table th {
+    background: var(--forest-primary);
+    color: var(--bg-white);
+    padding: 12px;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.product-table td {
+    padding: 8px;
+    vertical-align: middle;
+}
+
+.product-table input,
+.product-table select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--bg-white);
+}
+
+.product-table input:read-only {
+    background-color: var(--sage-50);
+}
+
+.product-table .btn-danger {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+/* Order Summary Styling */
+.order-summary {
+    background: var(--sage-50);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    border: 1px solid var(--sage-200);
+}
+
+.total-info {
+    display: flex;
+    justify-content: flex-end;
+    gap: 3rem;
+    font-size: 1.1rem;
+}
+
+.total-info span {
+    color: var(--forest-deep);
+    font-weight: 600;
+}
+
+/* Action Buttons */
+.form-actions {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--border-light);
+}
+
+.submit-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.submit-buttons .btn {
+    padding: 12px 24px;
+    font-weight: 500;
+    min-width: 120px;
+}
+
+/* Select2 Custom Styling */
+.select2-container--default .select2-selection--single {
+    height: 38px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 36px;
+    padding-left: 12px;
+    color: var(--text-primary);
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--forest-light);
+}
+
+/* Stock Status Indicators */
+.remaining-quantity {
+    text-align: center;
+    font-weight: 500;
+}
+
+.remaining-quantity[value="0"],
+.remaining-quantity[value="1"],
+.remaining-quantity[value="2"],
+.remaining-quantity[value="3"],
+.remaining-quantity[value="4"] {
+    color: var(--rust-light);
+    background-color: rgba(223, 92, 54, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .order-form-container {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .total-info {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-end;
+    }
+
+    .submit-buttons {
+        flex-direction: column;
+    }
+
+    .submit-buttons .btn {
+        width: 100%;
+    }
+}

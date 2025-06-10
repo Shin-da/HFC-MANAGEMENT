@@ -1,0 +1,121 @@
+<style>
+
+ 
+     </style>
+
+     <div class="top">
+          <button class="button toggle" id="toggle">
+               <i class="bx bx-menu toggle"></i>
+          </button>
+     
+          <div class="actions">
+               <div> <!-- notifications -->
+                    <button class='button notification-btn' id="notification-btn">
+                    <i class="bx bx-bell icon notification-btn"></i>
+               </button>
+          </div>
+     
+          <div> <!-- messages -->
+               <button class='button message-btn' id="message-btn">
+                    <i class='bx bx-message-square-dots' ></i>
+                </button>
+          </div>
+     
+          <div> <!-- settings -->
+               <button class='button settings-btn' id="settings-btn">
+                    <i class="bx bx-cog icon settings-btn"></i>
+               </button>
+          </div>
+     </div>
+
+<!-- Notification Dropdown -->
+<div class="dropdown-content" id="notification-dropdown">
+     <div class="menu-bar">
+          <div class="menu">
+               <ul class="menu-links">
+                    <li class="nav-link">
+                         <a href="Forms/notificationForm.php">
+                              <i class="bx bx-bell icon"></i>
+                              <span
+                                   class="text nav-text">Notification</span>
+                         </a>
+                    </li>
+               </ul>
+          </div>
+     </div>
+</div> 
+<!-- Settings Dropdown -->
+<div class="dropdown-content dropdown-settings" id="settings-dropdown">
+
+     <div class="menu-bar">
+          <div class="menu">
+
+               <ul class="menu-links">
+                    <li class="nav-link" id="profile">
+                         <a href="Forms/profileForm.php">
+                              <i class="bx bx-user icon"></i>
+                              <span class="text nav-text">Profile</span>
+                         </a>
+                    </li>
+                    <li class="nav-link " id="changePassword">
+                         <a href="Forms/changePasswordForm.php">
+                              <i class="bx bx-key icon"></i>
+                              <span class="text nav-text">Change Password</span>
+                         </a>
+                    </li>
+               </ul>
+
+          </div>
+          <hr>
+          <li class>
+               <a href="../login/logout.php">
+                    <i class="bx bx-log-out icon"></i>
+                    <span class="text nav-text">Logout</span>
+               </a>
+          </li>
+     </div>
+
+</div>
+
+<!-- Notification JS -->
+<script>
+     const notificationBtn = document.querySelector(".notification-btn");
+     /* When the user clicks on the button, 
+     toggle between hiding and showing the dropdown content */
+     notificationBtn.addEventListener('click', function() {
+          const notificationDropdown = document.getElementById("notification-dropdown");
+          notificationDropdown.classList.toggle("show");
+     });
+
+     // Close the dropdown if the user clicks outside of it
+     window.onclick = function(event) {
+          const notificationDropdown = document.getElementById("notification-dropdown");
+          if (!event.target.matches('.notification-btn') && !notificationDropdown.contains(event.target)) {
+               notificationDropdown.classList.remove('show');
+          }
+     }
+</script>
+
+<!-- Settings JS -->
+<script>
+     const settingsBtn = document.querySelector(".settings-btn");
+     /* When the user clicks on the button, 
+     toggle between hiding and showing the dropdown content */
+     document.getElementById("settings-btn").onclick = function() {
+          document.getElementById("settings-dropdown").classList.toggle("show");
+     }
+
+     // Close the dropdown if the user clicks outside of it
+     window.onclick = function(event) {
+          if (!event.target.matches('.settings-btn')) {
+               var dropdowns = document.getElementsByClassName("dropdown-settings");
+               var i;
+               for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                         openDropdown.classList.remove('show');
+                    }
+               }
+          }
+     }
+</script>

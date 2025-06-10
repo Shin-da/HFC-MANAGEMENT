@@ -1,0 +1,36 @@
+/* Main Layout Structure */
+.supervisor-body {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background-light);
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 260px; /* Match sidebar width */
+    transition: margin-left 0.3s ease;
+    background: var(--background-light);
+}
+
+/* Sidebar States */
+.sidebar.collapsed ~ .main-content {
+    margin-left: 70px;
+}
+
+.sidebar.hidden ~ .main-content {
+    margin-left: 0;
+}
+
+/* Responsive Layout */
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
+}

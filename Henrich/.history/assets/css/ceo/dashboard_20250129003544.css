@@ -1,0 +1,23 @@
+.ceo-dashboard {
+    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --chart-height: 300px;
+    --metric-spacing: 1.5rem;
+}
+
+.dashboard-container {
+    padding: var(--metric-spacing);
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.metric-card {
+    background: var(--surface-alt);
+    border-radius: 12px;
+    padding: var(--metric-spacing);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+}

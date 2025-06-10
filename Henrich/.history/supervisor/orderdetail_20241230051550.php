@@ -1,0 +1,608 @@
+/*************  ✨ Codeium Command 🌟  *************/
+<style>
+    .receipt-content, .invoice-content {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333;
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.05);
+<?php
+require '../reusable/redirect404.php';
+require '../session/session.php';
+require '../database/dbconnect.php';
+$current_page = basename($_SERVER['PHP_SELF'], '.php');
+
+// Update order status
+if (isset($_POST['updateStatus'])) {
+    $oid = $_POST['oid'];
+    $status = $_POST['status'] ?? '';
+    if ($status != '') {
+        $sql = "UPDATE orders SET status = '$status' WHERE oid = '$oid'";
+        if ($conn->query($sql) === TRUE) {
+            echo "<script>alert('Order status has been updated!');</script>";
+            header("Location: orderdetail.php?oid=$oid");
+            exit;
+        } else {
+            echo "Error updating record: " . $conn->error;
+        }
+    }
+}
+
+    .receipt-header, .invoice-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        width: 100%;
+// Delete order
+if (isset($_POST['deleteOrder'])) {
+    $oid = $_POST['oid'];
+    $sql = "DELETE FROM orders WHERE oid = '$oid'";
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>alert('Order has been deleted!');</script>";
+        header("Location: transactions.php");
+        exit;
+    } else {
+        echo "Error deleting record: " . $conn->error;
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Detail</title>
+    <?php require '../reusable/header.php'; ?>
+    <style>
+        .order-detail {
+            background-color: #fff;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.05);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+    .receipt-header h2, .invoice-header h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin: 0;
+    }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+    .receipt-header p, .invoice-header p {
+        font-size: 12px;
+        margin: 0;
+    }
+        .order-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+    .receipt-body, .invoice-body {
+        padding-top: 20px;
+    }
+        .order-body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+    .receipt-body table, .invoice-body table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+    .receipt-body table tr td, .invoice-body table tr td {
+        padding: 5px;
+        border: 1px solid #ddd;
+    }
+        .order-item span:first-child {
+            font-weight: 600;
+        }
+
+    .receipt-body table tr td:first-child, .invoice-body table tr td:first-child {
+        font-weight: 600;
+        text-align: left;
+    }
+        .btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+    .receipt-body table tr td:last-child, .invoice-body table tr td:last-child {
+        text-align: right;
+    }
+        .btn > button {
+            margin: 0 5px;
+        }
+
+    .receipt-footer, .invoice-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        width: 100%;
+    }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+    .receipt-footer p, .invoice-footer p {
+        font-size: 12px;
+        margin: 0;
+    }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+    .receipt-footer p:last-child, .invoice-footer p:last-child {
+        font-weight: 600;
+    }
+        @media only screen and (max-width: 600px) {
+            .order-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+    .invoice-footer p:last-child {
+        text-align: right;
+    }
+</style>
+            .order-item span:first-child {
+                margin-bottom: 5px;
+            }
+        }
+
+<div class="receipt-content">
+    <div class="receipt-header">
+        <h2>Receipt</h2>
+        <p>Transaction Date: <?php echo htmlspecialchars($orderdate); ?></p>
+        <p>Receipt Date: <?php echo htmlspecialchars(date('Y-m-d')); ?></p>
+        .receipt-content {
+            display: none;
+        }
+
+        .receipt-header, .invoice-header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .receipt-body, .invoice-body {
+            padding: 20px;
+        }
+
+        .order-item {
+            margin-bottom: 10px;
+        }
+
+        .order-item span:first-child {
+            font-weight: bold;
+        }
+
+        @media print {
+            .receipt-content {
+                display: block;
+            }
+            .order-detail, .btn, .panel, .navbar {
+                display: none;
+            }
+        }
+
+        #receipt, #invoice {
+            width: 100%;
+            padding: 20px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #receipt h2, #invoice h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        #receipt p, #invoice p {
+            margin-bottom: 10px;
+        }
+
+        #receipt ul, #invoice ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #receipt li, #invoice li {
+            margin-bottom: 10px;
+        }
+
+        .order-detail {
+            background-color: #f5f5f5;
+        }
+
+        .order-header {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        .order-body {
+            background-color: #fff;
+        }
+
+        .order-item {
+            background-color: #f5f5f5;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .receipt-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .receipt-header p {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .receipt-body {
+            padding-top: 20px;
+        }
+
+        .receipt-body table {
+            width: 100%;
+        }
+
+        .receipt-body table tr td {
+            padding: 5px;
+        }
+
+        .receipt-body table tr td:first-child {
+            font-weight: 600;
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .invoice-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .invoice-header p {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .invoice-body {
+            padding-top: 20px;
+        }
+
+        .invoice-body table {
+            width: 100%;
+        }
+
+        .invoice-body table tr td {
+            padding: 5px;
+        }
+
+        .invoice-body table tr td:first-child {
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <?php include '../reusable/sidebar.php'; ?>
+    <div class="panel">
+        <?php include '../reusable/navbarNoSearch.html'; ?>
+        <div class="order-detail">
+            <div class="order-header">
+                <a href="javascript:window.history.back()" id="back-toprev"> <i class='bx bx-chevron-left'></i> </a>
+                <h2>Order Detail</h2>
+                <p>Viewing Order ID # <?= htmlspecialchars(isset($_GET['oid']) ? $_GET['oid'] : 'N/A') ?></p>
+            </div>
+            <div class="order-body">
+                <?php
+                if (isset($_GET['oid'])) {
+                    $oid = $_GET['oid'];
+                    $sql = "SELECT * FROM orders WHERE oid = '$oid'";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $customername = $row["customername"];
+                        $customeraddress = $row["customeraddress"];
+                        $customerphonenumber = $row["customerphonenumber"];
+                        $orderdescription = $row["orderdescription"];
+                        $ordertotal = $row["ordertotal"];
+                        $orderdate = $row["orderdate"];
+                        $salesperson = $row["salesperson"];
+                        $status = $row["status"];
+
+                        echo "
+                        <div class='order-item'>
+                            <span>Customer Name:</span>
+                            <span>$customername</span>
+                        </div>
+                        <div class='order-item'>
+                            <span>Customer Address:</span>
+                            <span>$customeraddress</span>
+                        </div>
+                        <div class='order-item'>
+                            <span>Customer Phone Number:</span>
+                            <span>$customerphonenumber</span>
+                        </div>
+                        <div class='order-item'>
+                            <span>Order Description:</span>
+                            <span>";
+                        $orderDescription = explode(", ", $orderdescription ?? '');
+                        foreach ($orderDescription as $desc) {
+                            echo "- " . htmlspecialchars($desc) . "<br>";
+                        }
+                        echo "</span>
+                        </div>
+                        <div class='order-item'>
+                            <span>Order Total:</span>
+                            <span>₱ " . htmlspecialchars($ordertotal) . "</span>
+                        </div>
+                        <div class='order-item'>
+                            <span>Order Date:</span>
+                            <span>" . htmlspecialchars($orderdate) . "</span>
+                        </div>
+                        <div class='order-item'>
+                            <span>Salesperson:</span>
+                            <span>" . htmlspecialchars($salesperson) . "</span>
+                        </div>
+                        <div class='order-item'>
+                            <span>Status:</span>
+                            <span class='$status'>" . htmlspecialchars($status) . "</span>
+                            <form action='' method='post'>
+   <input type='hidden' name='oid' value='$oid'>
+                                <select name='status' class='form-control'>
+                                    <option value='Pending'>Pending</option>
+                                    <option value='Completed'>Completed</option>
+                                    <option value='Cancelled'>Cancelled</option>
+                                </select>
+                                <button type='submit' name='updateStatus' class='btn btn-primary' onclick=\"return confirm('Are you sure you want to update the status of this order?')\">Update Status</button>
+                            </form>";
+                        if ($status === 'Completed') {
+                            echo "
+                            <button type='button' class='btn btn-success' onclick=\"printReceipt()\">Print Receipt</button>
+                            ";
+                        }
+                        echo "
+                            <button type='button' class='btn btn-info' onclick=\"printInvoice()\">Print Invoice</button>
+                            <script>
+                                function printReceipt() {
+                                    var originalContents = document.body.innerHTML;
+                                    document.getElementById('receipt').style.display = 'block';
+                                    var printContents = document.getElementById('receipt').innerHTML;
+                                    document.body.innerHTML = printContents;
+                                    window.print();
+                                    document.body.innerHTML = originalContents;
+                                    document.getElementById('receipt').style.display = 'none';
+                                }
+                                function printInvoice() {
+                                    var originalContents = document.body.innerHTML;
+                                    document.getElementById('invoice').style.display = 'block';
+                                    var printContents = document.getElementById('invoice').innerHTML;
+                                    document.body.innerHTML = printContents;
+                                    window.print();
+                                    document.body.innerHTML = originalContents;
+                                    document.getElementById('invoice').style.display = 'none';
+                                }
+                            </script>
+                            <div id='receipt' class='receipt-content'>
+                                <div class='receipt-header'>
+                                    <h2>Receipt</h2>
+                                    <p>Transaction Date: " . htmlspecialchars($orderdate) . "</p>
+                                    <p>Receipt Date: " . htmlspecialchars(date('Y-m-d')) . "</p>
+                                </div>
+                                <div class='receipt-body'>
+                                    <div class='receipt-item'>
+                                        <span>Order ID:</span>
+                                        <span>" . htmlspecialchars($oid) . "</span>
+                                    </div>
+                                    <div class='receipt-item'>
+                                        <span>Customer Name:</span>
+                                        <span>" . htmlspecialchars($customername) . "</span>
+                                    </div>
+                                    <p>Payment Method: Cash</p>
+                                    <p>Payment Status: Paid</p>
+                                    <p>Order Total: ₱ " . htmlspecialchars($ordertotal) . "</p>
+                                    <p>Salesperson: " . htmlspecialchars($salesperson) . "</p>
+                                    <p>Order Description:</p>
+                                    <ul style='list-style: none; padding: 0; margin: 0'>";
+                        $orderDescription = explode(", ", $orderdescription ?? '');
+                        foreach ($orderDescription as $desc) {
+                            echo "<li>" . htmlspecialchars($desc) . "</li>";
+                        }
+                        echo "</ul>
+                            </div>
+                            <div id='invoice' class='receipt-content'>
+                                <div style='text-align: center; margin-bottom: 20px'>
+                                    <h2>Invoice</h2>
+                                </div>
+                              <p>Invoice ID: " . htmlspecialchars($oid) . "</p>      
+                                <p>Invoice Date: " . htmlspecialchars(date('Y-m-d')) . "</p>
+                                <p>Due Date: " . htmlspecialchars(date('Y-m-d', strtotime('+7 days'))) . "</p>
+                                <p>Bill to:</p>
+                                <ul style='list-style: none; padding: 0; margin: 0'>
+                                    <li>Name: " . htmlspecialchars($customername) . "</li>
+                                    <li>Address: " . htmlspecialchars($customeraddress) . "</li>
+                                    <li>Phone: " . htmlspecialchars($customerphonenumber) . "</li>
+                                </ul>
+                                <p>Order Total: ₱ " . htmlspecialchars($ordertotal) . "</p>
+                                <p>Salesperson: " . htmlspecialchars($salesperson) . "</p>
+                                <p>Payment Status: Not Paid</p>
+                                <p>Order Description:</p>
+                                <ul style='list-style: none; padding: 0; margin: 0'>";
+                        $orderDescription = explode(", ", $orderdescription ?? '');
+                        foreach ($orderDescription as $desc) {
+                            echo "<li>" . htmlspecialchars($desc) . "</li>";
+                        }
+                        echo "</ul>";
+                        foreach ($orderDescription as $desc) {
+                            echo "<li>" . htmlspecialchars($desc) . "</li>";
+                        }
+                        echo "</ul>
+                            </div>
+                        </div>
+                        ";
+                        if (isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == 'admin') {
+                            echo "
+                            <div class='order-item'>
+                                <form action='' method='post'>
+                                    <input type='hidden' name='oid' value='$oid'>
+                                    <button type='submit' name='deleteOrder' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to delete this order?')\">Delete Order</button>
+                                </form>
+                            </div>
+                            ";
+                        }
+                    } else {
+                        echo "<p>0 results</p>";
+                    }
+                } else {
+                    echo "<p>Invalid request</p>";
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="receipt-body">
+        <table>
+            <tr>
+                <td>Order ID:</td>
+                <td><?php echo htmlspecialchars($oid); ?></td>
+            </tr>
+            <tr>
+                <td>Customer Name:</td>
+                <td><?php echo htmlspecialchars($customername); ?></td>
+            </tr>
+            <tr>
+                <td>Payment Method:</td>
+                <td>Cash</td>
+            </tr>
+            <tr>
+                <td>Payment Status:</td>
+                <td>Paid</td>
+            </tr>
+            <tr>
+                <td>Order Total:</td>
+                <td>₱ <?php echo htmlspecialchars($ordertotal); ?></td>
+            </tr>
+            <tr>
+                <td>Salesperson:</td>
+                <td><?php echo htmlspecialchars($salesperson); ?></td>
+            </tr>
+            <tr>
+                <td>Order Description:</td>
+                <td>
+                    <ul style="list-style: none; padding: 0; margin: 0">
+                        <?php foreach ($orderDescription as $desc) { ?>
+                            <li><?php echo htmlspecialchars($desc); ?></li>
+                        <?php } ?>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="receipt-footer">
+        <p>Thank you for your business!</p>
+        <p>Powered by <a href="https://www.pointofsale.ph">Point of Sale</a></p>
+    </div>
+</div>
+    <?php require '../reusable/footer.php'; ?>
+</body>
+
+<div class="invoice-content">
+    <div class="invoice-header">
+        <h2>Invoice</h2>
+        <p>Invoice ID: <?php echo htmlspecialchars($oid); ?></p>
+        <p>Invoice Date: <?php echo htmlspecialchars(date('Y-m-d')); ?></p>
+        <p>Due Date: <?php echo htmlspecialchars(date('Y-m-d', strtotime('+7 days'))); ?></p>
+    </div>
+    <div class="invoice-body">
+        <table>
+            <tr>
+                <td>Bill to:</td>
+                <td>
+                    <ul style="list-style: none; padding: 0; margin: 0">
+                        <li>Name: <?php echo htmlspecialchars($customername); ?></li>
+                        <li>Address: <?php echo htmlspecialchars($customeraddress); ?></li>
+                        <li>Phone: <?php echo htmlspecialchars($customerphonenumber); ?></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Order Total:</td>
+                <td>₱ <?php echo htmlspecialchars($ordertotal); ?></td>
+            </tr>
+            <tr>
+                <td>Salesperson:</td>
+                <td><?php echo htmlspecialchars($salesperson); ?></td>
+            </tr>
+            <tr>
+                <td>Order Description:</td>
+                <td>
+                    <ul style="list-style: none; padding: 0; margin: 0">
+                        <?php foreach ($orderDescription as $desc) { ?>
+                            <li><?php echo htmlspecialchars($desc); ?></li>
+                        <?php } ?>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="invoice-footer">
+        <p>Payment terms: 7 days from invoice date.</p>
+        <p>Thank you for your business!</p>
+    </div>
+</div>
+
+/******  79194655-cb0d-4aa3-93ed-e95fefe28f82  *******/

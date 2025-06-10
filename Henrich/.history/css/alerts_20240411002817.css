@@ -1,0 +1,33 @@
+
+/* css for alert  */
+
+     .alert-message {
+          position: fixed;
+          right: 0;
+          top: 0;
+
+          z-index: 1;
+
+          width: 24vw;
+          /* height: 50px; */
+
+          transition: all 1s ease;
+
+          color: var(--text-color-light);
+
+          border-radius: 5px;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     }
+     .alert-message .success {
+        background: var(--success-color);
+
+     }
+
+     .alert-message .error {
+          background: var(--danger-color);
+     }
+     .alert-message .alert {
+          width: 100%;
+          text-align: center;
+
+     }

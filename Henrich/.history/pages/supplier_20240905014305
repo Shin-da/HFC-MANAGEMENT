@@ -1,0 +1,12 @@
+<?php
+require '../reusable/redirect404.php';
+require '../session/session.php';
+require '../database/dbconnect.php';
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head></head>
+    <title>HOME</title>
+    <?php require '../reusable/header.php'; ?>

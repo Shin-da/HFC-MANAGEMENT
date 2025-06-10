@@ -1,0 +1,104 @@
+/*************  ✨ Codeium Command 🌟  *************/
+<style>
+  .alert {
+    width: 100%;
+    border-bottom: 1px solid var(--orange-color);
+    z-index: 9999;
+  }
+  .out-of-stock-alert {
+    width: 100%;
+    border-bottom: 1px solid var(--accent-color);
+    z-index: 9999;
+  }
+  .alert h4, .out-of-stock-alert h4 {
+    margin-top: 0;
+    font-weight: bold;
+    color: #DD5746;
+    display: flex;
+    align-items: center;
+    background-color: var(--orange-color);
+    padding: 10px;
+  }
+  .out-of-stock-alert h4 {
+    color: var(--accent-color);
+    background-color: #DD5746;
+  }
+  .alert h4 i, .out-of-stock-alert h4 i {
+    margin-right: 5px;
+    font-size: 2em; /* Make the icon big */
+  }
+  .alert .product-name, .out-of-stock-alert .product-name {
+    font-weight: bold;
+  }
+  .alert .close, .out-of-stock-alert .close {
+    background-color: var(--sidebar-color);
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    float: right;
+    font-size: 1.5em;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  .alert .close:hover, .out-of-stock-alert .close:hover {
+    background-color: #fff; 
+    color: var(--accent-color);
+  }
+  .alert p, .out-of-stock-alert p {
+    background-color: var(--sidebar-color);
+    padding: 10px;
+  }
+</style>
+
+<?php
+  require '../database/dbconnect.php';
+
+  $items = $conn->query("SELECT * FROM inventory WHERE onhand <= 10 ORDER BY onhand ASC");
+  $outOfStockItems = $conn->query("SELECT * FROM inventory WHERE onhand = 0 ORDER BY productname ASC");
+
+  if (isset($_COOKIE['show_stock_alert'])) {
+    $show_stock_alert = $_COOKIE['show_stock_alert'];
+  } else {
+    $show_stock_alert = true;
+  }
+
+  if ($outOfStockItems->num_rows > 0 && $show_stock_alert) {
+    echo '<div class="out-of-stock-alert">';
+    echo '<h4><i class="bx bx-error" style="color: red"></i> Out of Stock Alert! <span class="close" onclick="this.parentElement.style.display = \'none\'"><i class="bx bx-x"></i></span></h4>';
+    echo '<h4><i class="bx bx-exclamation" style="color: red"></i> Out of Stock Alert! <span class="close" onclick="this.parentElement.style.display = \'none\'"><i class="bx bx-x"></i></span></h4>';
+    echo '<p>';
+    while ($row = $outOfStockItems->fetch_assoc()) {
+      echo '<span class="product-name">' . $row['productname'] . '</span> - <span style="color: var(--accent-color)">OUT OF STOCK</span><br />';
+    }
+    echo '</p>';
+    echo '</div>';
+  }
+
+  if ($items->num_rows > 0 && $show_stock_alert) {
+    echo '<div class="alert">';
+    echo '<h4><i class="bx bx-error" style="color: orange"></i> Low Stock Alert! <span class="close" onclick="this.parentElement.style.display = \'none\'"><i class="bx bx-x"></i></span></h4>';
+    echo '<h4><i class="bx bx-exclamation" style="color: orange"></i> Low Stock Alert! <span class="close" onclick="this.parentElement.style.display = \'none\'"><i class="bx bx-x"></i></span></h4>';
+    echo '<p>';
+    while ($row = $items->fetch_assoc()) {
+      $quantity = $row['onhand'];
+      $legend = '';
+      if ($quantity > 0) {
+        if ($quantity <= 5) {
+          $legend = "<span style='color: orange'>VERY LOW STOCK</span>";
+        } else {
+          $legend = "<span style='color: yellow'>LOW STOCK</span>";
+        }
+        echo '<span class="product-name">' . $row['productname'] . '</span> - <span class="quantity">' . $quantity . '</span> units left ' . $legend . '<br />';
+      }
+    }
+    echo '</p>';
+    echo '</div>';
+  }
+
+  if (isset($_POST['close_stock_alert'])) {
+    setcookie('show_stock_alert', false, time() + (86400 * 30), '/');
+  }
+?>
+
+
+/******  a4c13fe0-182b-4a85-aedd-7cbf01aff0ba  *******/

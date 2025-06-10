@@ -1,0 +1,7 @@
+:root {
+    /* Layout */
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 70px;
+    --content-padding: 2rem;
+    
+    /* Colors */

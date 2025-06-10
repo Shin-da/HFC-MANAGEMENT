@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PI</title>
+    <style>
+        p {
+            white-space: pre;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <p id="pi"></p>
+
+    <script>
+        document.getElementById("pi").innerHTML = Math.PI.toPrecision(100).replace(/([0-9])\1{10,}/g, '$1');
+   
+    </script>
+</body>
+</html>
+

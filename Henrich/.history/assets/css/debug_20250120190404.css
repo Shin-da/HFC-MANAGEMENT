@@ -1,0 +1,5 @@
+/* Debug Outlines */
+.debug .supervisor-body { outline: 2px solid blue; }
+.debug .content-wrapper { outline: 2px solid red; }
+.debug .dashboard-wrapper { outline: 2px solid green; }
+.debug .sidebar { outline: 2px solid purple; }

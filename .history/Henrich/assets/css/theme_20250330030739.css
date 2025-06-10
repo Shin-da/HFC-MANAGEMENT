@@ -1,0 +1,217 @@
+/* Theme Variables */
+:root {
+    /* Light Theme (default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --bg-surface: #ffffff;
+    --bg-surface-hover: #f8fafc;
+    
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-tertiary: #64748b;
+    --text-muted: #94a3b8;
+    --text-inverse: #ffffff;
+    
+    --border-light: #e2e8f0;
+    --border-medium: #cbd5e1;
+    --border-dark: #94a3b8;
+    
+    --primary-50: #f0f9f4;
+    --primary-100: #dcf2e5;
+    --primary-200: #b9e4cc;
+    --primary-300: #8ed3b0;
+    --primary-400: #5fbe94;
+    --primary-500: #3da67a;
+    --primary-600: #2f855f;
+    --primary-700: #256a4a;
+    --primary-800: #1d5239;
+    --primary-900: #173c2a;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-surface: #1e293b;
+    --bg-surface-hover: #334155;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
+    --text-tertiary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-inverse: #0f172a;
+    
+    --border-light: #334155;
+    --border-medium: #475569;
+    --border-dark: #64748b;
+}
+
+/* Theme Transition */
+* {
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle i {
+    font-size: 1.25rem;
+}
+
+/* Theme-aware Components */
+.theme-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.theme-input {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+.theme-input:focus {
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.theme-table {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+.theme-table th {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.theme-table td {
+    border-color: var(--border-light);
+}
+
+.theme-nav {
+    background: var(--bg-surface);
+    border-color: var(--border-light);
+}
+
+.theme-nav-link {
+    color: var(--text-secondary);
+}
+
+.theme-nav-link:hover {
+    color: var(--text-primary);
+}
+
+.theme-nav-link.active {
+    color: var(--primary-500);
+}
+
+/* Theme-aware Status Colors */
+.theme-success {
+    background: var(--success-light);
+    color: var(--success-dark);
+}
+
+.theme-warning {
+    background: var(--warning-light);
+    color: var(--warning-dark);
+}
+
+.theme-error {
+    background: var(--error-light);
+    color: var(--error-dark);
+}
+
+.theme-info {
+    background: var(--info-light);
+    color: var(--info-dark);
+}
+
+/* Theme-aware Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-medium);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-dark);
+}
+
+/* Theme-aware Loading States */
+.theme-loading {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+.theme-loading::after {
+    background: var(--primary-500);
+}
+
+/* Theme-aware Modal */
+.theme-modal {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+}
+
+.theme-modal-header {
+    border-bottom-color: var(--border-light);
+}
+
+.theme-modal-footer {
+    border-top-color: var(--border-light);
+}
+
+/* Theme-aware Dropdown */
+.theme-dropdown {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+}
+
+.theme-dropdown-item:hover {
+    background: var(--bg-surface-hover);
+}
+
+/* Theme-aware Tooltip */
+.theme-tooltip {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+}

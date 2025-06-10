@@ -1,0 +1,24 @@
+<?php
+require '../reusable/redirect404.php';
+require '../session/session.php';
+require '../database/dbconnect.php';
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head><
+    <title>HOME</title>
+    <?php require '../reusable/header.php'; ?>
+
+
+    <!-- Boxicons CDN Link -->  
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <!-- For Realtime Search  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <style>
+        /* CSS to style the buttons */

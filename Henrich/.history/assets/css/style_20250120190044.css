@@ -1,0 +1,87 @@
+/* Core Layout */
+.page-wrapper,
+.supervisor-body {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background: var(--background);
+    position: relative;
+}
+
+/* Content Layout */
+.content-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    width: calc(100% - 260px); /* Account for sidebar */
+    margin-left: 260px;
+    transition: all 0.3s ease;
+    background: var(--background);
+    min-height: 100vh;
+}
+
+.content-wrapper.expanded {
+    margin-left: 0;
+    width: 100%;
+}
+
+.content-wrapper.collapsed {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+}
+
+/* Main Content Area */
+.dashboard-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    margin: 0;
+    position: relative;
+    background: var(--background);
+}
+
+/* Sidebar States Impact */
+.sidebar.collapsed ~ .content-wrapper {
+    width: calc(100% - 70px);
+    margin-left: 70px;
+}
+
+.sidebar.hidden ~ .content-wrapper {
+    width: 100%;
+    margin-left: 0;
+}
+
+/* Dashboard Components */
+.dashboard-wrapper {
+    width: 100%;
+    padding: 1.5rem;
+    margin: 0;
+    min-height: calc(100vh - 60px);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+        width: 100%;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .dashboard-wrapper {
+        padding: 1rem;
+    }
+}

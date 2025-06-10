@@ -1,0 +1,129 @@
+.movement-overview {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.movements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.movement-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-white);
+    border-radius: 8px;
+    border: 1px solid var(--sage-200);
+    transition: all 0.3s ease;
+}
+
+.movement-item:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.movement-item.in {
+    border-left: 4px solid var(--forest-medium);
+}
+
+.movement-item.out {
+    border-left: 4px solid var(--rust-medium);
+}
+
+.movement-icon {
+    padding: 0.75rem;
+    border-radius: 50%;
+    background: var(--sage-100);
+}
+
+.movement-icon i {
+    font-size: 1.5rem;
+    color: var(--forest-deep);
+}
+
+.in .movement-icon {
+    background: var(--forest-light);
+}
+
+.out .movement-icon {
+    background: var(--rust-light);
+}
+
+.movement-details {
+    flex: 1;
+}
+
+.movement-details h4 {
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.movement-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.movement-meta .weight {
+    color: var(--forest-medium);
+    font-weight: 500;
+}
+
+.stat-card .sub-value {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 0.25rem;
+}
+
+.movement-user {
+    color: var(--sage-600);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Custom Scrollbar */
+.movements-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.movements-list::-webkit-scrollbar-track {
+    background: var(--bg-white);
+    border-radius: 3px;
+}
+
+.movements-list::-webkit-scrollbar-thumb {
+    background: var(--sage-300);
+    border-radius: 3px;
+}
+
+/* Movement Table Styles */
+.movement-table-section {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    .movement-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .movement-meta {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}

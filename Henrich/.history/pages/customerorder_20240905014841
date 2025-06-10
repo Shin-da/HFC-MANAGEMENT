@@ -1,0 +1,23 @@
+<?php
+require '../reusable/redirect404.php';
+require '../session/session.php';
+require '../database/dbconnect.php';
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head><
+    <title>Pre Order</title>
+    <?php require '../reusable/header.php'; ?>
+
+
+</head>
+
+
+<body>
+    <?php 
+    // Alert-messages
+    // include 'alerts/alert-messages.php';
+
+

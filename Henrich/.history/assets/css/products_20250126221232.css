@@ -1,0 +1,41 @@
+/* Theme-aware base styles */
+.theme-aware {
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.theme-container {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+/* Layout */
+.products-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+/* ... existing styles with theme variables ... */
+
+/* Dark theme specific styles */
+[data-theme="dark"] {
+    .product-item {
+        background-color: var(--dark-card-bg);
+    }
+
+    .product-price {
+        color: var(--dark-accent);
+    }
+
+    #searchInput, #categorySelect {
+        background-color: var(--dark-input-bg);
+        color: var(--dark-text);
+    }
+}
+
+/* ... rest of existing styles ... */

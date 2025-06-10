@@ -1,0 +1,45 @@
+/* css for alert  */
+
+.alert {
+    position: fixed;
+    right: 0;
+    top: 15%;
+    z-index: 1;
+    transform: translateX(100%);
+    width: 300px;
+    background: var(--alert-bg-color);
+    color: var(--text-color-light);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s ease;
+}
+
+.alert.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.alert-message {
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.alert-message.success {
+    background-color: var(--success-color);
+}
+
+.alert-message.error {
+    background-color: var(--danger-color);
+}
+
+.alert .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+

@@ -1,0 +1,40 @@
+@media print {
+    .action-bar,
+    [data-tippy-root] {
+        display: none !important;
+    }
+
+    .order-detail-wrapper {
+        padding: 0 !important;
+    }
+
+    .detail-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .order-items table {
+        page-break-inside: avoid;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .order-items th,
+    .order-items td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .status-indicator {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #000;
+        margin: 10px 0;
+    }
+
+    .total-row {
+        font-weight: bold;
+        background-color: #f9f9f9 !important;
+        -webkit-print-color-adjust: exact;
+    }
+}

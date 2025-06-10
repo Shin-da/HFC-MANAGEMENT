@@ -1,0 +1,357 @@
+/* Inventory Theme - Green Colors */
+:root {
+    /* Inventory Theme Colors */
+    --inventory-50: #f0fdf4;
+    --inventory-100: #dcfce7;
+    --inventory-200: #bbf7d0;
+    --inventory-300: #86efac;
+    --inventory-400: #4ade80;
+    --inventory-500: #22c55e;  /* Main inventory color */
+    --inventory-600: #16a34a;
+    --inventory-700: #15803d;
+    --inventory-800: #166534;
+    --inventory-900: #14532d;
+
+    /* Sage Colors for Inventory */
+    --sage-50: #f8faf8;
+    --sage-100: #f1f5f1;
+    --sage-200: #e2e8e2;
+    --sage-300: #cbd5cb;
+    --sage-400: #94a394;
+    --sage-500: #647464;  /* Main sage color */
+    --sage-600: #475547;
+    --sage-700: #334133;
+    --sage-800: #1e291e;
+    --sage-900: #0f170f;
+
+    /* Sales Theme Colors - Warm Colors */
+    --sales-50: #fff7ed;
+    --sales-100: #ffedd5;
+    --sales-200: #fed7aa;
+    --sales-300: #fdba74;
+    --sales-400: #fb923c;
+    --sales-500: #f97316;  /* Main sales color */
+    --sales-600: #ea580c;
+    --sales-700: #c2410c;
+    --sales-800: #9a3412;
+    --sales-900: #7c2d12;
+}
+
+/* Inventory Section Styling */
+.inventory-section {
+    --section-primary: var(--inventory-500);
+    --section-primary-light: var(--inventory-400);
+    --section-primary-dark: var(--inventory-600);
+    --section-bg: var(--sage-50);
+    --section-border: var(--sage-200);
+    --section-text: var(--sage-900);
+    --section-text-light: var(--sage-700);
+    --section-panel-bg: var(--sage-100);
+    --section-card-bg: var(--sage-50);
+    --section-hover-bg: var(--sage-200);
+}
+
+/* Enhanced Inventory Background and Container Styles */
+.inventory-section {
+    background-color: var(--section-bg);
+    color: var(--section-text);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.inventory-section .container {
+    background-color: var(--section-panel-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--section-border);
+}
+
+.inventory-section .card {
+    background-color: var(--section-card-bg);
+    border-left: 4px solid var(--section-primary);
+    border: 1px solid var(--section-border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+}
+
+.inventory-section .card:hover {
+    background-color: var(--section-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-section .panel {
+    background-color: var(--section-panel-bg);
+    border: 1px solid var(--section-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.inventory-section .panel-header {
+    color: var(--section-primary);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--section-primary-light);
+}
+
+.inventory-section .table {
+    background-color: var(--section-card-bg);
+    border: 1px solid var(--section-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.inventory-section .table thead {
+    background-color: var(--section-primary);
+    color: white;
+}
+
+.inventory-section .table tbody tr:hover {
+    background-color: var(--section-hover-bg);
+}
+
+.inventory-section .btn-primary {
+    background-color: var(--section-primary);
+    border-color: var(--section-primary);
+    color: white;
+}
+
+.inventory-section .btn-primary:hover {
+    background-color: var(--section-primary-dark);
+    border-color: var(--section-primary-dark);
+}
+
+.inventory-section .btn-secondary {
+    background-color: var(--sage-200);
+    border-color: var(--sage-300);
+    color: var(--sage-800);
+}
+
+.inventory-section .btn-secondary:hover {
+    background-color: var(--sage-300);
+    border-color: var(--sage-400);
+}
+
+.inventory-section .alert {
+    background-color: var(--section-card-bg);
+    border-left: 4px solid var(--section-primary);
+    color: var(--section-text);
+}
+
+/* Inventory Form Elements */
+.inventory-section input,
+.inventory-section select,
+.inventory-section textarea {
+    background-color: var(--section-card-bg);
+    border: 1px solid var(--section-border);
+    color: var(--section-text);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.inventory-section input:focus,
+.inventory-section select:focus,
+.inventory-section textarea:focus {
+    border-color: var(--section-primary);
+    box-shadow: 0 0 0 3px var(--section-primary-light);
+    outline: none;
+}
+
+/* Inventory Status Badges */
+.inventory-section .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.inventory-section .status-badge::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.inventory-section .status-low {
+    background-color: var(--inventory-100);
+    color: var(--inventory-700);
+}
+
+.inventory-section .status-low::before {
+    background-color: var(--inventory-500);
+}
+
+.inventory-section .status-medium {
+    background-color: var(--inventory-200);
+    color: var(--inventory-800);
+}
+
+.inventory-section .status-medium::before {
+    background-color: var(--inventory-600);
+}
+
+.inventory-section .status-high {
+    background-color: var(--inventory-300);
+    color: var(--inventory-900);
+}
+
+.inventory-section .status-high::before {
+    background-color: var(--inventory-700);
+}
+
+/* Inventory Section Headers */
+.inventory-section h1,
+.inventory-section h2,
+.inventory-section h3,
+.inventory-section h4 {
+    color: var(--section-primary);
+    margin-bottom: 1rem;
+}
+
+.inventory-section h1 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--section-primary-light);
+    padding-bottom: 0.5rem;
+}
+
+.inventory-section h2 {
+    font-size: 1.5rem;
+    color: var(--section-text);
+}
+
+.inventory-section h3 {
+    font-size: 1.25rem;
+    color: var(--section-text-light);
+}
+
+/* Inventory Section Footer */
+.inventory-section .footer {
+    background-color: var(--section-panel-bg);
+    border-top: 1px solid var(--section-border);
+    padding: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--section-text-light);
+}
+
+/* Sales Section Styling */
+.sales-section {
+    --section-primary: var(--sales-500);
+    --section-primary-light: var(--sales-400);
+    --section-primary-dark: var(--sales-600);
+    --section-bg: var(--sales-50);
+    --section-border: var(--sales-200);
+    --section-text: var(--sales-900);
+    --section-text-light: var(--sales-700);
+}
+
+.sales-section .card {
+    border-left: 4px solid var(--section-primary);
+}
+
+.sales-section .btn-primary {
+    background-color: var(--section-primary);
+    border-color: var(--section-primary);
+}
+
+.sales-section .btn-primary:hover {
+    background-color: var(--section-primary-dark);
+    border-color: var(--section-primary-dark);
+}
+
+.sales-section .table thead {
+    background-color: var(--section-primary);
+    color: white;
+}
+
+.sales-section .alert {
+    border-left: 4px solid var(--section-primary);
+}
+
+/* Common Section Styles */
+.inventory-section,
+.sales-section {
+    background-color: var(--section-bg);
+    color: var(--section-text);
+}
+
+.inventory-section .table,
+.sales-section .table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 1rem;
+}
+
+.inventory-section .table th,
+.sales-section .table th {
+    padding: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+}
+
+.inventory-section .table td,
+.sales-section .table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--section-border);
+}
+
+.inventory-section .btn,
+.sales-section .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.inventory-section .alert,
+.sales-section .alert {
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    background-color: white;
+}
+
+/* Status Indicators */
+.inventory-section .status-indicator {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.sales-section .status-indicator {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.sales-section .status-pending {
+    background-color: var(--sales-100);
+    color: var(--sales-700);
+}
+
+.sales-section .status-processing {
+    background-color: var(--sales-200);
+    color: var(--sales-800);
+}
+
+.sales-section .status-completed {
+    background-color: var(--sales-300);
+    color: var(--sales-900);
+} 

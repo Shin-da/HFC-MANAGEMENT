@@ -1,0 +1,40 @@
+.stock-alerts-container {
+    background: var(--bg-white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--sage-200);
+}
+
+.alerts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--sage-200);
+}
+
+.alerts-header h3 {
+    color: var(--forest-deep);
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.alert-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-filter {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--sage-200);
+    border-radius: 6px;
+
+.no-alerts {
+    color: var(--forest-medium);
+}
+
+.no-alerts i {
+    color: var(--forest-light);
+}

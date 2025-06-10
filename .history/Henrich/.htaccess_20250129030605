@@ -1,0 +1,36 @@
+# Enable rewrite engine
+RewriteEngine On
+RewriteBase "/HFC MANAGEMENT/Henrich/"
+
+# Basic settings
+Options +MultiViews
+Options -Indexes
+
+# Error document handling
+ErrorDocument 404 "/HFC MANAGEMENT/Henrich/404.php"
+ErrorDocument 500 "/HFC MANAGEMENT/Henrich/500.php"
+ErrorDocument 403 "/HFC MANAGEMENT/Henrich/403.php"
+
+# Asset handling
+<FilesMatch "\.(css|js|jpg|jpeg|png|gif)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Protect sensitive directories
+<FilesMatch "^(config\.php|connection\.php|\.env)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# API routing
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/(.*)$ api/$1 [QSA,L]
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>

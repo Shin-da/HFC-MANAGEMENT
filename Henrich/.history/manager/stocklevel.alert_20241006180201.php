@@ -1,0 +1,67 @@
+/*************  ✨ Codeium Command 🌟  *************/
+<style>
+.alert {
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  background-color: #ff9800;
+  padding: 15px;
+  border-radius: 10px;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  width: 300px;
+}
+.alert h4 {
+  margin-top: 0;
+  font-weight: bold;
+  color: #fff;
+}
+.alert ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.alert li {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.alert li:last-child {
+  border-bottom: none;
+}
+.alert .product-name {
+  font-weight: bold;
+}
+.alert .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+</style>
+<?php
+require '../database/dbconnect.php';
+
+$items = $conn->query("SELECT * FROM inventory WHERE onhand <= 10 ORDER BY onhand ASC");
+if ($items->num_rows > 0) {
+  echo '<div class="alert">';
+  echo '<h4>Low Stock Alert!</h4>';
+  echo '<span class="close">x</span>';
+  echo '<ul>';
+  while ($row = $items->fetch_assoc()) {
+    $quantity = $row['onhand'];
+    $legend = "";
+    if ($quantity == 0) {
+      $legend = "<span style='color: red'>CRITICAL</span>";
+    } else if ($quantity <= 5) {
+      $legend = "<span style='color: orange'>LOW</span>";
+    }
+    echo '<li><span class="product-name">' . $row['productdescription'] . '</span> - <span class="quantity">' . $row['onhand'] . '</span> items left ' . $legend . '</li>';
+  }
+  echo '</ul>';
+  echo '</div>';
+}
+
+
+/******  eef3e58d-63db-4c2e-b9bc-3763760b3536  *******/

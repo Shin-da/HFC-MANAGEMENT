@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Live Now on Discord</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+    <style>
+        body {
+            font-family: 'Whitney SSm', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #2C2F33;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #2C2F33;
+            border: none; 
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #7289DA;
+            color: #FFFFFF;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            margin-right: 10px;
+        }
+
+        .button:hover {
+            background-color: #6A7EC5;
+        }
+
+        .discord-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #live-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #live-indicator > * {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #424242;
+            border-radius: 5px;
+        }
+
+        .key-press-indicator {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            text-align: center;
+            color: #00ff00;
+            font-size: 16px;
+            background-color: #424242;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="header"></h1>
+        <p id="message"></p>
+        <div class="button-container">
+            <button class="button" id="stream">Stream</button>
+            <button class="button" id="break">Have a Break</button>
+            <button class="button" id="end">End Stream</button>
+        </div>
+        
+        <div id="live-indicator">
+            <span id="mic"></span>
+            <span id="camera"></span>
+            <span id="capslock"></span>
+        </div>
+        <script>
+            const streamButton = document.getElementById('stream');
+            const breakButton = document.getElementById('break');
+            const endButton = document.getElementById('end');
+            const mic = document.getElementById('mic');
+            const camera = document.getElementById('camera');
+            const capslock = document.getElementById('capslock');
+
+            streamButton.addEventListener('click', () => {
+                document.getElementById('header').textContent = 'I\'m Live Now on Discord';
+                document.getElementById('message').textContent = 'Join Me on Discord!';
+            });
+            if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(stream => {
+                        const audioTracks = stream.getAudioTracks();
+                        const firstAudioTrack = audioTracks[0];
+                        if (firstAudioTrack.enabled) {
+                            mic.textContent = ' Mic: On';
+                            mic.style.color = '#00ff00';
+                        } else {
+                            mic.textContent = ' Mic: Off';
+                            mic.style.color = '#ff0000';
+                        }
+                        return stream.getTracks().forEach(track => track.stop());
+                    })
+                    .catch(error => {
+                        mic.textContent = ' Mic: Off';
+                        mic.style.color = '#ff0000';
+                    });
+
+            breakButton.addEventListener('click', () => {
+                document.getElementById('header').textContent = 'Have a Break';
+                document.getElementById('message').textContent = 'I\'ll be back soon!';
+            });
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(stream => {
+                        camera.textContent = ' Camera: On';
+                        camera.style.color = '#00ff00';
+                        const video = document.createElement('video');
+                        video.srcObject = stream;
+                        video.play();
+                        document.body.appendChild(video);
+                        return stream.getTracks().forEach(track => track.stop());
+                    })
+                    .catch(error => {
+                        camera.textContent = ' Camera: Off';
+                        camera.style.color = '#ff0000';
+                    });
+
+            endButton.addEventListener('click', () => {
+                document.getElementById('header').textContent = 'Stream Ended';
+                document.getElementById('message').textContent = 'Thanks for watching!';
+            });
+                let keysPressed = [];
+                document.addEventListener('keydown', e => {
+                    if (e.getModifierState('CapsLock')) {
+                        capslock.textContent = ' Capslock: On';
+                        capslock.style.color = '#00ff00';
+                    } else {
+                        capslock.textContent = ' Capslock: Off';
+                        capslock.style.color = '#ff0000';
+                    }
+
+                    if (!keysPressed.includes(e.key)) {
+                        keysPressed.push(e.key);
+                    }
+
+                    document.getElementById('key-press').textContent = `Keys Pressed: ${keysPressed.join(', ')}`;
+                    document.getElementById('key-press').style.color = '#00ff00';
+                });
+
+                document.addEventListener('keyup', e => {
+                    const index = keysPressed.indexOf(e.key);
+                    if (index > -1) {
+                        keysPressed.splice(index, 1);
+                    }
+
+                    document.getElementById('key-press').textContent = `Keys Pressed: ${keysPressed.join(', ')}`;
+                    if (keysPressed.length === 0) {
+                        document.getElementById('key-press').style.color = '#ff0000';
+                    }
+                });
+
+                document.addEventListener('mousedown', (e) => {
+                    let buttonName = '';
+                    if (e.button === 0) {
+                        buttonName = 'Left Mouse Button';
+                    } else if (e.button === 1) {
+                        buttonName = 'Middle Mouse Button';
+                    } else if (e.button === 2) {
+                        buttonName = 'Right Mouse Button';
+                    }
+
+                    document.getElementById('key-press').textContent = `Mouse Pressed: ${buttonName}`;
+                    document.getElementById('key-press').style.color = '#00ff00';
+                });
+
+                document.addEventListener('mouseup', () => {
+                    document.getElementById('key-press').textContent = ``;
+                    document.getElementById('key-press').style.color = '#ff0000';
+                });
+            }
+        </script>
+        <img src="discordLogo.svg" class="discord-logo" />
+    </div>
+    <div class="key-press-indicator" id="key-press"></div>
+</body>
+
+

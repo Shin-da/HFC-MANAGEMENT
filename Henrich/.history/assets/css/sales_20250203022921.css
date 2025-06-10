@@ -1,0 +1,387 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --danger-color: #e74c3c;
+    --light-bg: #f8f9fa;
+    --border-color: #dee2e6;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+}
+
+/* Dashboard Layout */
+.dashboard-stats {       
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(145deg, var(--bg-white), var(--sage-50));
+    border: 1px solid var(--sage-200);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.chartscontainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.chartscontainer > div {
+    width: 50%;
+}
+
+.chartBox, .polarAreaChart {
+    float: left;
+    padding: 0.5rem;
+    height: 100%;
+    width: 100%;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e9ecef;
+    margin-bottom: 1rem;
+}
+
+.chartBox {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    height: 400px;
+}
+
+.chartBox canvas, .polarAreaChart canvas {
+    background-color: #e9ecef;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.rightchart {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#polarAreaChartContainer {
+    display: inline-block;
+    vertical-align: top;
+    height: 290px;
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    height: 300px;
+}
+
+#productSalesList {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+}
+
+/* Charts Layout */
+.charts-grid {
+    margin-bottom: 2rem;
+}
+
+.chart-card {
+    position: relative;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--sage-200);
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.dashboard-card.wide .chart-container {
+    height: 400px;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+/* Dashboard Styles */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--light-bg);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Filter Controls */
+.filter-controls {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-controls select,
+.filter-controls button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background: white;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.filter-controls button {
+    /* background: var(--accent-color); */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-controls button:hover {
+    background: var(--secondary-color);
+}
+
+/* Trend Indicators */
+.trend-indicator {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.trend-up {
+    background: #e3fcef;
+    color: #0a8a3f;
+}
+
+.trend-down {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* Analytics Insights */
+.analytics-insights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.insight-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.insight-card h3 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    font-size: 1.2rem;
+}
+
+.stat-card.highlight {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    color: white;
+}
+
+.stat-card.highlight .stat-value,
+.stat-card.highlight .stat-label {
+    color: white;
+}
+
+/* Recommendations Table */
+.recommendations-section {
+    overflow-x: auto;
+}
+
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+#searchInput {
+    flex: 1;
+    max-width: 300px;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--sage-300);
+    border-radius: 4px;
+    background: var(--bg-white);
+}
+
+.export-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--forest-primary);
+    color: var(--bg-white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Analytics Sections */
+.analytics-section {
+    background: var(--bg-white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--sage-200);
+}
+
+.analytics-section h2 {
+    color: var(--forest-deep);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--sage-200);
+}
+
+.predictions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.prediction-card {
+    background: linear-gradient(145deg, var(--sage-50), var(--sage-100));
+    border: 1px solid var(--sage-200);
+    border-radius: 8px;
+    padding: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.prediction-card:hover {
+    transform: translateY(-5px);
+}
+
+.category-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.metric-card {
+    flex: 1;
+    min-width: 200px;
+    background: var(--bg-white);
+    border: 1px solid var(--sage-200);
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.recommendation-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recommendation-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--sage-100);
+}
+
+.recommendation-list li:last-child {
+    border-bottom: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .predictions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-metrics {
+        flex-direction: column;
+    }
+    
+    .metric-card {
+        width: 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .table-controls {
+        flex-direction: column;
+    }
+
+    #searchInput {
+        max-width: 100%;
+    }
+
+    .chart-card {
+        height: 350px;
+    }
+    
+    .chart-container {
+        height: 250px !important;
+    }
+}

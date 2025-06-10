@@ -1,0 +1,69 @@
+.dashboard-wrapper {
+    padding: 1.5rem;
+    background: var(--surface);
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--surface-variant);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.activity-feed {
+    background: var(--surface-variant);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    height: 400px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.activity-icon {
+    padding: 0.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.activity-icon.stock_in { background: var(--success-light); color: var(--success); }
+.activity-icon.stock_out { background: var(--danger-light); color: var(--danger); }
+.activity-icon.adjustment { background: var(--warning-light); color: var(--warning); }
+.activity-icon.transfer { background: var(--info-light); color: var(--info); }
+
+.activity-details {
+    flex: 1;
+}
+
+.activity-text {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.activity-time {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.chart-container {
+    min-height: 300px;
+    padding: 1rem;
+}
+
+/* Add more styles as needed */

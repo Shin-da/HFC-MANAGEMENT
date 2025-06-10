@@ -1,0 +1,176 @@
+<nav class="top">
+    <button class="button toggle" id="toggle">
+        <i class="bx bx-menu toggle"></i>
+    </button>
+
+    <ul class="actions">
+        <li id="notification-btn"> <!-- notifications -->
+            <button class="button notification-btn">
+                <i class="bx bx-bell icon notification-btn" id="notification-dot"></i>
+            </button>
+            <!-- Notifications Dropdown -->
+            <div class="dropdown-content dropdown-notifications" id="notification-dropdown">
+                <div class="menu-bar">
+                    <div class="menu">
+                        <h4>Notifications</h4>
+                        <ul class="menu-links" id="notifications-list">
+                            <!-- Add your notifications here -->
+                        </ul>
+                        <div class="pagination-buttons" id="pagination-buttons"></div>
+                        <div class="loading-spinner" id="loading-spinner" style="display: none;">Loading...</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li id="message-btn"> <!-- messages -->
+            <button class="button message-btn">
+                <i class="bx bxs-message-rounded" id="message-dot"></i>
+            </button>
+            <!-- Messages Dropdown -->
+            <div class="dropdown-content dropdown-messages" id="message-dropdown">
+                <div class="menu-bar">
+                    <div class="menu">
+                        <h4>Messages</h4>
+                        <ul class="menu-links" id="messages-list">
+                            <!-- Add your messages here -->
+                        </ul>
+                        <div class="pagination-buttons" id="pagination-buttons"></div>
+                        <div class="loading-spinner" id="loading-spinner" style="display: none;">Loading...</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="settings-btn"> <!-- settings -->
+            <button class="button settings-btn">
+                <i class="bx bxs-user-circle icon -btn"></i>
+            </button>
+            <div class="dropdown-content dropdown-settings" id="settings-dropdown">
+                <div class="menu-bar">
+                    <div class="menu">
+                        <h4>Settings</h4>
+                        <ul class="menu-links" id="settings-list">
+                            <!-- Add your settings here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    .top {
+        background-color: var(--sidebar-color);
+        color: #fff;
+        
+        text-align: center;
+    }
+
+    .actions {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .actions li {
+        margin-right: 20px;
+        position: relative;
+    }
+
+    .button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #444;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        padding: 1em;
+        border: 1px solid #333;
+        z-index: 1;
+        top: 100%;
+        left: 0;
+    }
+
+    .dropdown-content.show {
+        display: block;
+    }
+
+    .menu-bar {
+        background-color: #333;
+        color: #fff;
+        padding: 1em;
+        border-bottom: 1px solid #333;
+    }
+
+    .menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu-links li {
+        margin-bottom: 10px;
+    }
+
+    .pagination-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<script>
+    // Function to toggle dropdown visibility
+    function toggleDropdown(button, dropdown) {
+        button.addEventListener('click', () => {
+            dropdown.classList.toggle('show');
+        });
+    }
+
+    // Initialize dropdowns
+    const notificationButton = document.querySelector('.notification-btn');
+    const notificationDropdown = document.getElementById('notification-dropdown');
+    toggleDropdown(notificationButton, notificationDropdown);
+
+    const messageButton = document.querySelector('.message-btn');
+    const messageDropdown = document.getElementById('message-dropdown');
+    toggleDropdown(messageButton, messageDropdown);
+
+    const settingsButton = document.querySelector('.settings-btn');
+    const settingsDropdown = document.getElementById('settings-dropdown');
+    toggleDropdown(settingsButton, settingsDropdown);
+
+    // Close dropdowns when clicking outside
+    window.addEventListener('click', (e) => {
+        if (!notificationDropdown.contains(e.target) && !notificationButton.contains(e.target)) {
+            notificationDropdown.classList.remove('show');
+        }
+        if (!messageDropdown.contains(e.target) && !messageButton.contains(e.target)) {
+            messageDropdown.classList.remove('show');
+        }
+        if (!settingsDropdown.contains(e.target) && !settingsButton.contains(e.target)) {
+            settingsDropdown.classList.remove('show');
+        }
+    });
+</script>
+

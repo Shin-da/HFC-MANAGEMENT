@@ -1,0 +1,298 @@
+/* ======= Sidebar ========  */
+
+.sidebar.close~.panel,
+.sidebar.close~.panel .top {
+	left: 68px;
+	width: calc(100% - 68px);
+}
+
+.sidebar.hidden~.panel,
+.sidebar.hidden~.panel .top {
+	left: 0;
+	width: 100%;
+}
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 220px;
+	transition: var(--tran-05);
+	z-index: 100;
+	border-right: 2px solid var(--border-color);
+}
+
+/* ====== Sidebar settings ======== */
+.sidebar.open {
+	width: 220px;
+}
+
+.sidebar.close {
+	width: 68px;
+	.sub-menu a .arrow{
+		display: none;
+	}
+}
+
+.sidebar.hidden {
+	width: 0;
+
+	.image-text {
+		opacity: 0;
+	}
+
+	.sub-menu-links {
+		display: none;
+	}
+
+	.icon, i {
+		opacity: 0;
+	}
+	
+	.text {
+		opacity: 0;
+	}
+
+	
+}
+
+.sidebar.close .text {
+	display: none;
+}
+
+
+
+.sidebar.close .sub-menu-links {
+	display: none;
+}
+/* ====== Sidebar settings ======== */
+
+
+.sidebar .text {
+	font-size: 12px;
+	font-weight: 500;
+	transition: var(--tran-03);
+	white-space: nowrap;
+	opacity: 1;
+}
+
+.sidebar .image {
+	min-width: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.sidebar li {
+	height: 40px;
+	margin-top: 10px;
+	list-style: none;
+	display: flex;
+	align-items: center;
+}
+
+.sidebar li .icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 60px;
+	font-size: 20px;
+	color: var(--text-color);
+}
+
+.sidebar li .icon,
+.sidebar li .text {
+	color: var(--white);
+	transition: var(--tran-02);
+}
+
+/* ====== henrich logo and name  ======== */
+
+.sidebar header {
+	position: relative;
+	padding: 10px 0;
+	/* height: 50px; */
+	/* border-bottom: 1px solid var(--border-color); */
+	background-color: var(--sidebar-color);
+
+}
+
+.sidebar .image-text img, a {
+	width: 40px;
+	border-radius: 2px;
+	text-decoration: none;
+}
+
+.sidebar header .image-text {
+	display: flex;
+	align-items: center;
+}
+
+header .image-text .header-text {
+	display: flex;
+	flex-direction: column;
+	color: var(--text-color);
+}
+
+.header-text .profession {
+	margin-top: -2px;
+}
+
+/* ====== logged in user  ======== */
+
+.menu-bar .session {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 0;
+	/* background-color: var(--accent-color-dark); */
+	color: var(--sidebar-color);
+	font-size: 12px;
+}
+
+.session .profile .text {
+	color: var(--yellow-color);
+	padding: 0 10px ;
+
+}
+
+/* 	======= Sidebar Menu ======== */
+
+.sidebar .menu {
+	margin-top: 10px;
+}
+
+.sidebar .menu-bar {
+	height: calc(100% - 50px);
+	display: flex;
+	flex-direction: column;
+	/* background-color: var(--accent-color); */
+}
+
+/* ======= Sidebar Menu links ======== */
+.sidebar li a {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	border-radius: 2px;
+	/* color: var(--text-color-white); */
+	transition: var(--tran-04);
+}
+
+.sidebar .menu-bar {
+	height: calc(100% - 50px);
+	display: flex;
+	flex-direction: column;
+	background-color: var(--accent-color);
+}
+
+.menu-bar .menu li:last-child {
+	border-bottom: none;
+}
+
+
+/* .switch::before {
+	content: "";
+	position: absolute;
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	top: 50%;
+	left: 5px;
+	transform: translateY(-50%);
+	background-color: var(--sidebar-color);
+	transition: var(--tran-03);
+} */
+
+/* ====== Sub Menu ======== */
+
+.sidebar .sub-menu-links .sub-nav-link a {
+	color: var(--text-color);
+	font-size: 14px;
+}
+
+.sidebar .sub-menu-links {
+	padding: 5px 0;
+	border-radius: 5px;
+	margin-left: 10px;
+}
+
+/* ====== Sub Menu Links ======== */
+
+.sidebar .sub-menu-links {
+	/* background-color: var(--accent-color-dark); */
+}
+.sidebar .sub-nav-link {
+	padding-left: 10px;
+	height: 30px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	border-radius: 2px;
+	transition: var(--tran-04);
+}
+
+.sidebar .sub-nav-link a {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	padding: 10px;
+	align-items: center;
+	text-decoration: none;
+	border-radius: 2px;
+	transition: var(--tran-04);
+	/* background-color: var(--accent-color-dark); */
+
+}
+
+.sidebar .sub-nav-link a .icon {
+	/* color: var(--text-color); */
+	margin-left: 10px;
+}
+
+/* ====== Hovers ======== */
+
+.sidebar li a:hover {
+	background-color: var(--accent-color-dark);
+	transition: var(--tran-02);
+}
+
+.sidebar li a:hover .icon {
+	color: var(--yellow-color);
+}
+
+.sidebar li a:hover .text {
+	color: var(--white);
+}
+
+.sidebar li a:hover .text {
+	color: var(--yellow-color);
+}
+.sidebar .sub-nav-link a:hover {
+	background-color: var(--accent-color-dark);
+	/* color: var(--white); */
+	transition: var(--tran-02);
+}
+
+/* ====== active links ========= */
+.sidebar li a.active {
+    background-color: var(--sidebar-color) !important;
+  }
+.sidebar li a.active i,
+.sidebar li  a.active .text {
+	color: var(--accent-color) !important;
+  }
+
+  .sidebar .sub-nav-link a.active {
+    background-color: var(--accent-color-dark) !important;
+    color: var(--accent-color) !important;
+  }
+
+.sidebar .sub-nav-link a.active i,
+.sidebar .sub-nav-link a.active .text {
+	color: var(--yellow-color) !important;
+}
+

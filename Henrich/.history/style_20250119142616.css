@@ -1,0 +1,52 @@
+:root {
+    /* Dominant Colors (60%) */
+    --primary-bg: #cdd9c5;
+    --primary-text: #36302d;
+    --secondary-bg: #598777;
+
+    /* Secondary Colors (30%) */
+    --card-bg: #a6ab8a;
+    --header-bg: #385a41;
+    --secondary-element: #e5ba90;
+
+    /* Accent Colors (10%) */
+    --accent-primary: #df5c36;
+    --accent-highlight: #de9a45;
+    --accent-special: #6a362b;
+    --accent-warning: #933d24;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+}
+
+.header {
+    background-color: var(--header-bg);
+    color: var(--primary-bg);
+}
+
+.card, .panel {
+    background-color: var(--card-bg);
+}
+
+.btn-primary {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-element);
+    border-color: var(--secondary-element);
+}
+
+.alert-warning {
+    background-color: var(--accent-warning);
+    color: var(--primary-bg);
+}
+
+.highlight {
+    color: var(--accent-highlight);
+}
+
+// ...existing code...

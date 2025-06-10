@@ -1,0 +1,43 @@
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .ordernav .nav {
+        background-color: var(--sidebar-color);
+        border-right: 2px solid var(--border-color);
+        z-index: 100;
+        padding-top: 10px;
+        height: 50px;
+        transition: var(--tran-05);
+    }
+
+    .ordernav .nav .nav-link {
+        color: var(--text-color);
+        background-color: var(--sidebar-color);
+        border-color: var(--border-color);
+        padding: 0.5rem 1rem;
+    }
+
+    .ordernav .nav .nav-link.active {
+        color: #fff;
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+
+ </style>
+
+</head>
+
+<nav class="ordernav">
+    <div class="nav" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="nav-price-tab"
+            data-bs-toggle="tab"
+            href="#nav-price" role="tab" aria-controls="nav-price"
+            aria-selected="true">Orders</a>
+
+        <a class="nav-link" id="nav-history-tab"
+            data-bs-toggle="tab"
+            href="#nav-history" role="tab" aria-controls="nav-price"
+            aria-selected="true">History</a>
+    </div>
+</nav>

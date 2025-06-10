@@ -1,0 +1,202 @@
+.orderlogs-wrapper {
+    padding: 1.5rem;
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+}
+
+.filters select {
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.table-container {
+    margin-top: 1.5rem;
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.badge.walk-in { background: var(--info-light); color: var(--info); }
+.badge.online { background: var(--success-light); color: var(--success); }
+.badge.delivery { background: var(--warning-light); color: var(--warning); }
+
+.status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.status.pending { color: var(--warning); }
+.status.completed { background: var(--success-light); color: var(--success); }
+.status.cancelled { background: var(--danger-light); color: var(--danger); }
+
+/* DataTables Customization */
+.dataTables_wrapper {
+    padding: 1rem 0;
+}
+
+.dataTables_filter input {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.dataTables_length select {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.5rem;
+}
+
+.dataTables_paginate .paginate_button {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.25rem 0.75rem;
+    margin: 0 0.25rem;
+    cursor: pointer;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background: var(--primary);
+    color: white !important;
+    border-color: var(--primary);
+}
+
+.date-time {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-time .time {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.order-type-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.order-type-badge.walk-in {
+    background: rgba(var(--info-rgb), 0.1);
+    color: var(--info);
+}
+
+.order-type-badge.delivery {
+    background: rgba(var(--warning-rgb), 0.1);
+    color: var(--warning);
+}
+
+.order-row {
+    background: var(--surface);
+    transition: background-color 0.2s;
+}
+
+.order-row:hover {
+    transform: none; /* Remove the transform effect */
+    background-color: rgba(0,0,0,0.02);
+}
+
+.order-row.status-pending {
+    background-color: rgba(222, 154, 69, 0.1);
+}
+
+.order-row.status-processing {
+    background-color: rgba(223, 92, 54, 0.1);
+}
+
+.order-row.status-completed {
+    background-color: rgba(166, 171, 138, 0.1);
+}
+
+.order-row.status-cancelled {
+    background-color: rgba(106, 54, 43, 0.1);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Enhanced DataTables styling */
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 1rem;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.dt-buttons {
+    margin-bottom: 1rem;
+}
+
+.dt-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dt-button:hover {
+    background: var(--accent);
+    color: var(--light);
+    border-color: var(--accent);
+}
+
+/* Update table styling */
+.table-section {
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table thead th {
+    background: var(--customer-primary);
+    color: white;
+    padding: 15px;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Update status cell styling */
+.status-cell {
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-weight: 500;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

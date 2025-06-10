@@ -1,0 +1,30 @@
+.card {
+    border-color: var(--border-color);
+    background-color: var(--bg-secondary);
+}
+
+.btn-custom {
+    background-color: var(--primary);
+    color: var(--light);
+}
+
+.btn-custom:hover {
+    background-color: var(--secondary);
+}
+
+.alert-custom {
+    background-color: var(--info);
+    border-color: var(--forest);
+    color: var(--dark);
+}
+
+.table-custom thead {
+    background-color: var(--primary);
+    color: var(--light);
+}
+
+.table-custom tbody tr:hover {
+    background-color: var(--sand);
+}
+
+/* ...existing code... */

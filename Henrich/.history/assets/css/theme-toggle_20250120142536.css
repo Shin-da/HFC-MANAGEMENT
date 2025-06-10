@@ -1,0 +1,43 @@
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    margin: 0 0.5rem;
+}
+
+/* Toggle Button */
+.theme-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.theme-btn:hover {
+    transform: rotate(15deg);
+
+.theme-btn i {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.theme-btn:hover i {
+    transform: rotate(15deg);
+}
+
+/* Theme transitions */
+body {
+    transition: background-color 0.3s ease,
+                color 0.3s ease;
+}
+
+body * {
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease;
+}

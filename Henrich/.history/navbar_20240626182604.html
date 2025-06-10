@@ -1,0 +1,133 @@
+<style>
+     .menu-links li a {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          border-radius: 2px;
+          transition: var(--tran-04);
+     }
+     
+      li a:hover {
+          background-color: var(--text-color-light);
+          color: var(--primary-color-light);
+          transition: var(--tran-02);
+     }
+     
+      li a:hover .icon,
+      li a:hover .text {
+          color: var(--border-color);
+     }
+     
+     body li a:hover .icon,
+      li a:hover .text {
+          color: var(--primary-color);
+     }
+     
+     
+     
+      .menu-bar {
+          height: calc(100% - 50px);
+          display: flex;
+          flex-direction: column;
+     }
+     
+     
+     .menu-bar .menu li:last-child {
+         border-bottom: none;
+     }
+
+     .menu-bar .menu .active {
+         background: var(--accent-color);
+         color: white;
+     }
+
+     .menu-bar .menu .active i {
+         color: white;
+     }
+
+     .menu-bar .menu .active .nav-text {
+         color: white;
+     }
+ </style>
+
+
+<div class="top">
+     <button class="button toggle" id="toggle">
+          <i class="bx bx-menu toggle"></i>
+     </button>
+     <div class="search-box">
+          <i class='bx bx-search-alt-2' style="font-size: 24px"></i>
+          <input type="text" id="myInput" onkeyup="search()"
+               placeholder="Search...">
+     </div>
+
+     <!-- settings -->
+     <div class="dropdown" id="settings-dropdown">
+          <button class='button settings-btn' id="settings-btn">
+               <i class="bx bx-cog icon settings-btn"></i>
+          </button>
+          <div class="dropdown-content">
+
+               <div class="menu-bar">
+                    <div class="menu">
+
+                         <ul class="menu-links">
+                              <li class="nav-link " id="changePassword">
+                                   <a href="Forms/changePasswordForm.php">
+                                        <i class="bx bx-key icon"></i>
+                                        <span class="text nav-text">Change Password</span>
+                                   </a>
+                              </li>
+
+                         </ul>
+
+                    </div>
+               </div>
+
+               <div class="bottom-content">
+                    <li class>
+                         <a href="logout.php">
+                              <i class="bx bx-log-out icon"></i>
+                              <span class="text nav-text">Logout</span>
+                         </a>
+                    </li>
+                    <li class="mode">
+                         <div class="moon-sun">
+                              <i class="bx bx-moon icon moon"></i>
+                              <i class="bx bx-sun icon sun "></i>
+                         </div>
+                         <span class="mode-text text">Dark mode</span>
+
+                         <div class="toggle-switch">
+                              <span class="switch"></span>
+                         </div>
+
+                    </li>
+               </div>
+          </div>
+     </div>
+
+</div>
+     
+
+     <!-- js for Settings -->
+     <script>
+          const settingsBtn = document.querySelector("#settings-btn");
+          const settingsDropdown = document.querySelector("#settings-dropdown");
+          /* When the user clicks on the button, 
+          toggle between hiding and showing the dropdown content */
+          settingsBtn.onclick = function() {
+               settingsDropdown.classList.toggle("show");
+          }
+
+          // Close the dropdown if the user clicks outside of it
+          window.onclick = function(event) {
+               if (!event.target.matches('#settings-btn')) {
+                    if (settingsDropdown.classList.contains('show')) {
+                         settingsDropdown.classList.remove('show');
+                    }
+               }
+          }
+     </script> 

@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    /* Core Colors */
+    --primary: #6a362b;
+    --secondary: #933d24;
+    --accent: #df5c36;
+    --success: #598777;
+    --info: #a6ab8a;
+    --warning: #de9a45;
+    --dark: #36302d;
+    --light: #cdd9c5;
+    --forest: #385a41;
+    --sand: #e5ba90;
+
+    /* UI Colors */
+    --background: #ffffff;
+    --surface: #f8f9fa;
+    --border: #dee2e6;
+    --text-primary: var(--dark);
+    --text-secondary: #6c757d;
+    --link: var(--accent);
+    
+    /* Component Colors */
+    --header-bg: var(--primary);
+    --sidebar-bg: var(--surface);
+    --card-bg: #ffffff;
+    --panel-bg: var(--surface);
+    
+    /* Semantic Colors */
+    --body-color: var(--light);
+    --border-color: var(--forest);
+    --sidebar-color: var(--sand);
+    --panel-color: var(--info);
+    --panel-color-dark: var(--success);
+    
+    /* Text Colors */
+    --text-color: var(--dark);
+    --text-color-white: var(--light);
+    
+    /* State Colors */
+    --grey-active: var(--dark);
+    --grey-inactive: var(--primary);
+    --grey-hover-color: var(--secondary);
+    
+    /* Accent Variants */
+    --accent-color-dark: var(--secondary);
+    --accent-color-dark-inactive: var(--primary);
+    
+    /* Component Colors */
+    --primary-color: var(--primary);
+    --primary-color-light: var(--light);
+    
+    /* Status Colors */
+    --danger-color: var(--accent);
+    --danger-color-dark: var(--secondary);
+    
+    /* Transitions */
+    --tran-03: all 0.2s ease-in-out;
+    --tran-04: all 0.3s ease-in-out;
+    --tran-05: all 0.3s ease-in-out;
+}
+
+/* Base Styles */
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    --body-color: var(--dark);
+    --sidebar-color: var(--primary);
+    --primary-color: var(--secondary);
+    --primary-color-light: var(--accent);
+    --toggle-color: var(--light);
+    --text-color: var(--info);
+    --panel-color: var(--primary);
+    --box1-color: var(--secondary);
+}
+
+body.dark .switch::before {
+	left: 24px;
+}
+
+/* Layout Components */
+.panel {
+    position: relative;
+    left: 220px;
+    min-height: 100vh;
+    margin-top: 45px;
+    width: calc(100% - 220px);
+    transition: var(--tran-05);
+    background-color: var(--panel-color);
+}
+
+.panel-content {
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px 0 rgba(54, 48, 45, 0.371), 0 4px 8px 0 rgba(54, 48, 45, 0.05);
+}
+
+/* Dashboard Layout */
+.dashboard {
+    transition: var(--tran-05);
+    background-color: var(--panel-color);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
+
+/* Container Styles */
+.container, .container-fluid {
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: var(--sidebar-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Typography */
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* Utilities */
+.active {
+    background-color: var(--primary-color-light);
+}
+
+.dash {
+    margin-bottom: 6vh;
+}
+
+/* Media */
+img {
+    width: 100%;
+    background-size: contain;
+}
+
+

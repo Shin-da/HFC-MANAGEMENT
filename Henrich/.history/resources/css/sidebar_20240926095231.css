@@ -1,0 +1,85 @@
+/* ======== Navbar ======== */
+
+.panel .top {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 220px;
+  display: flex;
+  width: calc(100% - 220px);
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--sidebar-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0px;
+  transition: var(--tran-05);
+}
+
+.panel .top .search-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 50px;
+  max-width: 550px;
+  width: 100%;
+  margin: 0 20px;
+}
+
+.panel .top .search-box i {
+  margin: 0 14px;
+  z-index: 10;
+  color: var(--text-color);
+}
+
+.panel .top .search-box input {
+  position: absolute;
+  height: 70%;
+  width: calc(100% - 56px);
+  background-color: var(--panel-color);
+  /* border: none;
+  outline: none; */
+  color: var(--text-color);
+  padding: 0 25px 0 50px;
+  font-size: 14px;
+  border-radius: 40px;
+}
+
+.panel .top .i {
+  font-size: 22px;
+  color: var(--text-color);
+  margin: 0 14px 0 14px;
+  cursor: pointer;
+}
+
+.panel .top .button {
+  width: 40px;
+  font-size: 29px;
+  background-color: transparent;
+  color: var(--accent-color);
+  border: none;
+  cursor: pointer;
+  /* border-radius: 50%; */
+}
+
+.panel .top .toggle {
+  padding-left: 10px;
+}
+
+.panel .top .settings-btn {
+  padding-right: 50px;
+}
+
+.panel .top .button:hover {
+  color: var(--text-color);
+  transition: var(--tran-02);
+}
+
+.panel .top .nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  margin-left: 16px;
+}
+
+.panel .top .nav-link:hover {
+  color: var(--black-light-color);
+}

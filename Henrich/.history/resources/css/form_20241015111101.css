@@ -1,0 +1,128 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    /* border: 1px solid var(--border-color); */
+    border-radius: 5px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
+
+    .btn {
+        width: auto;
+    }
+}
+
+thead {
+    border-radius: 5px;
+    /* border: 1px solid var(--border-color); */
+    background-color: var(--grey-active);
+}
+
+th,
+td {
+    text-align: left;
+    padding: 2px;
+    border-bottom: 1px solid #ddd;
+
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th {
+    color: white;
+    padding: 8px;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+td select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    box-sizing: border-box;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    box-sizing: border-box;
+}
+input:focus {
+   border: 1px solid var(--border-color);
+}
+
+.btn {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: var(--blue-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-color-dark);
+}
+
+.btn-secondary {
+    background-color: var(--panel-color);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--panel-color-dark);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-color-dark);
+}
+
+.bottom-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+
+    .buttons {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 10px;
+
+    }
+
+    .btn {
+        width: auto;
+        border: solid 1px var(--border-color);
+        border-radius: 5px;
+        padding: 10px;
+    }
+}

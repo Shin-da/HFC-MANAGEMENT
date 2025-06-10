@@ -1,0 +1,32 @@
+
+<!-- css for alert -->
+
+     .alert-message {
+          position: fixed;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          display: none;
+
+          z-index: 1;
+          left: 50%;
+          top: 18%;
+          transform: translate(-50%, -50%);
+
+          width: 24vw;
+          height: 50px;
+
+          transition: all 1s ease;
+          background: var(--success-color);
+          color: var(--text-color-light);
+
+          border-radius: 5px;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     }
+
+     .alert-message .alert {
+          width: 100%;
+          text-align: center;
+
+     }
+</style>

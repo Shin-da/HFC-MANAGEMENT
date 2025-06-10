@@ -1,0 +1,44 @@
+:root {
+    /* Core Layout */
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 70px;
+    --content-padding: 2rem;
+    
+    /* Colors */
+    --primary: #385a41;
+    --secondary: #598777;
+    --accent: #df5c36;
+    --success: #28a745;
+    --error: #dc3545;
+    --warning: #ffc107;
+    --info: #17a2b8;
+    --dark: #36302d;
+    --light: #e5ba90;
+    --forest: #6a362b;
+    --sand: #f3f7f0;
+
+    /* UI Colors */
+    --background: #ffffff;
+    --surface: #f8faf8;
+    --border: #cdd9c5;
+    --text-primary: #36302d;
+    --text-secondary: #598777;
+    
+    /* Sidebar Colors */
+    --sidebar-bg: #f8f9fa;
+    --sidebar-hover: #edf2ff;
+    --sidebar-active: #e7f1ff;
+    --sidebar-text: #2c3e50;
+    --sidebar-border: #e9ecef;
+
+    /* Transitions */
+    --transition-speed: 0.3s;
+
+    /* Dark Mode Colors */
+    --dm-background: #1a1a1a;
+    --dm-surface: #2d2d2d;
+    --dm-border: #404040;
+    --dm-text-primary: #e0e0e0;
+    --dm-text-secondary: #a0a0a0;
+    --dm-sidebar-bg: #2d2d2d;
+    --dm-sidebar-hover: #3d3d3d;
