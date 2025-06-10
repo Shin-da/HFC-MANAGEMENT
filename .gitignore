@@ -1,26 +1,74 @@
 # Dependencies
-/node_modules
-/vendor
+/node_modules/
+/vendor/
 
 # IDE and editor files
 .vscode/
 .idea/
 .history/
+*.sublime-workspace
+*.sublime-project
 
 # Environment files
 .env
 .env.local
 .env.*.local
+*.env.php
 
 # Database configuration
 /config/database.php
+database.conf
+*.sql.bak
 
 # Logs and temporary files
 *.log
+php_errors.log
+api_errors.log
+debug.log
 /cache/*
 /tmp/*
 .DS_Store
+Thumbs.db
+*.cache
+*.tmp
+*.temp
+*~
 
-# Uploaded files
+# Documentation and office files
+*.pdf
+*.doc
+*.docx
+MANUSCRIPT*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+
+# Test files
+*_test.php
+test_*.php
+/test/
+/tests/
+debug_*.php
+basic_test.php
+connection_test.php
+database_test.php
+test_*.sql
+
+# Uploaded files and media
 /Online Shop/uploads/*
 !/Online Shop/uploads/.gitkeep
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.mp4
+*.webp
+
+# Keep placeholder images
+!placeholder-image.png
+
+# Backup files
+*.bak
+*.backup
+*~
