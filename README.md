@@ -35,8 +35,7 @@ This comprehensive management system for Henrich Food Corporation was developed 
 	* Automatic stock level updates on charts and graphs based on transactions
 	* Notifications for low stock, new orders, and order statuses
 	* Accept order placement and tracking
-	* Able to show sales and inventory reports
-	* Provision of dashboard monitoring for real-time supervision
+	* Able to show sales and inventory reports	* Provision of dashboard monitoring for real-time supervision
 
 ## Features
 
@@ -122,6 +121,8 @@ This comprehensive management system for Henrich Food Corporation was developed 
 - System administration guide
 - Troubleshooting guide
 - Database schema documentation
+=======
+>>>>>>> 2916286f (Update .gitignore to exclude .history directory)
 
 ## Technology Stack
 - **Backend:**
@@ -136,8 +137,7 @@ This comprehensive management system for Henrich Food Corporation was developed 
   - jQuery
 - **Tools & Libraries:**
   - Composer for dependency management
-  - Git for version control
-  - WebSocket for real-time features
+  - Git for version control  - WebSocket for real-time features
 
 ## Research Methodology
 This project follows a systematic development approach:
@@ -157,6 +157,8 @@ This project follows a systematic development approach:
    - System testing
    - User acceptance testing
    - Performance evaluation
+=======
+>>>>>>> 2916286f (Update .gitignore to exclude .history directory)
 
 ## Project Structure
 ```
@@ -277,8 +279,8 @@ For technical support:
 - User study results: `documentation/research/user_study.pdf`
 - Technical documentation: `documentation/technical/`
 - API documentation: `documentation/api/`
+=======
+>>>>>>> 2916286f (Update .gitignore to exclude .history directory)
 
 ## About
 This project serves as a comprehensive management solution for Henrich Food Corporation, showcasing full-stack development capabilities in PHP and modern web technologies. Developed with scalability, security, and user experience in mind.
-
-
