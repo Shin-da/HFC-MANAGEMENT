@@ -1,0 +1,112 @@
+:root {
+    /* Dominant Colors (60%) */
+    --primary-bg: #cdd9c5;
+    --primary-text: #36302d;
+    --secondary-bg: #598777;
+
+    /* Secondary Colors (30%) */
+    --card-bg: #a6ab8a;
+    --header-bg: #385a41;
+    --secondary-element: #e5ba90;
+
+    /* Accent Colors (10%) */
+    --accent-primary: #df5c36;
+    --accent-highlight: #de9a45;
+    --accent-special: #6a362b;
+    --accent-warning: #933d24;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+}
+
+.header {
+    background-color: var(--header-bg);
+    color: var(--primary-bg);
+}
+
+.card, .panel {
+    background-color: var(--card-bg);
+}
+
+.btn-primary {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-element);
+    border-color: var(--secondary-element);
+}
+
+.alert-warning {
+    background-color: var(--accent-warning);
+    color: var(--primary-bg);
+}
+
+.highlight {
+    color: var(--accent-highlight);
+}
+
+/* Sidebar Navigation Styles */
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    position: relative;
+}
+
+.sidebar-nav .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    color: var(--primary-bg);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-nav .dropdown-toggle:hover {
+    background-color: var(--secondary-bg);
+}
+
+.sidebar-nav .dropdown-menu {
+    display: none;
+    padding-left: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-nav .dropdown-menu.active {
+    display: block;
+}
+
+.sidebar-nav .dropdown-menu a {
+    display: block;
+    padding: 8px 15px;
+    color: var(--primary-bg);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-nav .dropdown-menu a:hover {
+    background-color: var(--secondary-bg);
+}
+
+/* Dropdown arrow icon */
+.dropdown-toggle::after {
+    content: '▼';
+    font-size: 0.8em;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-toggle.active::after {
+    transform: rotate(180deg);
+}
+
+
