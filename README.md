@@ -1,9 +1,14 @@
 # HFC Management System
 
 ## Copyright and Academic Integrity Notice
-© 2024 Jeffmathew D. Garcia. All Rights Reserved.
+© 2025 Jeffmathew D. Garcia, Vince Ruel V. Juan, Mike Louie M. Orbe. All Rights Reserved.
 
 This system was developed as an original capstone research project for A Capstone Project Presented to the Faculty of the College of Information Technology and Computer Studies Pamantasan ng Lungsod ng Muntinlupa.
+
+**Authors:**
+- GARCIA, JEFFMATHEW D.
+- JUAN, VINCE RUEL V.
+- ORBE, MIKE LOUIE M.
 
 **IMPORTANT:**
 - This work is protected by copyright law and academic integrity policies
@@ -19,7 +24,7 @@ This system was developed as an original capstone research project for A Capston
 
 For academic citations, please use:
 ```
-Garcia, Jeffmathew D. (2024). A Capstone Project Presented to the Faculty of the College of Information Technology and Computer Studies Pamantasan ng Lungsod ng Muntinlupa. "AN ONLINE SALES AND INVENTORY MANAGEMENT SYSTEM WITH DESCRIPTIVE AND PRESCRIPTIVE ANALYTIC REPORT FOR HENRICH FOOD CORPORATION."
+Garcia, J. D., Juan, V. R. V., & Orbe, M. L. M. (2025). "AN ONLINE SALES AND INVENTORY MANAGEMENT SYSTEM WITH DESCRIPTIVE AND PRESCRIPTIVE ANALYTIC REPORT FOR HENRICH FOOD CORPORATION." A Capstone Project Presented to the Faculty of the College of Information Technology and Computer Studies, Pamantasan ng Lungsod ng Muntinlupa.
 ```
 
 ## Project Overview
@@ -153,14 +158,6 @@ This project follows a systematic development approach:
    - User acceptance testing
    - Performance evaluation
 
-## Research Findings
-The implementation of the HFC Management System has demonstrated:
-- 40% reduction in order processing time
-- 60% improvement in inventory accuracy
-- 35% increase in customer satisfaction
-- 45% reduction in manual data entry
-- 50% improvement in reporting efficiency
-
 ## Project Structure
 ```
 ├── Henrich/                 # Core management system
@@ -283,5 +280,3 @@ For technical support:
 
 ## About
 This project serves as a comprehensive management solution for Henrich Food Corporation, showcasing full-stack development capabilities in PHP and modern web technologies. Developed with scalability, security, and user experience in mind.
-
-
