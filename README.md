@@ -1,7 +1,42 @@
 # HFC Management System
 
-## Overview
-A comprehensive management system for Henrich Food Corporation, featuring multiple integrated modules including an admin dashboard, online shop, and employee management system. This enterprise-level solution provides end-to-end management capabilities for the entire organization.
+## Copyright and Academic Integrity Notice
+© 2025 Jeffmathew D. Garcia, Vince Ruel V. Juan, Mike Louie M. Orbe. All Rights Reserved.
+
+This system was developed as an original capstone research project for A Capstone Project Presented to the Faculty of the College of Information Technology and Computer Studies Pamantasan ng Lungsod ng Muntinlupa.
+
+**Authors:**
+- GARCIA, JEFFMATHEW D.
+- JUAN, VINCE RUEL V.
+- ORBE, MIKE LOUIE M.
+
+**IMPORTANT:**
+- This work is protected by copyright law and academic integrity policies
+- Unauthorized copying, reproduction, or plagiarism of this work is strictly prohibited
+- This includes, but is not limited to:
+  - Direct copying of code
+  - Reproducing documentation
+  - Reusing database structures
+  - Copying system architecture
+  - Replicating business logic
+- Academic use must properly cite this work
+- Commercial use or redistribution is not permitted without explicit written permission
+
+For academic citations, please use:
+```
+Garcia, J. D., Juan, V. R. V., & Orbe, M. L. M. (2025). "AN ONLINE SALES AND INVENTORY MANAGEMENT SYSTEM WITH DESCRIPTIVE AND PRESCRIPTIVE ANALYTIC REPORT FOR HENRICH FOOD CORPORATION." A Capstone Project Presented to the Faculty of the College of Information Technology and Computer Studies, Pamantasan ng Lungsod ng Muntinlupa.
+```
+
+## Project Overview
+This comprehensive management system for Henrich Food Corporation was developed as a capstone research project. The system addresses the need for integrated business process management in the food industry, combining traditional ERP functionalities with modern e-commerce capabilities.
+
+### Research Objectives
+1. Develop and implement a custom-designed Online Sales and Inventory Management System (OSIMS) to improve operational efficiency, data accuracy, and internal communication at Henrich Food Corporation.
+	* Automatic stock level updates on charts and graphs based on transactions
+	* Notifications for low stock, new orders, and order statuses
+	* Accept order placement and tracking
+	* Able to show sales and inventory reports
+	* Provision of dashboard monitoring for real-time supervision
 
 ## Features
 
@@ -52,6 +87,42 @@ A comprehensive management system for Henrich Food Corporation, featuring multip
 - Data encryption
 - XSS and CSRF protection
 
+## Current Limitations and Proposed Improvements
+
+### System Performance
+- Database query optimization needed for large datasets
+- Caching implementation for frequently accessed data
+- Frontend performance optimization for mobile devices
+- API response time improvements needed
+
+### User Interface
+- Mobile responsiveness needs enhancement
+- User feedback indicates need for simpler navigation
+- Form validation feedback could be more intuitive
+- Dashboard customization options limited
+
+### Features to Implement
+- Advanced search functionality across modules
+- Batch processing for bulk operations
+- Export functionality for reports
+- Email notification system
+- Enhanced data visualization
+- Regular data backup system
+
+### Security Enhancements
+- Implement two-factor authentication
+- Enhanced password policies
+- Regular security audit logging
+- Automated backup system
+- Session timeout handling
+
+### Documentation Needs
+- API documentation completion
+- User manual creation
+- System administration guide
+- Troubleshooting guide
+- Database schema documentation
+
 ## Technology Stack
 - **Backend:**
   - PHP 7.4+
@@ -67,6 +138,25 @@ A comprehensive management system for Henrich Food Corporation, featuring multip
   - Composer for dependency management
   - Git for version control
   - WebSocket for real-time features
+
+## Research Methodology
+This project follows a systematic development approach:
+1. Requirements Analysis
+   - Stakeholder interviews
+   - Process mapping
+   - System requirements specification
+2. System Design
+   - Architecture planning
+   - Database design
+   - UI/UX prototyping
+3. Implementation
+   - Iterative development
+   - Testing
+   - User feedback integration
+4. Evaluation
+   - System testing
+   - User acceptance testing
+   - Performance evaluation
 
 ## Project Structure
 ```
@@ -181,5 +271,14 @@ For technical support:
 - Contact the development team
 - Check documentation
 
+## Academic Documentation
+- Full research paper: `documentation/research/capstone_paper.pdf`
+- System analysis: `documentation/research/system_analysis.pdf`
+- User study results: `documentation/research/user_study.pdf`
+- Technical documentation: `documentation/technical/`
+- API documentation: `documentation/api/`
+
 ## About
 This project serves as a comprehensive management solution for Henrich Food Corporation, showcasing full-stack development capabilities in PHP and modern web technologies. Developed with scalability, security, and user experience in mind.
+
+
