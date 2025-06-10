@@ -1,14 +1,37 @@
 # HFC Management System
 
+## Copyright and Academic Integrity Notice
+© 2024 Jeffmathew D. Garcia. All Rights Reserved.
+
+This system was developed as an original capstone research project for A Capstone Project Presented to the Faculty of the College of Information Technology and Computer Studies Pamantasan ng Lungsod ng Muntinlupa.
+
+**IMPORTANT:**
+- This work is protected by copyright law and academic integrity policies
+- Unauthorized copying, reproduction, or plagiarism of this work is strictly prohibited
+- This includes, but is not limited to:
+  - Direct copying of code
+  - Reproducing documentation
+  - Reusing database structures
+  - Copying system architecture
+  - Replicating business logic
+- Academic use must properly cite this work
+- Commercial use or redistribution is not permitted without explicit written permission
+
+For academic citations, please use:
+```
+Garcia, Jeffmathew D. (2024). A Capstone Project Presented to the Faculty of the College of Information Technology and Computer Studies Pamantasan ng Lungsod ng Muntinlupa. "AN ONLINE SALES AND INVENTORY MANAGEMENT SYSTEM WITH DESCRIPTIVE AND PRESCRIPTIVE ANALYTIC REPORT FOR HENRICH FOOD CORPORATION."
+```
+
 ## Project Overview
-This comprehensive management system for Henrich Food Corporation was developed as a capstone research project. The system addresses the critical need for integrated business process management in the food industry, combining traditional ERP functionalities with modern e-commerce capabilities.
+This comprehensive management system for Henrich Food Corporation was developed as a capstone research project. The system addresses the need for integrated business process management in the food industry, combining traditional ERP functionalities with modern e-commerce capabilities.
 
 ### Research Objectives
-1. Streamline operational efficiency through process automation
-2. Enhance decision-making with real-time data analytics
-3. Improve customer engagement through e-commerce integration
-4. Optimize inventory and supply chain management
-5. Facilitate seamless communication between departments
+1. Develop and implement a custom-designed Online Sales and Inventory Management System (OSIMS) to improve operational efficiency, data accuracy, and internal communication at Henrich Food Corporation.
+	* Automatic stock level updates on charts and graphs based on transactions
+	* Notifications for low stock, new orders, and order statuses
+	* Accept order placement and tracking
+	* Able to show sales and inventory reports
+	* Provision of dashboard monitoring for real-time supervision
 
 ## Features
 
@@ -59,42 +82,41 @@ This comprehensive management system for Henrich Food Corporation was developed 
 - Data encryption
 - XSS and CSRF protection
 
-## System Improvements Roadmap
+## Current Limitations and Proposed Improvements
 
-### Phase 1: Core Enhancements (Q3 2025)
-- [ ] Implement AI-powered demand forecasting
-- [ ] Add real-time inventory tracking with IoT integration
-- [ ] Enhance mobile responsiveness across all modules
-- [ ] Implement advanced data visualization in CEO dashboard
-- [ ] Add batch processing for bulk operations
+### System Performance
+- Database query optimization needed for large datasets
+- Caching implementation for frequently accessed data
+- Frontend performance optimization for mobile devices
+- API response time improvements needed
 
-### Phase 2: User Experience (Q4 2025)
-- [ ] Develop mobile application for inventory management
-- [ ] Implement voice command features for hands-free operation
-- [ ] Add chatbot support for customer service
-- [ ] Enhance UI/UX with modern design patterns
-- [ ] Implement drag-and-drop interfaces for common tasks
+### User Interface
+- Mobile responsiveness needs enhancement
+- User feedback indicates need for simpler navigation
+- Form validation feedback could be more intuitive
+- Dashboard customization options limited
 
-### Phase 3: Analytics & Reporting (Q1 2026)
-- [ ] Implement machine learning for sales prediction
-- [ ] Add advanced business intelligence dashboards
-- [ ] Develop customizable report builder
-- [ ] Add predictive analytics for inventory management
-- [ ] Implement real-time KPI tracking
+### Features to Implement
+- Advanced search functionality across modules
+- Batch processing for bulk operations
+- Export functionality for reports
+- Email notification system
+- Enhanced data visualization
+- Regular data backup system
 
-### Phase 4: Integration & Scaling (Q2 2026)
-- [ ] Add third-party API integrations (payment gateways, shipping)
-- [ ] Implement microservices architecture
-- [ ] Add load balancing for high availability
-- [ ] Implement caching strategies for performance
-- [ ] Add multi-language support
+### Security Enhancements
+- Implement two-factor authentication
+- Enhanced password policies
+- Regular security audit logging
+- Automated backup system
+- Session timeout handling
 
-### Future Considerations
-- Blockchain integration for supply chain tracking
-- AR/VR implementation for warehouse management
-- Advanced customer behavior analytics
-- IoT integration for automated inventory tracking
-- AI-powered customer service automation
+### Documentation Needs
+- API documentation completion
+- User manual creation
+- System administration guide
+- Troubleshooting guide
+- Database schema documentation
 
 ## Technology Stack
 - **Backend:**
@@ -124,12 +146,12 @@ This project follows a systematic development approach:
    - UI/UX prototyping
 3. Implementation
    - Iterative development
-   - Continuous testing
+   - Testing
    - User feedback integration
 4. Evaluation
-   - Performance metrics
-   - User satisfaction surveys
-   - System efficiency analysis
+   - System testing
+   - User acceptance testing
+   - Performance evaluation
 
 ## Research Findings
 The implementation of the HFC Management System has demonstrated:
@@ -261,3 +283,5 @@ For technical support:
 
 ## About
 This project serves as a comprehensive management solution for Henrich Food Corporation, showcasing full-stack development capabilities in PHP and modern web technologies. Developed with scalability, security, and user experience in mind.
+
+
